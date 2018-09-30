@@ -98,18 +98,27 @@ print(f(2))
 print(f(3))
 [1,2,3]
 ```
-* a function can be called with an arbitrary number of arguments. The syntax is def (formalArg,formalArg2,*args,kwarg=value)  :
+* a function can be called with an arbitrary number of arguments. The syntax is
+`def (formalArg,formalArg2,*args,kwarg=value):`
 * lambda is a keyword to define an anonymous function
+```
 def make_incrementor(n):
       return lambda x: x + n
 f = make_incrementor(42)
 f(2)
 44
-# This can be used for specifying a sort method anonymously: use the second element of a tuple to sort a list of tuples
-collection.sort(key=lambda collection : collection[1])
+```
+This can be used for specifying a sort method anonymously: use the second element of a tuple to sort a list of tuples
 
-variable scope in function
-when there is a need to access variable defined at the module level use the keyword global
+`collection.sort(key=lambda collection : collection[1])`
+
+variable scope in function: when there is a need to access variable defined at the module level use the keyword global
+
+### Object
+A class construction is a method declare as `def __init__(self):`
+A destructor is `def __del__(self):`.
+A toString is `def _str__():`
+
 ## Code in the order of review
 ### Basics
 * [firstinput.py](python-bible/firstinput.py) for reading user input
