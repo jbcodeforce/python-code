@@ -115,6 +115,8 @@ This can be used for specifying a sort method anonymously: use the second elemen
 variable scope in function: when there is a need to access variable defined at the module level use the keyword global
 
 ### Object
+Python is a OOP, with polymorphism and inheritance.
+
 A class construction is a method declare as `def __init__(self):`
 A destructor is `def __del__(self):`.
 A toString is `def _str__():`
