@@ -18,7 +18,7 @@ RUN adduser --system --home /home/jbcodeforce jbcodeforce \
 && addgroup --system  jbcodeforce
 
 RUN mkdir work
-WORKDIR /home/jbcodeforce
+WORKDIR /home/jbcodeforce/work
 RUN chown -R jbcodeforce:jbcodeforce ./
 
 EXPOSE 5000

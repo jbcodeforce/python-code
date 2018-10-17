@@ -1,2 +1,6 @@
 .venv/
 **/__pycache__/
+/angular-flask/share/
+/angular-flask/lib/
+/angular-flask/lib64/
+/angular-flask/bin/
