@@ -1,6 +1,6 @@
-from server import app
+from server import webapp
 
 @app.route('/')
 @app.route('/index')
 def index():
-    return "Hello, World!"
+    return "Hello, Flask World!"

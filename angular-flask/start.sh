@@ -1,7 +1,7 @@
 #! /bin/bash
 
 set -e
-python3.7 -m venv
+python3.7 -m venv .
 
 source bin/activate
 pip3 install -r requirements.txt

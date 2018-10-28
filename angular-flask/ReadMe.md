@@ -1,6 +1,9 @@
 # Python Flask WebApp
 
 ## Code Structure
+The simplest Flask app is presented [here](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world) and code is under helloworld project.
+
+To serve Angular app.
 
 ## Execution
 Start docker python development environment from the folder you want to run some python code. (e.g. angular-flask/helloworld)
@@ -18,4 +21,6 @@ Export the app and start it
  (angular-flask) jbcodeforce@210f0bbaad03:~/work/angular-flask$ export FLASK_APP=app.py
  (angular-flask) jbcodeforce@210f0bbaad03:~/work/angular-flask$ flask run
 ```
-The start.sh script does those commands.
+The `./start.sh` script does all those commands.
+
+Any change to the source code is immediately reflected.

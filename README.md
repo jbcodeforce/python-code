@@ -47,6 +47,11 @@ deactivate
 * [Reverse a word and add aye](python-bible/pig.py), use loops, break, in voyals...
 * [OOD](python-bible/coins.py)
 
+### Algorithms
+* [Binary Tree with InOrderTraversal, PreOrderTraversal, PostOrderTraversal](algorithms/traversalbinarytree.py).
+* [Binary search within a sorted array](algorithms/binarySearch.py) which is a divide and conquer algorithm.
+* [DFS, graph, BFS](algorithms/Graph.py) DFS: explores the highest-depth nodes first before being forced to backtrack and expand shallower nodes. BFS: explores all of the neighbor nodes at the present depth prior to moving on to the nodes at the next depth level.
+
 ### Graphics
 * [use a simple graphics](graphics/testgraphics.py) to create a window, draw circle and move them.
 
@@ -73,8 +78,18 @@ A scope is a textual region of a Python program, where a namespace is directly a
 * The global scope contains the global names.
 * The built-in scope contains the built-in names.
 
+### Tuples
+```
+tup1 = ('physics', 'chemistry', 1997, 2000);
+print ("tup1[0]: ", tup1[0]);
+# iteration
+for a in tup1:
+  print(a)
+```
+They are immutable. Need to create new tuples from existing one. Removing individual tuple elements is not possible.
+
 ### To share code with people
-You can use gist.gtihub.com
+You can use gist.github.com
 
 
 ## References
