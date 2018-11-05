@@ -1,9 +1,10 @@
 # Python Flask WebApp
+This is yet another sample to do flask app. This one with one angular page ready to grow and a user login with rest api ready.
 
 ## Code Structure
 The simplest Flask app is presented [here](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world) and code is under helloworld project.
 
-To serve Angular app.
+The angularApp is created using `ng new angularApp`. Then `ng build` create the dist folder that will be used for a second flask App. 
 
 ## Execution
 Start docker python development environment from the folder you want to run some python code. (e.g. angular-flask/helloworld)
