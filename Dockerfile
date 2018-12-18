@@ -1,21 +1,18 @@
 from ubuntu
 # bring system up-to-date
 RUN apt-get update -qq && \
-    apt-get upgrade -qqy
+    apt-get upgrade -qqy && apt-get install -qqy sudo \
+    && add-apt-repository ppa:jonathonf/python-3.6
 
 # install a particular version of Python and other stuff
 RUN apt-get install -qqy \
-    python-virtualenv \
-    libpq-dev \
     python3.7 \
     python3.7-dev \
     python3.7-venv \
     python3-pip \
-    curl \
-    sudo
+    curl 
 
-RUN adduser --system --home /home/jbcodeforce jbcodeforce \
-&& addgroup --system  jbcodeforce
+RUN groupadd developer && useradd -g developer -m -d /home/jbcodeforce jbcodeforce && echo jbcodeforce:c0deforme | chpasswd
 
 RUN mkdir work
 WORKDIR /home/jbcodeforce/work
