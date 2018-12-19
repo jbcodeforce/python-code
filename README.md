@@ -17,7 +17,7 @@ There are two ways to do isolation: docker or virtual env, and in fact it is rec
 ### Use docker image
 The Dockerfile in the current project define a nice image for running python 3.7 with Flask, and virtual environment.
 
-` docker run -e DISPLAY=192.168.1.89:0 --name jbcodeforcepython -v $(pwd):/home/jbcodefoce/work -it --rm -p 5000:5000 jbcodeforce/python37 /bin/bash `
+` docker run -e DISPLAY=192.168.1.89:0 --name jbcodeforcepython -v $(pwd):/home/jbcodefoce/work -it --rm -p 5000:5000 jbcodeforce/python3.7 /bin/bash `
 
 ### Virtual env.
 **virtualenv** is a tool for isolating your application in what is called a virtual environment. A virtual environment is a directory that contains the software on which your application depends. A virtual environment also changes your environment variables to keep your development environment contained. Instead of downloading packages, like Flask, to your system-wide — or user-wide — package directories, we can download them to an isolated directory used only for our current application.
@@ -41,11 +41,13 @@ deactivate
 ### Basics
 * [firstinput.py](python-bible/firstinput.py) for reading user input
 * [Variable scope](python-bible/scope.py)
-* [travis.py](python-bible/travis.py) to play with lists, for in range and condition
+* [travis.py](python-bible/travis.py) to play with lists, for in range and conditions
 * [cinema.py](python-bible/cinema.py) for dictionary
 * [Play with data structures](python-bible/datastructure.py)
 * [Reverse a word and add aye](python-bible/pig.py), use loops, break, in voyals...
 * [OOD](python-bible/coins.py)
+* [Flask web app](angular-flask/helloworld/firstApp.py) then firstRESTApp.py and staticApp.py
+* [Flask serving a simple angular App](angular-flask/angularApp)
 
 ### Algorithms
 * [Binary Tree with InOrderTraversal, PreOrderTraversal, PostOrderTraversal](algorithms/traversalbinarytree.py).
