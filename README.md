@@ -1,7 +1,9 @@
 # Python Code
+
 A bench of python code from training and studies and raspberry work. For python summary see [this site](https://jbcodeforce.github.io/#/studies)
 
 ## Development environment with docker
+
 While developing on Mac which uses python for its own OS, it is important to isolate the development from the operation of the OS and avoiding compromising the integrity of the whole system. So virtualenv can be used, but docker presents a lot of advantages too:
 * avoid installing software not used often on the native OS
 * describe the dependencies on library so programs developed 5 years ago will still run
@@ -15,11 +17,13 @@ While developing on Mac which uses python for its own OS, it is important to iso
 There are two ways to do isolation: docker or virtual env, and in fact it is recommended to combine both:
 
 ### Use docker image
-The Dockerfile in the current project define a nice image for running python 3.7 with Flask, and virtual environment.
 
-` docker run -e DISPLAY=192.168.1.89:0 --name jbcodeforcepython -v $(pwd):/home/jbcodefoce/work -it --rm -p 5000:5000 jbcodeforce/python3.7 /bin/bash `
+The Dockerfile in the current project define an image for running python 3.7 with Flask, and virtual environment.
 
-### Virtual env.
+` docker run -e DISPLAY=192.168.1.89:0 --name jbcodeforcepython -v $(pwd):/home/jbcodeforce/work -it --rm -p 5000:5000 jbcodeforce/python3.7 /bin/bash `
+
+### Virtual env
+
 **virtualenv** is a tool for isolating your application in what is called a virtual environment. A virtual environment is a directory that contains the software on which your application depends. A virtual environment also changes your environment variables to keep your development environment contained. Instead of downloading packages, like Flask, to your system-wide — or user-wide — package directories, we can download them to an isolated directory used only for our current application.
 
 You could install virtualenv with `pip install virtualenv`virtualenv -p /Library/Frameworks/Python.framework/Versions/3.4/bin/python3.4 .venv
@@ -28,6 +32,7 @@ Create virtual environment under your project folder with the command:
 `virtualenv -p /Library/Frameworks/Python.framework/Versions/3.4/bin/python3.4 .venv`
 
 ### Activate the virtual environment
+
 The angular-flask project includes a start.sh script to prepare the virtual env.
 ```
 source .venv/bin/activate
@@ -38,6 +43,7 @@ deactivate
 ```
 
 ## Code in the order of knowledge acquisition
+
 ### Basics
 * [firstinput.py](python-bible/firstinput.py) for reading user input
 * [Variable scope](python-bible/scope.py)
@@ -45,11 +51,13 @@ deactivate
 * [cinema.py](python-bible/cinema.py) for dictionary
 * [Play with data structures](python-bible/datastructure.py)
 * [Reverse a word and add aye](python-bible/pig.py), use loops, break, in voyals...
-* [OOD](python-bible/coins.py)
+* [Object Oriented Python](python-bible/coins.py)
+* [modules, import, and packages](python-bible)
 * [Flask web app](angular-flask/helloworld/firstApp.py) then firstRESTApp.py and staticApp.py
 * [Flask serving a simple angular App](angular-flask/angularApp)
 
 ### Algorithms
+
 * [Binary Tree with InOrderTraversal, PreOrderTraversal, PostOrderTraversal](algorithms/traversalbinarytree.py).
 * [Binary search within a sorted array](algorithms/binarySearch.py) which is a divide and conquer algorithm.
 * [DFS, graph, BFS](algorithms/Graph.py) DFS: explores the highest-depth nodes first before being forced to backtrack and expand shallower nodes. BFS: explores all of the neighbor nodes at the present depth prior to moving on to the nodes at the next depth level.

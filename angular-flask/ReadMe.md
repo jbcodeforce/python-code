@@ -62,6 +62,7 @@ from flask import Flask, url_for, request, json
 
 Accessing the HTTP headers is done using the request.headers dictionary ("dictionary-like object") and the request data using the request.data string.
 
+[Flask REST API article](https://blog.luisrei.com/articles/flaskrest.html)
 ### A angular app:
 
 The folder `angularApp` includes a python flask and an angular SPA. The angular SPA was created using `ng new angularApp`. The package.json was modified to specify the output directory when compiling typescript to js should be the static folder:

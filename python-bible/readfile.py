@@ -3,7 +3,7 @@ import os
 
 # Defining function
 
-# List the contenu of a folder
+# List a folder content
 start_path = '.' # current directory
 for path,dirs,files in os.walk(start_path):
     for filename in files:

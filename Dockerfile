@@ -1,8 +1,7 @@
-from ubuntu
+from ubuntu:18.04
 # bring system up-to-date
 RUN apt-get update -qq && \
-    apt-get upgrade -qqy && apt-get install -qqy sudo \
-    && add-apt-repository ppa:jonathonf/python-3.6
+    apt-get upgrade -qqy && apt-get install -qqy sudo  apt-utils 
 
 # install a particular version of Python and other stuff
 RUN apt-get install -qqy \
@@ -16,7 +15,7 @@ RUN groupadd developer && useradd -g developer -m -d /home/jbcodeforce jbcodefor
 
 RUN mkdir work
 WORKDIR /home/jbcodeforce/work
-RUN chown -R jbcodeforce:jbcodeforce ./
+RUN chown -R jbcodeforce:developer ./ 
 
 EXPOSE 5000
 USER jbcodeforce
