@@ -1,8 +1,8 @@
-import urllib
+import urllib.request
 import json
 
-url='http://www.pythonlearn.com/code/intro-short.txt'
-connection=urllib.urlopen(url)
+url='http://www.agileitarchitecture.com'
+connection=urllib.request.urlopen(url)
 data=connection.read()
-print data
-print connection.info()
+print(data)
+print(connection.info())
