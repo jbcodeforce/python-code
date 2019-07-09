@@ -29,15 +29,15 @@ Use blank to indent code block. The coding style is known as PEP8.
 * A list comprehension consists of brackets containing an expression followed by a for clause, then zero or more for or if clauses. The result will be a new list resulting from evaluating the expression in the context of the for and if clauses which follow it. `squares = [x**2 for x in range(10)]`
 * Queues: do not use list for queue but collections.deque
 
- ```python
+```python
 from collections import deque
     queue = deque([23,56,78,44])
     queue.append(55)
 print(queue)
 
->>deque([23, 56, 78, 44, 55])
+> deque([23, 56, 78, 44, 55])
 twentythree=queue.popleft()
- ```
+```
 
 #### Tuples
 
@@ -52,7 +52,6 @@ for a in tup1:
 ```
 They are immutable. Need to create new tuples from existing one. Removing individual tuple elements is not possible.
 
-
 ### Control flow
 
 `if condition: elsif condition: else`
@@ -63,7 +62,8 @@ They are immutable. Need to create new tuples from existing one. Removing indivi
 * Loop statements may have an else clause; it is executed when the loop terminates through exhaustion of the list (with for) or when the condition becomes false (with while), but not when the loop is terminated by a break statement
 * The pass statement does nothing. It can be used when a statement is required syntactically but the program requires no action.
 
-* Regular Expressions:
+### Regular Expressions
+
 Specialize in string pattern matching from string. It is a language by itself.
 
 | Char | Note |
@@ -86,7 +86,7 @@ Specialize in string pattern matching from string. It is a language by itself.
 |  re.findall(‘[0-9]+’,s) | find all occurrence of number in string. [0-9] is one digit
 
 
-### Function
+### Functions
 
 Python supports OOD and functional programming like Scala. Function can be defined in a scope of a module file outside of a class, or as method of a class.
 
@@ -110,8 +110,10 @@ print(f(2))
 print(f(3))
 [1,2,3]
 ```
+
 * A function can be called with an arbitrary number of arguments. The syntax is
 `def (formalArg,formalArg2,*args,kwarg=value):`
+
 * lambda is a keyword to define an anonymous function
 
 ```
@@ -209,6 +211,8 @@ class DerivedClassName(Base1, Base2, Base3):
 
 There is no private instance variables inside an object. The naming convention using _ before the name should be treated as non-public part of the API.
 
+### Module 
+
 A **module** is a file containing python definitions and statements. The filename = module name. Definitions from a module can be imported into other modules or into the main module. Be sure to take the folder hierarchy as package hierarchy.
 A module can contain executable statements as well as function definitions. These statements are intended to initialize the module. They are executed only the first time the module name is encountered in an import statement.
 
@@ -259,7 +263,7 @@ print(d[' Toby'])
 Python doesn't flush the buffer—that is, write data to the file—until it's sure you're done writing. One way to do this is to close the file.
 File objects contain a special pair of built-in methods: `__enter__()` and `__exit__()`.
 
-# Unit testing
+## Unit testing
 
 `unittest` is based on Kent Beck's work on unit testing like the `junit` library.
 * define a module with a class which extends TestCase, use the setUp and tearDown methods to set context before each test method.
@@ -268,7 +272,7 @@ File objects contain a special pair of built-in methods: `__enter__()` and `__ex
 
 [pytest](https://docs.pytest.org/en/latest/) is another tool to do testing in python/ 
 
-# Reading command line arguments
+## Reading command line arguments
 
 ```python
 import sys
@@ -277,20 +281,23 @@ print("Number of arguments: ", len(sys.argv))
 print("The arguments are: " , str(sys.argv))
 ```
 
-# Doing HTTP request
+## Doing HTTP requests
 
 See code under [web_data](https://github.com/jbcodeforce/python-code/web_data)
 
 * [urllib](https://docs.python.org/3/library/urllib.html)
 * [The request library](http://docs.python-requests.org/en/master/user/quickstart/#response-content)
 
-# Python Flask WebApp
+## Python Flask WebApp
 
-The project [python-code](https://github.com/jbcodeforce/python-code) includes the `angular-flask` folder to present some simple examples of using Flask without angular.
+The project [python-code](https://github.com/jbcodeforce/python-code) includes the `angular-flask` folder to present some simple examples of how to use Flask with Angular. 
 
-# Data management
+See [this note for details.](../flask/readme.md)
 
- ## Pandas
+## Data management
+
+### Pandas
+
 Create a data frame with two columns
 ```
 data = DataFrame({'message': [], 'class': []})

@@ -1,17 +1,19 @@
 # Python Flask WebApp
-This is yet another sample to do flask app. This one with one angular page ready to grow and a user login with rest api ready.
+
+This is yet another sample to do [Flask](http://flask.pocoo.org/) app. This one with one angular page ready to grow and a user login with REST api.
 
 ## Code Structure
 
-### Simplest flask app
+### The simplest Flask app
 
-The simplest Flask app is presented [in the quickstart](http://flask.pocoo.org/docs/1.0/quickstart/) and the matching code is under `helloworld/firstApp.py`. To execute it:
+The simplest Flask app is presented [in the quickstart](http://flask.pocoo.org/docs/1.0/quickstart/) and the matching code is under [helloworld/firstApp.py](https://github.com/jbcodeforce/python-code/blob/master/angular-flask/helloworld/firstApp.py). To execute it in your python environment:
 
 ```
+cd angular-flask/helloworld
 export FLASK_APP=firstApp.py
-flask run
+flask run --host=0.0.0.0
  * Serving Flask app "firstApp"
- * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+ * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
 127.0.0.1 - - [17/Dec/2018 20:49:42] "GET / HTTP/1.1" 200 -
 ```
 The FLASK_APP environment variable is the name of the module to import at flask run.
@@ -22,7 +24,7 @@ If we want to run it in debug mode then any change to the code reload itself. To
 
 ```
 export FLASK_ENV=development
-flask run
+flask run --host=0.0.0.0
 ```
 
 If we want to run it with docker: The current dockerfile use python3.7 image:
@@ -35,16 +37,26 @@ docker run --name firstApp --rm -p 5000:5000 jbcodeforce/firstApp
 ```
 
 
-### Serving static page
+### Serving static pages
 
-Add a folder named static at the same level as app to start. The statucApp.py demonstrate the routing specified and the api to send the file.
+Add a folder named static at the same level as app to start. The [staticApp.py](https://github.com/jbcodeforce/python-code/blob/master/angular-flask/helloworld/staticApp.py) demonstrates the routing specified and the api to send the file.
 
 ```
+from flask import Flask
+app = Flask(__name__)
+
+
 @app.route('/')
 def root():
     return app.send_static_file('404.html')
+
+
+if __name__ == "__main__":
+    app.run(debug=True,host='0.0.0.0')
 ```
+
 and the execution:
+
 ```
 export FLASK_APP=staticApp.py
 flask run
@@ -66,7 +78,7 @@ Accessing the HTTP headers is done using the request.headers dictionary ("dictio
 
 [Flask REST API article](https://blog.luisrei.com/articles/flaskrest.html)
 
-### A angular app:
+### An Angular app:
 
 The folder `angularApp` includes a python flask and an angular SPA. The angular SPA was created using `ng new angularApp`. The package.json was modified to specify the output directory when compiling typescript to js should be the static folder:
 

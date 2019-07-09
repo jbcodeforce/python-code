@@ -1,12 +1,13 @@
 site_name: Python code studies
 repo_url: https://github.com/jbcodeforce/python-code
 nav:
-  - Introduction: readme.md
+  - Introduction: index.md
   - Development environment: dev-env.md
   - Python:
     - Summary: python/python-summary.md
     - FAQ: python/faq.md
     - Compendium: python/compendium.md
+  - Web App with Flask: flask/readme.md
   - Repositories:
     - Python studies: https://github.com/jbcodeforce/python-code
     - Python and data sciences: https://github.com/jbcodeforce/ml-basics

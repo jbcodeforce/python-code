@@ -1,10 +1,11 @@
 # Python Studies
 
-Read in [book format](http://jbcodeforce.gihub.io/python-code)
+Read in [book format](http://jbcodeforce.github.io/python-code)
 
 ## Code in the order of knowledge acquisition
 
 ### Basics
+
 * [firstinput.py](python-bible/firstinput.py) for reading user input
 * [Variable scope](python-bible/scope.py)
 * [travis.py](python-bible/travis.py) to play with lists, for in range and conditions
@@ -49,12 +50,3 @@ A scope is a textual region of a Python program, where a namespace is directly a
 * The enclosing scope, that is, the scope of any enclosing function. It contains non-local names and also non-global names.
 * The global scope contains the global names.
 * The built-in scope contains the built-in names.
-
-
-
-## References
-
-* http://docs.python.org/3/tutorial/index.html
-* http://anh.cs.luc.edu/python/hands-on/3.1/handsonHtml/
-* http://www.secnetix.de/olli/Python/
-* http://www.brunningonline.net/simon/python/quick-ref2_0.html#LexEnt

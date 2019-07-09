@@ -38,7 +38,12 @@ Python 3.7.4 (default, Jul  9 2019, 00:06:43)
 >>> 
 ```
 
+Use `exit()` to get out of the python interpreter, and Ctrl D for getting out of the Docker container.
+
 ## Virtual env
+
+!!! note
+        You do not need to use Virtual Env if using docker.
 
 **virtualenv** is a tool for isolating your application in what is called a virtual environment. A virtual environment is a directory that contains the software on which your application depends. It changes your environment variables to keep your development environment contained. Instead of downloading packages, like Flask, to your system-wide — or user-wide — package directories, we can download them to an isolated directory used only for our current application.
 

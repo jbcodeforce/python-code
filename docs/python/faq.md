@@ -24,11 +24,13 @@
 ```
 
 ### How to get program dependencies generated?
+
 ```
 pip freeze > requirements.txt
 ```
 
 ###  How to sort unit tests?
+
 Use TestSuite and TestRunner. See TestPerceptron.py for usage.
 ```python
 class TestPerceptron(unittest.TestCase):
@@ -61,12 +63,14 @@ move=random.choice(possibleMoves)
 ```
 
 ### Read json file
+
 ```python
 g = open('critics.json','r')
 d = json.load(g)
 ```
 
 ### Read csv file
+
 ```python
 f = open('fn.csv','r')
 for line in f:
@@ -77,6 +81,7 @@ for line in f:
 ```
 
 ### What is zip?
+
 Returns an iterator of tuples, where the i-th tuple contains the i-th element from each of the argument sequences or iterable:
 ```python
 dataset
@@ -86,3 +91,16 @@ for a in zip(*dataset): print(a)
 (20, 21, 22)
 (0, 1, 0)
 ```
+
+### What is a package?
+
+A package is nothing more than a folder, which must contain a special file, __init__.py. (not needed anymore with python3.3+)
+
+### What are namespace and scope?
+
+A namespace is a mapping from names to objects. They are the built-in names, the global names in a module, and the local names in a function.
+A scope is a textual region of a Python program, where a namespace is directly accessible. There are four different scopes that Python makes accessible:
+* The local scope, which is the innermost one and contains the local names.
+* The enclosing scope, that is, the scope of any enclosing function. It contains non-local names and also non-global names.
+* The global scope contains the global names.
+* The built-in scope contains the built-in names.
