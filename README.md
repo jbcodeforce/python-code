@@ -2,46 +2,6 @@
 
 Read in [book format](http://jbcodeforce.gihub.io/python-code)
 
-## Development environment with docker
-
-While developing on Mac which uses python for its own OS, it is important to isolate the development from the operation of the OS and avoiding compromising the integrity of the whole system. So virtualenv can be used, but docker presents a lot of advantages too:
-* avoid installing software not used often on the native OS
-* describe the dependencies on library so programs developed 5 years ago will still run
-* easy to switch laptop
-* quicker provisioning than a VM running with Vagrant, still offering mounting host folder, running under localhost
-* use docker compose for each project to manage component dependencies
-* still use virtual environment to isolate per project
-
-## Execution
-
-There are two ways to do isolation: docker or virtual env, and in fact it is recommended to combine both:
-
-### Use docker image
-
-The Dockerfile in the current project define an image for running python 3.7 with Flask, and virtual environment.
-
-` docker run -e DISPLAY=192.168.1.89:0 --name jbcodeforcepython -v $(pwd):/home/jbcodeforce/work -it --rm -p 5000:5000 jbcodeforce/python3.7 /bin/bash `
-
-### Virtual env
-
-**virtualenv** is a tool for isolating your application in what is called a virtual environment. A virtual environment is a directory that contains the software on which your application depends. A virtual environment also changes your environment variables to keep your development environment contained. Instead of downloading packages, like Flask, to your system-wide — or user-wide — package directories, we can download them to an isolated directory used only for our current application.
-
-You could install virtualenv with `pip install virtualenv`virtualenv -p /Library/Frameworks/Python.framework/Versions/3.4/bin/python3.4 .venv
-
-Create virtual environment under your project folder with the command:
-`virtualenv -p /Library/Frameworks/Python.framework/Versions/3.4/bin/python3.4 .venv`
-
-### Activate the virtual environment
-
-The angular-flask project includes a start.sh script to prepare the virtual env.
-```
-source .venv/bin/activate
-
-python3 programname.py
-
-deactivate
-```
-
 ## Code in the order of knowledge acquisition
 
 ### Basics
@@ -90,20 +50,6 @@ A scope is a textual region of a Python program, where a namespace is directly a
 * The global scope contains the global names.
 * The built-in scope contains the built-in names.
 
-### Tuples
-
-```
-tup1 = ('physics', 'chemistry', 1997, 2000);
-print ("tup1[0]: ", tup1[0]);
-# iteration
-for a in tup1:
-  print(a)
-```
-They are immutable. Need to create new tuples from existing one. Removing individual tuple elements is not possible.
-
-### To share code with people
-
-You can use gist.github.com
 
 
 ## References

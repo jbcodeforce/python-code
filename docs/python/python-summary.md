@@ -25,7 +25,6 @@ Use blank to indent code block. The coding style is known as PEP8.
 ### Datatypes
 
 * concat lists: a = [1,2,3,4]    then a = a + [5,6]  or a + list("789") -> [1,2,3,4,5,6,'7','8','9']. Lists are mutable.
-* tuples: a = (1,2,3,4,5). Are iterables. Tuple does not support item assignment: t[3] = 5 --> error.
 * dictionary is like json object, with key-value list. The main operations on a dictionary are storing a value with some key and extracting the value given the key. It is also possible to delete a key:value pair with del. If you store using a key that is already in use, the old value associated with that key is forgotten.
 * A list comprehension consists of brackets containing an expression followed by a for clause, then zero or more for or if clauses. The result will be a new list resulting from evaluating the expression in the context of the for and if clauses which follow it. `squares = [x**2 for x in range(10)]`
 * Queues: do not use list for queue but collections.deque
@@ -39,6 +38,20 @@ print(queue)
 >>deque([23, 56, 78, 44, 55])
 twentythree=queue.popleft()
  ```
+
+#### Tuples
+
+tuples: a = (1,2,3,4,5). Are iterables. Tuple does not support item assignment: t[3] = 5 --> error.
+
+```
+tup1 = ('physics', 'chemistry', 1997, 2000);
+print ("tup1[0]: ", tup1[0]);
+# iteration
+for a in tup1:
+  print(a)
+```
+They are immutable. Need to create new tuples from existing one. Removing individual tuple elements is not possible.
+
 
 ### Control flow
 
