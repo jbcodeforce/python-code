@@ -1,0 +1,25 @@
+site_name: Python code studies
+repo_url: https://github.com/jbcodeforce/python-code
+nav:
+  - Introduction: readme.md
+  - Development environment: dev-env.md
+  - Python:
+    - Summary: python/python-summary.md
+    - FAQ: python/faq.md
+    - Compendium: python/compendium.md
+  - Repositories:
+    - Python studies: https://github.com/jbcodeforce/python-code
+    - Python and data sciences: https://github.com/jbcodeforce/ml-basics
+    - Flask webapp template with docker: https://github.com/jbcodeforce/python-code/angular-flask
+    - Kafka consumer and producer: https://github.com/ibm-cloud-architecture/refarch-kc/tree/master/itg-tests
+
+
+theme: 
+  name: material
+extra_css: ["extra.css"]
+markdown_extensions:
+  - admonition
+  - codehilite
+  - footnotes
+  - pymdownx.smartsymbols
+  - pymdownx.superfences

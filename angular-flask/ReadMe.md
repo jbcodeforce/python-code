@@ -4,6 +4,7 @@ This is yet another sample to do flask app. This one with one angular page ready
 ## Code Structure
 
 ### Simplest flask app
+
 The simplest Flask app is presented [in the quickstart](http://flask.pocoo.org/docs/1.0/quickstart/) and the matching code is under `helloworld/firstApp.py`. To execute it:
 
 ```
@@ -53,6 +54,7 @@ flask run
 ```
 
 ### A REST api
+
 The route decorator is used to bind function to a URL. You can add variables and converter. The `firstRESTApp.py` illustrates the different patterns. The important modules to import are:
 
 ```
@@ -63,6 +65,7 @@ from flask import Flask, url_for, request, json
 Accessing the HTTP headers is done using the request.headers dictionary ("dictionary-like object") and the request data using the request.data string.
 
 [Flask REST API article](https://blog.luisrei.com/articles/flaskrest.html)
+
 ### A angular app:
 
 The folder `angularApp` includes a python flask and an angular SPA. The angular SPA was created using `ng new angularApp`. The package.json was modified to specify the output directory when compiling typescript to js should be the static folder:
