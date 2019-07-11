@@ -9,6 +9,13 @@ Apple Mac OS uses python for its own operations, so it is very important to isol
 * use docker compose for each project to manage component dependencies
 * still use virtual environment to isolate per project if needed
 
+## Clone this project
+
+```
+git clone https://github.com/jbcodeforce/python-code
+cd python-code
+```
+
 There are two ways to do environment isolation: docker or virtual env, and in fact it is recommended to combine both.
 
 ## Use docker image
@@ -26,6 +33,9 @@ Then start the image as container with the command below, which also mount your 
 ``` 
 docker run -e DISPLAY=192.168.1.89:0 --name pythonenv -v $(pwd):/home/ -it --rm -p 5000:5000 jbcodeforce/python37 bash
 ```
+
+!!! note
+        The script named `startPythonDocker.sh` performs the command above.
 
 ### Run the python interpreter
 
