@@ -50,6 +50,35 @@ Python 3.7.4 (default, Jul  9 2019, 00:06:43)
 
 Use `exit()` to get out of the python interpreter, and Ctrl D for getting out of the Docker container.
 
+### Using graphics inside the python container 
+
+The approach is to run graphics program inside python interpreter, but the windows will appear on the host machine (the mac). To do so we need a bidirectional communication between the docker container and the mac. This is supported by the `socat` tool. To install it the first time do the following:
+
+```
+brew install socat
+```
+
+When installed, open a new terminal and start socat with the command:
+
+```
+socat TCP-LISTEN:6000,reuseaddr,fork UNIX-CLIENT:\"$DISPLAY\
+```
+
+As the container is running X window system, we need to also install a X system on Mac. This is done via the `Xquartz` program:
+
+```
+brew install xquartz
+```
+
+Then start Xquartz from the application or using
+
+```
+open -a Xquartz
+```
+A white terminal window will pop up. The first time Xquartz is started,  open up the `preferences` menu and go to the `security` tab. Then select “allow connections from network clients” to check it `on`.
+
+See [this note from Nils De Moor](https://cntnr.io/running-guis-with-docker-on-mac-os-x-a14df6a76efc) for more information.
+
 ## Virtual env
 
 !!! note
