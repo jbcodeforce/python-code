@@ -16,6 +16,7 @@ Read in [book format](http://jbcodeforce.github.io/python-code)
 * [modules, import, and packages](python-bible)
 * [Flask web app](angular-flask/helloworld/firstApp.py) then firstRESTApp.py and staticApp.py
 * [Flask serving a simple angular App](angular-flask/angularApp)
+* [Plotting normal curve with matplotlib](mapplotlib/PlotGaussian.py)
 
 ### Algorithms
 
