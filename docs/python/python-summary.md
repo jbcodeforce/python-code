@@ -26,6 +26,12 @@ Use blank to indent code block. The coding style is known as PEP8.
 
 * concat lists: a = [1,2,3,4]    then a = a + [5,6]  or a + list("789") -> [1,2,3,4,5,6,'7','8','9']. Lists are mutable.
 * dictionary is like json object, with key-value list. The main operations on a dictionary are storing a value with some key and extracting the value given the key. It is also possible to delete a key:value pair with del. If you store using a key that is already in use, the old value associated with that key is forgotten.
+
+```python
+cols={}
+cols("column_name_1") = np.random.normal(2,1,10)
+```
+
 * A list comprehension consists of brackets containing an expression followed by a for clause, then zero or more for or if clauses. The result will be a new list resulting from evaluating the expression in the context of the for and if clauses which follow it. `squares = [x**2 for x in range(10)]`
 * Queues: do not use list for queue but collections.deque
 
@@ -176,13 +182,14 @@ x.i
 ```
 
 The only operations understood by instance objects are attribute references. There are two kinds of valid attribute names, data attributes and methods.
+
 ```python
 class MyClass(object):
     '''
     classdocs
     '''
 
-    def __init__(self, p):
+    def __init__(self, p:str):
         '''
         Constructor
         '''
@@ -263,9 +270,22 @@ print(d[' Toby'])
 Python doesn't flush the buffer—that is, write data to the file—until it's sure you're done writing. One way to do this is to close the file.
 File objects contain a special pair of built-in methods: `__enter__()` and `__exit__()`.
 
+## Date
+
+See the [datetime module](https://docs.python.org/3/library/datetime.html)
+
+```
+ d= datetime.date(2018,9,23)
+ d= datetime.date.today()
+ datetime.datetime.today()
+>>> d
+datetime.datetime(2019, 9, 23, 18, 34, 26, 856722)
+```
+
 ## Unit testing
 
 `unittest` is based on Kent Beck's work on unit testing like the `junit` library.
+
 * define a module with a class which extends TestCase, use the setUp and tearDown methods to set context before each test method.
 
 * Add test method and use assert* to validate test results.
