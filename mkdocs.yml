@@ -8,7 +8,8 @@ nav:
     - FAQ: python/faq.md
     - Compendium: python/compendium.md
   - Web App with Flask: flask/readme.md
-  - Repositories:
+  - Web Data: webcrawling/readme.md
+  - Sub-projects:
     - Python studies: https://github.com/jbcodeforce/python-code
     - Python and data sciences: https://github.com/jbcodeforce/ml-basics
     - Flask webapp template with docker: https://github.com/jbcodeforce/python-code/angular-flask
