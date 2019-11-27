@@ -1,8 +1,8 @@
-# Python Flask WebApp
+# Python Flask Studies
 
-This is yet another sample to do [Flask](http://flask.pocoo.org/) app. This one with one angular page ready to grow and a user login with REST api.
+The major souce code is for a Flask app develop with a TDD approach and using docker. But as my learning progresses I have other basic code too.
 
-## Code Structure
+## Samples
 
 ### The simplest Flask app
 
@@ -96,3 +96,7 @@ So now any `ng build` compile the SPA for python Flask to serve. The flask app i
 def hello():
     return render_template('index.html')
 ```
+
+### Flask TDD Docker
+
+See [this note](./flask-tdd-docker.md)

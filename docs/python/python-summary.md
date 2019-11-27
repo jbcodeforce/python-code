@@ -274,13 +274,25 @@ File objects contain a special pair of built-in methods: `__enter__()` and `__ex
 
 See the [datetime module](https://docs.python.org/3/library/datetime.html)
 
-```
+```python
+import datetime
+
+print ('Current date/time: {}'.format(datetime.datetime.now()))
+
  d= datetime.date(2018,9,23)
  d= datetime.date.today()
  datetime.datetime.today()
->>> d
+
 datetime.datetime(2019, 9, 23, 18, 34, 26, 856722)
+
+
+date_time_str = 'Jun 28 2018  7:40AM'
+date_time_obj = datetime.datetime.strptime(date_time_str, '%b %d %Y %I:%M%p')
+
+# transform to a string
+d.strftime("%Y-%m-%d %H:%M:%S")
 ```
+
 
 ## Unit testing
 
@@ -319,8 +331,21 @@ See [this note for details.](../flask/readme.md)
 ### Pandas
 
 Create a data frame with two columns
+
 ```
 data = DataFrame({'message': [], 'class': []})
+```
+
+Create n records with timestamp from one start time:
+
+```
+start_time = datetime.datetime.today() 
+c=pd.date_range(start_time, periods=nb_records, freq=METRIC_FREQUENCY)
+```
+
+Transforming to string
+```
+c.strftime("%Y-%m-%d %H:%M:%S")
 ```
 
 ### Split data into training and test sets

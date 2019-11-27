@@ -6,3 +6,4 @@
 /angular-flask/bin/
 site/
 web_data/imgur/images/
+flask-tdd-docker/__pycache__

@@ -8,3 +8,5 @@
 * [10 Steps to Set Up Your Python Project for Success](https://towardsdatascience.com/10-steps-to-set-up-your-python-project-for-success-14ff88b5d13)
 * [Kafka Python](https://github.com/confluentinc/confluent-kafka-python)
 * [Python 2.0 Quick Reference](http://www.brunningonline.net/simon/python/quick-ref2_0.html): old web site
+* [Getting started with pymongo a mongodb driver](https://www.mongodb.com/blog/post/getting-started-with-python-and-mongodb)
+* [pymongo documentation](https://api.mongodb.com/python/current/api/pymongo/collection.html)

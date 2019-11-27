@@ -7,7 +7,9 @@ nav:
     - Summary: python/python-summary.md
     - FAQ: python/faq.md
     - Compendium: python/compendium.md
-  - Web App with Flask: flask/readme.md
+  - Web App with Flask: 
+    - Basic samples: flask/readme.md
+    - Flask Rest microservice with TDD and Docker: flask/flask-tdd-docker.md
   - Web Data: webcrawling/readme.md
   - Sub-projects:
     - Python studies: https://github.com/jbcodeforce/python-code
