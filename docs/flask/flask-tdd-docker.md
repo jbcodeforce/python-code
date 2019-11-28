@@ -41,6 +41,19 @@ pipenv lock -r > requirements.txt
 
 ## Define and run the flask app
 
+Define a manage.py to represent the app, and the Flask shell:
+```python
+from flask.cli import FlaskGroup
+from project import app
+
+
+cli = FlaskGroup(app)
+
+
+if __name__ == '__main__':
+    cli()
+```
+
 ```
 export FLASK_APP=project/__init__.py
 # use the Flask CLI
@@ -55,6 +68,12 @@ python manage.py run
 * Serving Flask app "project/__init__.py" (lazy loading)
 * Environment: development
 * Debug mode: on
+```
+
+With the Flask shell we can explore the data in the application:
+
+```
+flask shell
 ```
 
 ## Using docker and docker compose
@@ -173,6 +192,63 @@ docker-compose exec users pytest "project/tests"
 [Blueprints](https://flask.palletsprojects.com/en/1.1.x/blueprints/) are are self-contained components, used for encapsulating code, templates, and static files.
 For example REST resource can be defined in Blueprint.
 
+For example to add an api and a resource, define a new py file, and create a blueprint instance:
+
+```python
+users_blueprint = Blueprint('users', __name__)
+api = Api(users_blueprint)
+```
+
+Then define a class with functions to support the expected Resource, and add this class to a url to the api.
+
+```
+class UsersList(Resource):
+    def get(self):
+        ...
+    def post(self):
+        ...
+api.add_resource(UsersList, '/users')
+```
+
+Finally register the resouce to the flask application:
+
+```
+    from project.api.users import users_blueprint
+    app.register_blueprint(users_blueprint)
+```
+
+See the code in [users.py](https://github.com/jbcodeforce/python-code/blob/master/flask-tdd-docker/project/api/users.py) and [__init__.py](https://github.com/jbcodeforce/python-code/blob/master/flask-tdd-docker/project/__init__.py)
+
+Factory to create an app needs to be named `create_app`. 
 
 
+## Production deployment with gunicorn
 
+Create a specific Dockerfile.prod and set the environment variable to run Flask in production mode and use gunicorn as container. 
+
+### Heroku
+
+Using heroku CLI.
+
+```shell
+$ heroku login
+# create a app
+$ heroku create 
+Creating app... done, murmuring-shore-37331
+https://murmuring-shore-37331.herokuapp.com/ | https://git.heroku.com/murmuring-shore-37331.git
+
+# login to docker private registry
+$ heroku container:login
+
+# create a postgresql with the hobby-dev plan
+$ heroku addons:create heroku-postgresql:hobby-dev --app murmuring-shore-37331
+
+Creating heroku-postgresql:hobby-dev on murmuring-shore-37331... free
+Database has been created and is available
+ ! This database is empty. If upgrading, you can transfer
+ ! data from another database with pg:copy
+Created postgresql-horizontal-04149 as DATABASE_URL
+Use heroku addons:docs heroku-postgresql to view documentation
+```
+
+The containers used at Heroku are called “dynos.” [Dynos](https://www.heroku.com/dynos) are isolated, virtualized Linux containers that are designed to execute code based on a user-specified command.

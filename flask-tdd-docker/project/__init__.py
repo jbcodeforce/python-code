@@ -27,6 +27,9 @@ def create_app(script_info=None):
     from project.api.ping import ping_blueprint
     app.register_blueprint(ping_blueprint)
 
+    from project.api.users import users_blueprint
+    app.register_blueprint(users_blueprint)
+
     # shell context to register the app and the db to the flask shell
     @app.shell_context_processor
     def ctx():

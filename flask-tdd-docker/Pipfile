@@ -12,6 +12,7 @@ flask-restful = ">=0.3.7"
 Flask-SQLAlchemy = "==2.4.0"
 psycopg2-binary = "*"
 pytest = "==5.3.1"
+gunicorn = "==19.9.0"
 
 [requires]
 python_version = "3.7"
