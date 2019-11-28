@@ -8,6 +8,7 @@ def add_user(username, email):
     db.session.commit()
     return user
 
+
 def recreate_db():
     db.session.remove()
     db.drop_all()
