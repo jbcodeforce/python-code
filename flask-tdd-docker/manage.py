@@ -1,7 +1,7 @@
 from flask.cli import FlaskGroup
 import sys
 from project import create_app, db
-from project.api.models import User
+from project.api.users.models import User
 
 '''
 created a new FlaskGroup instance to extend the normal CLI with commands related to the Flask app

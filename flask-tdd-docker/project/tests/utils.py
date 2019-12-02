@@ -1,5 +1,5 @@
 from project import db
-from project.api.models import User
+from project.api.users.models import User
 
 
 def add_user(username, email):

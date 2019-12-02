@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "e78a27279f068c1e5c09f133b6b764cf652b699b9bcdce8e9009c00cca86a963"
+            "sha256": "4bf633da63ab3403a95218dbe2a1e3a85518473ababaae866c5cc6a06dace781"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -112,6 +112,13 @@
             "index": "pypi",
             "version": "==1.1.1"
         },
+        "flask-admin": {
+            "hashes": [
+                "sha256:ed7b256471dba0f3af74f1a315733c3b36244592f2002c3bbdc65fd7c2aa807a"
+            ],
+            "index": "pypi",
+            "version": "==1.5.4"
+        },
         "flask-restful": {
             "hashes": [
                 "sha256:ecd620c5cc29f663627f99e04f17d1f16d095c83dc1d618426e2ad68b03092f8",
@@ -138,11 +145,11 @@
         },
         "importlib-metadata": {
             "hashes": [
-                "sha256:aa18d7378b00b40847790e7c27e11673d7fed219354109d0e7b9e5b25dc3ad26",
-                "sha256:d5f18a79777f3aa179c145737780282e27b508fc8fd688cb17c7a813e8bd39af"
+                "sha256:b044f07694ef14a6683b097ba56bd081dbc7cdc7c7fe46011e499dfecc082f21",
+                "sha256:e6ac600a142cf2db707b1998382cc7fc3b02befb7273876e01b8ad10b9652742"
             ],
             "markers": "python_version < '3.8'",
-            "version": "==0.23"
+            "version": "==1.1.0"
         },
         "itsdangerous": {
             "hashes": [
@@ -200,10 +207,10 @@
         },
         "more-itertools": {
             "hashes": [
-                "sha256:409cd48d4db7052af495b09dec721011634af3753ae1ef92d2b32f73a745f832",
-                "sha256:92b8c4b06dac4f0611c0729b2f2ede52b2e1bac1ab48f089c7ddc12e26bb60c4"
+                "sha256:53ff73f186307d9c8ef17a9600309154a6ae27f25579e80af4db8f047ba14bc2",
+                "sha256:a0ea684c39bc4315ba7aae406596ef191fd84f873d2d2751f84d64e81a7a2d45"
             ],
-            "version": "==7.2.0"
+            "version": "==8.0.0"
         },
         "packaging": {
             "hashes": [
@@ -341,6 +348,13 @@
                 "sha256:e5f4a1f98b52b18a93da705a7458e55afb26f32bff83ff5d19189f92462d65c4"
             ],
             "version": "==0.16.0"
+        },
+        "wtforms": {
+            "hashes": [
+                "sha256:0cdbac3e7f6878086c334aa25dc5a33869a3954e9d1e015130d65a69309b3b61",
+                "sha256:e3ee092c827582c50877cdbd49e9ce6d2c5c1f6561f849b3b068c1b8029626f1"
+            ],
+            "version": "==2.2.1"
         },
         "zipp": {
             "hashes": [
