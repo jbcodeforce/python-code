@@ -225,7 +225,7 @@ docker-compose exec users black project
 
 ## Add Blueprints template
 
-[Blueprints](https://flask.palletsprojects.com/en/1.1.x/blueprints/) are are self-contained components, used for encapsulating code, templates, and static files.
+[Blueprints](https://flask.palletsprojects.com/en/1.1.x/blueprints/) are are self-contained components, used for encapsulating code, templates, and static files. They are apps within the app.
 For example REST resource can be defined in Blueprint.
 
 For example to add an api and a resource, define a new py file, and create a blueprint instance:
@@ -256,6 +256,9 @@ Finally register the resouce to the flask application:
 See the code in [users.py](https://github.com/jbcodeforce/python-code/blob/master/flask-tdd-docker/project/api/users.py) and [__init__.py](https://github.com/jbcodeforce/python-code/blob/master/flask-tdd-docker/project/__init__.py)
 
 Factory to create an app needs to be named `create_app`. 
+
+
+## Adding admin and model view
 
 
 ## Production deployment with gunicorn
