@@ -1,6 +1,6 @@
 # Development environments
 
-Apple Mac OS uses python for its own operations, so it is very important to isolate the development environment from the operation of the OS to avoid compromising the integrity of the whole system. So virtualenv can be used, but in today world, docker presents a lot of advantages:
+Apple Mac OS uses python for its own operations, so it is very important to isolate the development environment from the operation of the OS to avoid compromising the integrity of the whole system. So virtualenv can be used, but in today world, docker and pipenv are the way to go as they:
 
 * avoid installing softwares and libraries not often used on the native OS
 * describe the dependencies on library so programs developed 5 years ago should still run
@@ -20,7 +20,7 @@ There are two ways to do environment isolation: docker or virtual env, and in fa
 
 ## Use docker image
 
-The Dockerfile in the current project define an image for running python 3.7 with Flask, pytest, panda and other libraries.
+The Dockerfile in the current project define an image for running python 3.7 with pipenv, Flask, pytest, panda and other libraries.
 
 To build the image you need docker engine and do the following
 
@@ -35,13 +35,13 @@ docker run -e DISPLAY=192.168.1.89:0 --name pythonenv -v $(pwd):/home/ -it --rm 
 ```
 
 !!! note
-        The script named `startPythonDocker.sh` performs the command above.
+        The script named `startPythonDocker.sh` performs this command above.
 
 ### Run the python interpreter
 
 Start `python` in the container shell:
 
-```
+```shell
 root@485cff8245df:/home#  python
 Python 3.7.4 (default, Jul  9 2019, 00:06:43) 
 [GCC 6.3.0 20170516] on linux
@@ -52,52 +52,61 @@ Use `exit()` to get out of the python interpreter, and Ctrl D for getting out of
 
 ### Using graphics inside the python container 
 
-The approach is to run graphics program inside python interpreter, but the windows will appear on the host machine (the mac). To do so we need a bidirectional communication between the docker container and the mac. This is supported by the `socat` tool. To install it the first time do the following:
+The approach is to run graphics program inside python interpreter, but the windows will appear on the host machine (the Mac). To do so we need a bidirectional communication between the docker container and the Mac. This is supported by the `socat` tool. To install it the first time do the following:
 
-```
+```shell
 brew install socat
 ```
 
 When installed, open a new terminal and start socat with the command:
 
-```
+```shell
 socat TCP-LISTEN:6000,reuseaddr,fork UNIX-CLIENT:\"$DISPLAY\
 ```
 
 As the container is running X window system, we need to also install a X system on Mac. This is done via the `Xquartz` program:
 
-```
+```shell
 brew install xquartz
 ```
 
 Then start Xquartz from the application or using
 
-```
+```shell
 open -a Xquartz
 ```
+
 A white terminal window will pop up. The first time Xquartz is started,  open up the `preferences` menu and go to the `security` tab. Then select “allow connections from network clients” to check it `on`.
 
 See [this note from Nils De Moor](https://cntnr.io/running-guis-with-docker-on-mac-os-x-a14df6a76efc) for more information.
 
-## Virtual env
+### Use pipenv
 
-!!! note
-        You do not need to use Virtual Env if using docker.
+[Pipenv](https://github.com/pypa/pipenv) offers the last best practices from other language to manage virtual environment and dependencies for Python. Adding and removing packages is also updating the dependencies descriptor file: Pipfile. 
+It basically combine pip and virtualenv.
 
-**virtualenv** is a tool for isolating your application in what is called a virtual environment. A virtual environment is a directory that contains the software on which your application depends. It changes your environment variables to keep your development environment contained. Instead of downloading packages, like Flask, to your system-wide — or user-wide — package directories, we can download them to an isolated directory used only for our current application.
+To install it on the mac:
 
-You could install virtualenv with `pip install virtualenv` 
-
-Create virtual environment under your project folder with the command:
-`virtualenv -p /Library/Frameworks/Python.framework/Versions/3.4/bin/python3.4 .venv`
-
-### Activate the virtual environment
-
-The angular-flask project includes a start.sh script to prepare the virtual env.
+```shell
+brew install pipenv
 ```
-source .venv/bin/activate
 
-python3 programname.py
+It is also available in the docker image so the following commands should work from the bash inside the docker container.
 
-deactivate
+```shell
+# Create a new project using Python 3.7
+pipenv --python 3.7
+# start the virtual env shell
+pipenv shell
+# or start a python interpreter
+pipenv run python
+# install dependencies including dev
+pipenv install --dev
+#Check your installed dependencies for security vulnerabilities:
+pipenv check
+# print a pretty graph of all your installed dependencies.
+pipenv graph 
+# Uninstalls all packages not specified in Pipfile.lock.
+pipenv clean
 ```
+

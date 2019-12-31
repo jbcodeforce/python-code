@@ -19,29 +19,33 @@ The folder flask-tdd-docker includes the training code.
 
 ## Set virtual env
 
-```
+The old way to define virtual environment was to use the following aproach:
+
+```shell
 python3.7 -m venv env
 source env/bin/activate
 deactivate
 ```
 
-Or better using `pipenv`, where you update the project and development dependencies in a `Pipfile`. 
+As of today, the approach is to use `pipenv`, where you update the project and development dependencies in a `Pipfile`. 
 
-```
+```shell
 pipenv --python 3.7
 # start the virtual env
 pipenv shell
 pipenv install --dev
 ```
 
-Freeze the dependencies
-```
+Freeze the dependencies:
+
+```shell
 pipenv lock -r > requirements.txt
 ```
 
 ## Define and run the flask app
 
-Define a manage.py to represent the app, and the Flask shell:
+Define a manage.py to represent the app, and use the [Flask CLI](https://flask.palletsprojects.com/en/1.1.x/cli/) shell to manage the app from command line:
+
 ```python
 from flask.cli import FlaskGroup
 from project import app
@@ -54,15 +58,15 @@ if __name__ == '__main__':
     cli()
 ```
 
-```
+```shell
 export FLASK_APP=project/__init__.py
-# use the Flask CLI
+# use the Flask CLI from inside the app itself
 python manage.py run
 ```
 
 Run in development mode for debugging.
 
-```
+```shell
 export FLASK_ENV=development
 python manage.py run
 * Serving Flask app "project/__init__.py" (lazy loading)
@@ -278,7 +282,7 @@ USER myuser
 CMD gunicorn --bind 0.0.0.0:$PORT manage:app
 ```
 
-### Heroku
+## Heroku
 
 Using heroku CLI.
 

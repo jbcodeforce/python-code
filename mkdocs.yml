@@ -13,6 +13,7 @@ nav:
   - Web Data: webcrawling/readme.md
   - Sub-projects:
     - Python studies: https://github.com/jbcodeforce/python-code
+    - Python and Spark: https://jbcodeforce.github.io/spark-studies
     - Python and data sciences: https://github.com/jbcodeforce/ml-basics
     - Flask webapp template with docker: https://github.com/jbcodeforce/python-code/angular-flask
     - Kafka consumer and producer: https://github.com/ibm-cloud-architecture/refarch-kc/tree/master/itg-tests

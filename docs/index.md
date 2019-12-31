@@ -1,6 +1,6 @@
 # Python Studies
 
-This repository regroups a bench of python codes from my own self-training and studies and [raspberry PI](https://www.raspberrypi.org/) work. 
+This repository regroups a bench of python codes from my own self-training and studies for web development, crawling, python best practice, and [raspberry PI](https://www.raspberrypi.org/) work. 
 
 ## Code in the order of knowledge acquisition
 
@@ -14,8 +14,9 @@ This repository regroups a bench of python codes from my own self-training and s
 * [Reverse a word and add aye](https://github.com/jbcodeforce/python-code/blob/master/python-bible/pig.py), use loops, break, in voyals...
 * [Object Oriented Python](https://github.com/jbcodeforce/python-code/blob/master/python-bible/coins.py): classes and inheritance
 * [Modules, import, and packages](https://github.com/jbcodeforce/python-code/blob/master/python-bible/TestFiboModule.py). Do not forget to set PYTHONPATH to the root folder to access any new modules
-* [Flask web app hello world](https://github.com/jbcodeforce/python-code/blob/master/angular-flask/helloworld/firstApp.py) then [REST API end point with Flask](https://github.com/jbcodeforce/python-code/blob/master/firstRESTApp.py) and staticApp.py
-* [Flask serving a simple angular App](https://github.com/jbcodeforce/python-code/blob/master/angular-flask/angularApp)
+* [Flask web app hello world](https://github.com/jbcodeforce/python-code/blob/master/Flask/helloworld/firstApp.py) then [REST API end point with Flask](https://github.com/jbcodeforce/python-code/blob/master/firstRESTApp.py) and staticApp.py
+* [Flask serving a simple angular App](https://jbcodeforce.github.io/angular-sandbox)
+* [TDD with Flask app and docker from testdriven.io course](https://github.com/jbcodeforce/python-code/tree/master/flask-tdd-docker)
 
 ### Algorithms
 
@@ -34,6 +35,7 @@ Use urllib and beautiful soup to remove html tags from a web page to get text to
 
 * [Use regular expression (re module)](https://github.com/jbcodeforce/python-code/blob/master/web_data/countNumbers.py) to extract number from a text read from a file.
 
-## Python shell tricks
+
+## Some tricks
 
 * placing cursor to previous line and enter will copy the line to a new line

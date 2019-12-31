@@ -7,3 +7,4 @@
 site/
 web_data/imgur/images/
 flask-tdd-docker/__pycache__
+flask-restplus/

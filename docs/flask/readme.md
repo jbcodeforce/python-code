@@ -8,7 +8,7 @@ The major souce code is for a Flask app develop with a TDD approach and using do
 
 The simplest Flask app is presented [in the quickstart](http://flask.pocoo.org/docs/1.0/quickstart/) and the matching code is under [helloworld/firstApp.py](https://github.com/jbcodeforce/python-code/blob/master/angular-flask/helloworld/firstApp.py). To execute it in your python environment:
 
-```
+```shell
 cd angular-flask/helloworld
 export FLASK_APP=firstApp.py
 flask run --host=0.0.0.0
@@ -78,24 +78,9 @@ Accessing the HTTP headers is done using the request.headers dictionary ("dictio
 
 [Flask REST API article](https://blog.luisrei.com/articles/flaskrest.html)
 
-### An Angular app:
+### An Angular app
 
-The folder `angularApp` includes a python flask and an angular SPA. The angular SPA was created using `ng new angularApp`. The package.json was modified to specify the output directory when compiling typescript to js should be the static folder:
-
-```
-"build": {
-    "builder": "@angular-devkit/build-angular:browser",
-    "options": {
-    "outputPath": "static",
-```
-
-So now any `ng build` compile the SPA for python Flask to serve. The flask app is angularApp.py and it render the index.html:
-
-```
-@app.route("/")
-def hello():
-    return render_template('index.html')
-```
+See [this repository](https://jbcodeforce.github.io/angular-sandbox) to a more complete example of angular development and Flask.
 
 ### Flask TDD Docker
 
