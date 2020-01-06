@@ -87,6 +87,12 @@ for line in f:
   changedLine=u''.join(line).encode('utf-8').strip()
 ```
 
+### Read file with specific encoding
+
+```
+ with open('../data/movielens/u.item',  encoding='ISO-8859-1') as f:
+```
+
 ### Skip the first row of a file
 
 ```
