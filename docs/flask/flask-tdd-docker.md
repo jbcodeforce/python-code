@@ -229,7 +229,7 @@ docker-compose exec users black project
 
 ## Add Blueprints template
 
-[Blueprints](https://flask.palletsprojects.com/en/1.1.x/blueprints/) are are self-contained components, used for encapsulating code, templates, and static files. They are apps within the app.
+[Blueprints](https://flask.palletsprojects.com/en/1.1.x/blueprints/) are self-contained components, used for encapsulating code, templates, and static files. They are apps within the app.
 For example REST resource can be defined in Blueprint.
 
 For example to add an api and a resource, define a new py file, and create a blueprint instance:
