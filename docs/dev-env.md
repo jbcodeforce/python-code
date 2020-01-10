@@ -37,6 +37,44 @@ docker run -e DISPLAY=192.168.1.89:0 --name pythonenv -v $(pwd):/home/ -it --rm 
 !!! note
         The script named `startPythonDocker.sh` performs this command above.
 
+The docker image includes pipenv for improving the management of the dependencies. 
+
+### Use pipenv
+
+[Pipenv](https://github.com/pypa/pipenv) offers the last best practices from other language to manage virtual environment and dependencies for Python. Adding and removing packages is also updating the dependencies descriptor file: Pipfile. 
+It basically combine pip and virtualenv.
+
+To install it on the mac:
+
+```shell
+brew install pipenv
+```
+
+*When using the docker image you do not need to install pipenv on the host*.
+
+It is also available in the docker image so the following commands should work from the bash inside the docker container.
+
+```shell
+# Create a new project using Python 3.7
+pipenv --python 3.7
+# start the virtual env shell
+pipenv shell
+# or start a python interpreter
+pipenv run python
+# or run a program with python interpreter
+pipenv run python FaustEasiestApp.py
+# install dependencies including dev
+pipenv install --dev
+#Check your installed dependencies for security vulnerabilities:
+pipenv check
+# print a pretty graph of all your installed dependencies.
+pipenv graph 
+# Uninstalls all packages not specified in Pipfile.lock.
+pipenv clean
+# lock dependencies
+pipenv lock
+```
+
 ### Run the python interpreter
 
 Start `python` in the container shell:
@@ -80,33 +118,5 @@ A white terminal window will pop up. The first time Xquartz is started,  open up
 
 See [this note from Nils De Moor](https://cntnr.io/running-guis-with-docker-on-mac-os-x-a14df6a76efc) for more information.
 
-### Use pipenv
 
-[Pipenv](https://github.com/pypa/pipenv) offers the last best practices from other language to manage virtual environment and dependencies for Python. Adding and removing packages is also updating the dependencies descriptor file: Pipfile. 
-It basically combine pip and virtualenv.
-
-To install it on the mac:
-
-```shell
-brew install pipenv
-```
-
-It is also available in the docker image so the following commands should work from the bash inside the docker container.
-
-```shell
-# Create a new project using Python 3.7
-pipenv --python 3.7
-# start the virtual env shell
-pipenv shell
-# or start a python interpreter
-pipenv run python
-# install dependencies including dev
-pipenv install --dev
-#Check your installed dependencies for security vulnerabilities:
-pipenv check
-# print a pretty graph of all your installed dependencies.
-pipenv graph 
-# Uninstalls all packages not specified in Pipfile.lock.
-pipenv clean
-```
 

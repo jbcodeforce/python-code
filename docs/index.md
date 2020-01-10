@@ -2,6 +2,10 @@
 
 This repository regroups a bench of python codes from my own self-training and studies for web development, crawling, python best practice, and [raspberry PI](https://www.raspberrypi.org/) work. 
 
+## Environment setup for development
+
+See [separate note](dev-env.md)
+
 ## Code in the order of knowledge acquisition
 
 ### Basics
