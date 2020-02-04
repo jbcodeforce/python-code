@@ -11,3 +11,4 @@ flask-restplus/
 kafka/setenv.sh
 kafka/kafka1/
 kafka/zookeeper1/
+web_data/imgur/images/

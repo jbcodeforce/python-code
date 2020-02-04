@@ -1,5 +1,7 @@
 import faust
-
+'''
+Faust is a kafka streaming api
+'''
 import EventBackboneConfiguration as EventBackboneConfiguration
 
 class Greeting(faust.Record):
