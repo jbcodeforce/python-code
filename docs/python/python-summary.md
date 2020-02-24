@@ -141,6 +141,7 @@ variable scope in function: when there is a need to access variable defined at t
 
 A namespace is a mapping from names to objects.
 Examples of namespaces are:
+
 * the set of built-in names (containing functions such as abs(), and built-in exception names), loaded when interpreter starts
 * the global names in a module, created when module is loaded, and kept until interpreter quits
 * the local names in a function invocation, created when the functions is called, deleted when function returns or raises an exception.
@@ -148,7 +149,8 @@ When searching of reference the interpreter starts by the innermost scope (curre
 It is important to realize that scopes are determined textually: the global scope of a function defined in a module is that module’s namespace, no matter from where or by what alias the function is called.
 If no global statement is in effect – assignments to names always go into the innermost scope.
 Assignments do not copy data — they just bind names to objects.
-```
+
+```python
 # reference a non local variable in a function
      nonlocal spam
 # or a global
@@ -302,7 +304,7 @@ d.strftime("%Y-%m-%d %H:%M:%S")
 
 * Add test method and use assert* to validate test results.
 
-[pytest](https://docs.pytest.org/en/latest/) is another tool to do testing in python/ 
+Consider [pytest](https://docs.pytest.org/en/latest/) as another modern tool to do testing in python. 
 
 ## Reading command line arguments
 
@@ -315,7 +317,7 @@ print("The arguments are: " , str(sys.argv))
 
 ## Doing HTTP requests
 
-See code under [web_data](https://github.com/jbcodeforce/python-code/web_data)
+See code under [web_data](https://github.com/jbcodeforce/python-code/web_data), but with python 3 the approach is to use [request](https://requests.readthedocs.io/en/master/).
 
 * [urllib](https://docs.python.org/3/library/urllib.html)
 * [The request library](http://docs.python-requests.org/en/master/user/quickstart/#response-content)

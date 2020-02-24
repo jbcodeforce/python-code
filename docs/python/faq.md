@@ -122,6 +122,7 @@ A package is nothing more than a folder, which must contain a special file, __in
 
 A namespace is a mapping from names to objects. They are the built-in names, the global names in a module, and the local names in a function.
 A scope is a textual region of a Python program, where a namespace is directly accessible. There are four different scopes that Python makes accessible:
+
 * The local scope, which is the innermost one and contains the local names.
 * The enclosing scope, that is, the scope of any enclosing function. It contains non-local names and also non-global names.
 * The global scope contains the global names.

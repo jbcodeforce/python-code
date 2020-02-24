@@ -10,7 +10,7 @@ def fileToStr(fileName): # NEW
 
 def main():
     person = input('Enter a name: ')  
-    contents = fileToStr('helloTemplate.html').format(**locals())   # NEW
+    contents = fileToStr('helloTemplate.html').format(**locals())
     browseLocal(contents) 
 
 def strToFile(text, filename):  
