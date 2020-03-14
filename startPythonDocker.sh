@@ -14,4 +14,4 @@ then
     export IPADDR=$(ifconfig en0 |grep "inet " | awk '{ print $2}')
 fi
 
-docker run --network="kafka_default" -e DISPLAY=$IPADDR:0 -v /tmp/.X11-unix:/tmp/.X11-unix --name $name -v $(pwd):/home -it  -p $port:$port jbcodeforce/python37 bash 
+docker run --network="kafkanet" -e DISPLAY=$IPADDR:0 -v /tmp/.X11-unix:/tmp/.X11-unix --name $name -v $(pwd):/home -it  -p $port:$port jbcodeforce/python37 bash 
