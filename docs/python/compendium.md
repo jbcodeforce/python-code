@@ -1,5 +1,6 @@
 # Python readings
 
+* [3.8 release Product documentation](https://docs.python.org/3.8/library/index.html)
 * [Python software foundation tutorial](http://docs.python.org/3/tutorial/index.html)
 * [Tutorial from Programiz](https://www.programiz.com/python-programming#tutorial)
 * [Using Docker For Python Web Development](https://vsupalov.com/docker-python-development/)

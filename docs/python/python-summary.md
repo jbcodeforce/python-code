@@ -5,6 +5,8 @@ See this good [Tutorial from Programiz](https://www.programiz.com/python-program
 Python is an interpreted Object Orientedd & functional language. It organizes the code in modules.
 Use blank to indent code block. The coding style is known as PEP8. 
 
+[3.8 release Product documentation](https://docs.python.org/3.8/library/index.html)
+
 ## Language Advantages / disadvantages
 
 **Advantages:**
@@ -47,7 +49,7 @@ twentythree=queue.popleft()
 
 #### Tuples
 
-tuples: a = (1,2,3,4,5). Are iterables. Tuple does not support item assignment: t[3] = 5 --> error.
+tuples: a = (1,2,3,4,5) are iterable. Tuple does not support item assignment: t[3] = 5 --> error.
 
 ```
 tup1 = ('physics', 'chemistry', 1997, 2000);
@@ -57,6 +59,18 @@ for a in tup1:
   print(a)
 ```
 They are immutable. Need to create new tuples from existing one. Removing individual tuple elements is not possible.
+
+### String
+
+```python
+# get the last four chars
+dirname[:len(dirname) - 4]
+# split string to get the last folder name of a path
+folders = path.split('/') 
+name= folders[len(folders)-1]
+```
+
+See [string tutorial](https://www.tutorialspoint.com/python/python_strings.htm)
 
 ### Control flow
 
@@ -70,7 +84,14 @@ They are immutable. Need to create new tuples from existing one. Removing indivi
 
 ### Regular Expressions
 
+[How to regex](https://docs.python.org/3.8/howto/regex.html)
+
 Specialize in string pattern matching from string. It is a language by itself.
+
+```python
+import re
+p = re.compile('ab*')
+```
 
 | Char | Note |
 |:---:|:---|
@@ -271,6 +292,8 @@ print(d[' Toby'])
 
 Python doesn't flush the buffer—that is, write data to the file—until it's sure you're done writing. One way to do this is to close the file.
 File objects contain a special pair of built-in methods: `__enter__()` and `__exit__()`.
+
+See code `python-bible/readAssetFromFolder.py` which uses [Git client](https://gitpython.readthedocs.io/en/stable/tutorial.html#examining-references) to get origin URL.
 
 ## Date
 
