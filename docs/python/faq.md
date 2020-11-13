@@ -114,6 +114,14 @@ for a in zip(*dataset): print(a)
 (0, 1, 0)
 ```
 
+### How to use some math
+
+```python
+# modulo
+8 % 2
+0
+#
+```
 ### What is a package?
 
 A package is nothing more than a folder, which must contain a special file, __init__.py. (not needed anymore with python3.3+)
