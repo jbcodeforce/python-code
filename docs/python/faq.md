@@ -32,13 +32,14 @@ pipenv acts as pip + virtual environment. It uses Pipfile to replace requirement
 
 ### How to get program dependencies generated?
 
-```
+```shell
 pip freeze > requirements.txt
 ```
 
 ###  How to sort unit tests?
 
 Use TestSuite and TestRunner. See TestPerceptron.py for usage.
+
 ```python
 class TestPerceptron(unittest.TestCase):
   # ....
@@ -89,16 +90,38 @@ for line in f:
 
 ### Read file with specific encoding
 
-```
+```python
  with open('../data/movielens/u.item',  encoding='ISO-8859-1') as f:
 ```
 
 ### Skip the first row of a file
 
-```
+```python
 f = open('fn.csv','r')
 f.readline()
 for line in f:
+```
+
+### How to get execution time
+
+```python
+import time
+start = time.perf_counter()
+# potentially slow computation
+end = time.perf_counter() - start
+```
+
+### Example of memory consumption for object
+
+```python
+import sys
+
+a = 3
+b = 3.123
+c = [a, b]
+d = []
+for obj in [a, b, c, d]:
+  print(obj, sys.getsizeof(obj))
 ```
 
 ### What is zip?
@@ -135,5 +158,3 @@ A scope is a textual region of a Python program, where a namespace is directly a
 * The enclosing scope, that is, the scope of any enclosing function. It contains non-local names and also non-global names.
 * The global scope contains the global names.
 * The built-in scope contains the built-in names.
-
-

@@ -20,7 +20,7 @@ There are two ways to do environment isolation: docker or virtual env, and in fa
 
 ## Use docker image
 
-The Dockerfile in the current project define an image for running python 3.7 with pipenv, Flask, pytest, panda and other libraries.
+The Dockerfile in the current project define an image for running python 3.7 with Flask, pytest, panda and other libraries.
 
 To build the image you need docker engine and do the following
 
@@ -99,7 +99,7 @@ brew install socat
 When installed, open a new terminal and start socat with the command:
 
 ```shell
-socat TCP-LISTEN:6000,reuseaddr,fork UNIX-CLIENT:\"$DISPLAY\
+socat TCP-LISTEN:6000,reuseaddr,fork UNIX-CLIENT:\"$DISPLAY\"
 ```
 
 As the container is running X window system, we need to also install a X system on Mac. This is done via the `Xquartz` program:

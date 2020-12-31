@@ -11,3 +11,7 @@
 * [Python 2.0 Quick Reference](http://www.brunningonline.net/simon/python/quick-ref2_0.html): old web site
 * [Getting started with pymongo a mongodb driver](https://www.mongodb.com/blog/post/getting-started-with-python-and-mongodb)
 * [pymongo documentation](https://api.mongodb.com/python/current/api/pymongo/collection.html)
+
+Statistics
+
+* [The Statistics and Calculus with Python Workshop](https://learning.oreilly.com/library/view/the-statistics-and/9781800209763/)
