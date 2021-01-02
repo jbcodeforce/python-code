@@ -9,13 +9,13 @@ nav:
     - Compendium: python/compendium.md
   - Web App with Flask: 
     - Flask studies and basic samples: flask/readme.md
-    - Appsody python flask stack: flask/appsody.md
     - Flask Rest microservice with TDD and Docker: flask/flask-tdd-docker.md
   - Web Data: webcrawling/readme.md
   - Sub-projects:
     - Python studies: https://github.com/jbcodeforce/python-code
     - Python and Spark: https://jbcodeforce.github.io/spark-studies
     - Python and data sciences: https://github.com/jbcodeforce/ml-basics
+    - Astronomy statistics and image processing: astronomy/README.md
     - Flask webapp template with docker: https://github.com/jbcodeforce/python-code/angular-flask
     - Kafka consumer and producer: https://jbcodeforce.github.io/kafka-studies
 

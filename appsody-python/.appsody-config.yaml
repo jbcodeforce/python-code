@@ -1,2 +1,0 @@
-project-name: appsody-python
-stack: docker.io/appsody/python-flask:0.2

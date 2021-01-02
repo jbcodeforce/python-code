@@ -1,6 +1,6 @@
 # Python Flask Studies
 
-The major souce code is for a Flask app develop with a TDD approach and using docker. But as my learning progresses I have other basic code too.
+The most complete starter code is from the Flask TDD tutorial and using docker.  But here are simple path to develop an app from scratch.
 
 ## Samples
 

@@ -19,7 +19,7 @@ The folder flask-tdd-docker includes the training code.
 
 ## Set virtual env
 
-The old way to define virtual environment was to use the following aproach:
+The old way to define virtual environment was to use the following approach:
 
 ```shell
 python3.7 -m venv env
@@ -116,7 +116,7 @@ users-db:
 
 Once spun up, Postgres will be available on port 5432 for services running in other containers. Be sure to include dependencies in the app dockerfile
 
-```
+```shell
 # install dependencies
 RUN apk update && \
     apk add --virtual build-deps gcc python-dev musl-dev && \
@@ -130,7 +130,7 @@ Also to avoid having the application getting error because it could not contact 
 
 To access psql use the following docker compose command
 
-```
+```shell
 docker-compose exec users-db psql -U postgres
 
 psql (11.4)

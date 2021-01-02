@@ -7,7 +7,7 @@ Apple Mac OS uses python for its own operations, so it is very important to isol
 * easy to switch laptop
 * quicker provisioning than a VM running with Vagrant, still offering mounting host folder, running under localhost
 * use docker compose for each project to manage component dependencies
-* still use virtual environment to isolate per project if needed
+* if needed pipenv can be used to set up virtual environment to isolate dependencies
 
 ## Clone this project
 
@@ -16,11 +16,9 @@ git clone https://github.com/jbcodeforce/python-code
 cd python-code
 ```
 
-There are two ways to do environment isolation: docker or virtual env, and in fact it is recommended to combine both.
+## Use the different docker image
 
-## Use docker image
-
-The Dockerfile in the current project define an image for running python 3.7 with Flask, pytest, panda and other libraries.
+The [Dockerfile](https://github.com/jbcodeforce/python-code/blob/master/Dockerfile) in the current project define an image for running python 3.7 with Flask, pytest, panda and other libraries.
 
 To build the image you need docker engine and do the following
 
@@ -35,9 +33,11 @@ docker run -e DISPLAY=192.168.1.89:0 --name pythonenv -v $(pwd):/home/ -it --rm 
 ```
 
 !!! note
-        The script named `startPythonDocker.sh` performs this command above.
+        The script named `startPythonDocker.sh` performs this command.
 
 The docker image includes pipenv for improving the management of the dependencies. 
+
+The other Dockerfile for astrophysic is [Here](https://github.com/jbcodeforce/python-code/blob/master/astronomy/Dockerfile)
 
 ### Use pipenv
 
@@ -50,9 +50,7 @@ To install it on the mac:
 brew install pipenv
 ```
 
-*When using the docker image you do not need to install pipenv on the host*.
-
-It is also available in the docker image so the following commands should work from the bash inside the docker container.
+*When using the docker image you do not need to install pipenv on the host*. It is also available in the docker image so the following commands should work from the bash inside the docker container.
 
 ```shell
 # Create a new project using Python 3.7
@@ -118,5 +116,16 @@ A white terminal window will pop up. The first time Xquartz is started,  open up
 
 See [this note from Nils De Moor](https://cntnr.io/running-guis-with-docker-on-mac-os-x-a14df6a76efc) for more information.
 
+## Using ODO
 
+To create a Python Flask app the starter code is under [https://github.com/odo-devfiles/python-ex](https://github.com/odo-devfiles/python-ex)
 
+```shell
+mkdir project-name
+# create the devfile and download starter code
+odo create python --starter
+# Deploy to OCP
+odo push
+# Get route to the app
+odo app describe 
+```
