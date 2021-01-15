@@ -6,12 +6,15 @@ The most complete starter code is from the Flask TDD tutorial and using docker. 
 
 ### The simplest Flask app
 
-The simplest Flask app is presented [in the quickstart](http://flask.pocoo.org/docs/1.0/quickstart/) and the matching code is under [Flask/helloworld/firstApp.py](https://github.com/jbcodeforce/python-code/blob/master/Flask/helloworld/firstApp.py). To execute it in your python environment:
+The simplest Flask app is presented [in the quickstart](http://flask.pocoo.org/docs/1.0/quickstart/) and the matching code is under [Flask/firstApp/firstApp.py](https://github.com/jbcodeforce/python-code/blob/master/Flask/helloworld/firstApp.py). To execute it in your python environment:
 
 ```shell
-cd Flask/helloworld
+cd Flask/firstApp
 # start docker image for dev environment
-docker run -ti -v $(pwd):/home -p 5000:5000 ibmcase/kcontainer-python:itgtests bash
+docker run -ti -v $(pwd):/app -p 5000:5000 jbcodeforce/python37 bash
+# Can run it with python - it will start in debug mode
+python app.py
+# Or run it with flask CLI
 export FLASK_APP=firstApp.py
 flask run --host=0.0.0.0
  * Serving Flask app "firstApp"
@@ -29,7 +32,13 @@ export FLASK_ENV=development
 flask run --host=0.0.0.0
 ```
 
-If we want to run it with docker: The current dockerfile uses python3.7 image:
+Next, is to use gunicorn to run it on top of a wsgi server so in the docker container:
+
+```shell
+gunicorn -w 4 -b 0.0.0.0:5000 firstApp:app
+```
+
+Which is the command in the dockerfile under the firstApp folder:
 
 ```shell
  docker build -t jbcodeforce/firstApp .

@@ -11,4 +11,5 @@ Read in [book format](http://jbcodeforce.github.io/python-code)
 
 For better environment isolation we should use docker instead of virtual environment, it will be more portable and shareable. Different dockerfile for different needs.
 
+* DockerfileForEnv -> jbcodeforce/python37 with pandas, numpy, flask. Server as base image
 * Docker file for Flask app: [Flask/Dockerfile](https://github.com/jbcodeforce/python-code/blob/master/Flask/Dockerfile)

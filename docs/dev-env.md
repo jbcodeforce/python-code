@@ -18,7 +18,7 @@ cd python-code
 
 ## Use the different docker image
 
-The [Dockerfile](https://github.com/jbcodeforce/python-code/blob/master/Dockerfile) in the current project defines an image for running python 3.7 with Flask, pytest, panda and other libraries.
+The [DockerfileForEnv](https://github.com/jbcodeforce/python-code/blob/master/DockerfileForEnv) in the current project defines an image for running python 3.7 with Flask, pytest, panda and other basic libraries.
 
 To build the image you need docker engine and do the following
 
