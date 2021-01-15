@@ -1,0 +1,76 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: firstapp
+  namespace: jbsandbox
+  labels:
+    name: firstapp
+    app: firstapp
+spec:
+  ports:
+    - name: web
+      protocol: TCP
+      port: 5000
+      targetPort: 5000
+  selector:
+    app: firstapp
+  type: ClusterIP
+  sessionAffinity: None
+---
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: web-firstapp
+  namespace: jbsandbox
+  labels:
+    app: firstapp
+spec:
+  path: /
+  to:
+    kind: Service
+    name: firstapp
+    weight: 100
+  port:
+    targetPort: 5000
+  wildcardPolicy: None
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: firstapp-cm
+  namespace: jbsandbox
+data:
+  app-version: v0.0.2
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: firstapp
+  namespace: jbsandbox
+  labels:
+    app: firstapp
+spec:
+  selector:
+    matchLabels:
+      app: firstapp
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: firstapp
+    spec:
+      containers:
+      - name: firstapp
+        image: jbcodeforce/flask1
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5000
+          protocol: TCP
+        env:
+          - name: APP_VERSION
+            valueFrom:
+              configMapKeyRef:
+                key: app-version
+                name: firstapp-cm
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30

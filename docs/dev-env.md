@@ -9,16 +9,16 @@ Apple Mac OS uses python for its own operations, so it is very important to isol
 * use docker compose for each project to manage component dependencies
 * if needed pipenv can be used to set up virtual environment to isolate dependencies
 
-## Clone this project
+Clone this project 
 
-```
+```shell
 git clone https://github.com/jbcodeforce/python-code
 cd python-code
 ```
 
 ## Use the different docker image
 
-The [Dockerfile](https://github.com/jbcodeforce/python-code/blob/master/Dockerfile) in the current project define an image for running python 3.7 with Flask, pytest, panda and other libraries.
+The [Dockerfile](https://github.com/jbcodeforce/python-code/blob/master/Dockerfile) in the current project defines an image for running python 3.7 with Flask, pytest, panda and other libraries.
 
 To build the image you need docker engine and do the following
 
@@ -26,7 +26,7 @@ To build the image you need docker engine and do the following
 docker build -t jbcodeforce/python37 . 
 ```
 
-Then start the image as container with the command below, which also mount your local folder to the /home folder inside the docker container
+Then start the image as container with the command below, which also mount your local folder to the `/home` folder inside the docker container:
 
 ``` 
 docker run -e DISPLAY=192.168.1.89:0 --name pythonenv -v $(pwd):/home/ -it --rm -p 5000:5000 jbcodeforce/python37 bash
@@ -35,14 +35,13 @@ docker run -e DISPLAY=192.168.1.89:0 --name pythonenv -v $(pwd):/home/ -it --rm 
 !!! note
         The script named `startPythonDocker.sh` performs this command.
 
-The docker image includes pipenv for improving the management of the dependencies. 
+The docker image includes `pipenv` for improving the dependency management. 
 
 The other Dockerfile for astrophysic is [Here](https://github.com/jbcodeforce/python-code/blob/master/astronomy/Dockerfile)
 
 ### Use pipenv
 
-[Pipenv](https://github.com/pypa/pipenv) offers the last best practices from other language to manage virtual environment and dependencies for Python. Adding and removing packages is also updating the dependencies descriptor file: Pipfile. 
-It basically combine pip and virtualenv.
+[Pipenv](https://github.com/pypa/pipenv) offers the last best practices from other language to manage virtual environment and dependencies for Python. Adding and removing packages is also updating the dependencies descriptor file: Pipfile. It basically combine pip and virtualenv.
 
 To install it on the mac:
 
@@ -121,11 +120,28 @@ See [this note from Nils De Moor](https://cntnr.io/running-guis-with-docker-on-m
 To create a Python Flask app the starter code is under [https://github.com/odo-devfiles/python-ex](https://github.com/odo-devfiles/python-ex)
 
 ```shell
-mkdir project-name
-# create the devfile and download starter code
+mkdir odo-python
+# create the devfile and download starter code and a .odo/env/env.yaml
 odo create python --starter
 # Deploy to OCP
 odo push
 # Get route to the app
 odo app describe 
+
+# remove the app
+odo app delete
 ```
+
+The [devfile.yaml](https://redhat-developer.github.io/devfile/) has the definition of what to do on the app.
+
+`odo push` creates a k8s deployment, service and route definitions directly into OCP.
+
+To make the same things from a basic flask app like the one in Flask/helloworld/firstApp.py:
+
+* define the app
+* define a dockerfile 
+* build the image and push to registry
+* define appdeployment.yaml (see example in Flask/helloworld/k8s)[] with service and route
+* `oc apply -f k8s/appdeploy.yaml `
+* Access to the route URL
+* To keep the app updated, build, push the image and then delete running pod, as the imagePullPolicy was set to Always, the new image will be used.
