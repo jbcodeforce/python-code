@@ -1,10 +1,9 @@
 from flask import Blueprint,jsonify
-from flasgger import Swagger
 
 health_bp = Blueprint("health", __name__)
 
 @health_bp.route("/health")
-def Health():
+def health():
     """Health of the service
     Return the status of the service.
     ---

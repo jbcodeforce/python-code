@@ -1,6 +1,10 @@
 # Python Flask Studies
 
-The most complete starter code is from the Flask TDD tutorial and using docker.  But here are simple path to develop an app from scratch.
+The most complete starter code is from the Flask TDD tutorial and using docker.  But I have incremental apps, to make it simpler to develop an app from scratch.
+
+## Some concepts
+
+Flask app takes care of dispatching requests to view and routes.
 
 ## Samples
 
@@ -53,7 +57,7 @@ docker run --name firstApp --rm -p 5000:5000 jbcodeforce/firstApp
 
 ### Serving static pages
 
-Add a folder named static at the same level as app to start. The [staticApp.py](https://github.com/jbcodeforce/python-code/blob/master/angular-flask/helloworld/staticApp.py) demonstrates the routing specified and the api to send the file.
+Add a folder named static at the same level as app to start. The [staticApp.py](https://github.com/jbcodeforce/python-code/blob/master/Flask/staticServe/staticApp.py) demonstrates the routing specified and the api to send the file.
 
 ```
 from flask import Flask
@@ -99,3 +103,7 @@ See [this repository](https://jbcodeforce.github.io/angular-sandbox) to a more c
 ### Flask TDD Docker
 
 See [this note](./flask-tdd-docker.md)
+
+## Flask Blueprint
+
+Helps to structure the application in reusable components. To use in any [Flask Blueprint](https://realpython.com/flask-blueprint/), you have to import it and then register it in the application using register_blueprint(). A blueprint is an object that works like a flask app too. See the [boiler plate](https://github.com/jbcodeforce/python-code/blob/master/Flask/boilerPlate) example.
