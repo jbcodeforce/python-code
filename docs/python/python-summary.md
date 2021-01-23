@@ -321,7 +321,7 @@ d.strftime("%Y-%m-%d %H:%M:%S")
 
 ## Unit testing
 
-`unittest` is based on Kent Beck's work on unit testing like the `junit` library.
+[unittest](https://docs.python.org/3/library/unittest.html) is based on Kent Beck's work on unit testing like the `junit` library.
 
 * define a module with a class which extends TestCase, use the setUp and tearDown methods to set context before each test method.
 

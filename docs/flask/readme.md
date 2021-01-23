@@ -91,8 +91,45 @@ The route decorator is used to bind function to a URL. You can add variables and
 from flask import Flask, url_for, request, json
 ```
 
-
 Accessing the HTTP headers is done using the request.headers dictionary ("dictionary-like object") and the request data using the request.data string.
+
+A second nice module is Flask Restful. We can declare Resource class and use the API to link the resource to an URL.
+
+The following code illustrates the resource class, with an argument passed at the constructor level to inject it into the resource. In this case this is a Kafka consumer which includes a map of the message read. The class is using the Blueprint module to simplify the management of resource:
+
+```python
+# code of the resource.py
+from flask_restful import Resource, Api
+from flask import Blueprint
+
+data_inventory_blueprint = Blueprint("data_inventory", __name__)
+inventoryApi = Api(data_inventory_blueprint)
+
+class DataInventory(Resource):  
+
+    def __init__(self, consumer):
+        self.consumer = consumer
+    
+    # Returns the Inventory data in JSON format
+    @track_requests
+    @swag_from('data_inventory.yml')
+    def get(self):
+        logging.debug('[DataInventoryResource] - calling /api/v1/data/inventory endpoint')
+        return self.consumer.getAllLotInventory(),200, {'Content-Type' : 'application/json'}
+```
+
+The app.py that uses this resource use the APi and add resource method, which like the resource, class the URL and then some argument to pass to the resource constructor.
+
+```python
+from server.api.inventoryResource import data_inventory_blueprint, inventoryApi, DataInventory
+
+
+app = Flask(__name__)
+
+inventory_consumer = InventoryConsumer()
+inventoryApi.add_resource(DataInventory, "/api/v1/data/inventory",resource_class_kwargs={'consumer':inventory_consumer})
+
+```
 
 [Flask REST API article](https://blog.luisrei.com/articles/flaskrest.html)
 

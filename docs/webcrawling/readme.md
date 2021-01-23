@@ -1,5 +1,12 @@
 # Web crawling examples
 
+## Requests
+
+
+[Requests](https://requests.readthedocs.io/en/master/) is one modern library to do http calls. 
+
+The Response object includes return code and text or can be transform using json() method.
+
 ## Using python multiple threading for assessing the most popular image on imgur.com
 
 This is the implementation from [this article from MARCUS MCCURDY](https://www.toptal.com/python/beginners-guide-to-concurrency-and-parallelism-in-python)

@@ -45,6 +45,8 @@ pip freeze > requirements.txt
 Use TestSuite and TestRunner. See TestPerceptron.py for usage.
 
 ```python
+import unittest
+
 class TestPerceptron(unittest.TestCase):
   # ....
 def suite():
@@ -74,14 +76,24 @@ import random
 move=random.choice(possibleMoves)
 ```
 
-## Read json file
+## Logger
+
+```python
+import logging
+```
+
+Start python with the `--log=INFO` to set the logging level.
+
+## Reading Files
+
+### Read json file
 
 ```python
 g = open('critics.json','r')
 d = json.load(g)
 ```
 
-## Read csv file
+### Read csv file
 
 ```python
 f = open('fn.csv','r')
@@ -92,13 +104,13 @@ for line in f:
   changedLine=u''.join(line).encode('utf-8').strip()
 ```
 
-## Read file with specific encoding
+### Read file with specific encoding
 
 ```python
  with open('../data/movielens/u.item',  encoding='ISO-8859-1') as f:
 ```
 
-## Skip the first row of a file
+### Skip the first row of a file
 
 ```python
 f = open('fn.csv','r')
