@@ -118,7 +118,7 @@ class DataInventory(Resource):
         return self.consumer.getAllLotInventory(),200, {'Content-Type' : 'application/json'}
 ```
 
-The app.py that uses this resource use the APi and add resource method, which like the resource, class the URL and then some argument to pass to the resource constructor.
+The `app.py` that uses this resource, accesses the API and add_resource method, to define the resource class, the URL and then ant arguments to pass to the resource constructor.
 
 ```python
 from server.api.inventoryResource import data_inventory_blueprint, inventoryApi, DataInventory

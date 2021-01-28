@@ -47,7 +47,8 @@ def median_fits(fnames):
 if __name__ == '__main__':
   
   # Test your function with examples from the question
-  #data,t,m  = raw_mean_fits(['image0.fits', 'image1.fits', 'image2.fits'])
+  data,t,m  = raw_mean_fits(['image0.fits', 'image1.fits', 'image2.fits'])
+  print(data[100,100],t,m)
   data,t,m  = median_fits(['image0.fits', 'image1.fits', 'image2.fits','image3.fits', 'image4.fits'])
   print(data[100, 100],t,m)
 
