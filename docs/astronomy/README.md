@@ -75,9 +75,23 @@ The material that accretes onto a black hole produce x-rays, because particle ar
 
 ## Cross-matching
 
-When investigating astronomical objects, like active galactic nuclei (AGN), astronomers compare data about those objects from different telescopes at different wavelengths. This requires positional cross-matching to find the closest counterpart within a given radius on the sky.
+When investigating astronomical objects, like active galactic nuclei (AGN), astronomers compare data about those objects from different telescopes at different wavelengths. This requires positional **cross-matching** to find the closest counterpart within a given radius on the sky.
 
-To create a catalog of object from survey images, the source-finding software uses the same technics of going through all the pixels and find peaks that are statistically significant. 
+To create a catalog of object from survey images, the source-finding software uses the same technics of going through all the pixels and find peaks that are statistically significant.
 
 How to calculate distance in the sky? Two objects in the same image are not in the same plan, we can compute the angular distance but they may be far aways on those line.
 
+The cross matching between 2 catalogs: The BSS catalogue lists the brightest sources from the AT20G radio survey while the SuperCOSMOS catalogue lists galaxies observed by visible light surveys.
+
+The positions of stars, galaxies and other astronomical objects are usually recorded in either equatorial or Galactic coordinates.
+  
+  * **Right ascension**: the angle from the vernal equinox to the point, going east along the celestial equator. Given in hours-minutes-seconds (HMS). 1 hour = 15 degrees
+  * **Declination**: the angle from the celestial equator to the point, going north (negative values indicate going south). Recorded in degrees-minutes-seconds (DMS) notation. A full circle is 360 degrees, each degree has 60 arcminutes and each arcminute has 60 arcseconds.
+
+The **vernal equinox** is the intersection of the celestial equator and the ecliptic where the ecliptic rises above the celestial equator going further east.
+
+![](https://groklearning-cdn.com/modules/5JAX7dX9j4wdXKXRHwyECd/Ra_and_dec_demo.gif)
+
+To crossmatch two catalogues we need to compare the angular distance between objects on the celestial sphere, which is the projected angle between objects as seen from Earth.
+
+See [cross-matching](https://github.com/jbcodeforce/python-code/blob/master/astronomy/CrossMatching/cross-matching.py)

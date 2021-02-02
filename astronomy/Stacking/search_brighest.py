@@ -7,14 +7,18 @@ import numpy as np
 import sys, time
 
 def load_stack(fnames):
+    '''
+    return a matrix of pixels for each image
+    '''
     data = []
     for fname in fnames:
         hdulist = fits.open(fname)
+        # hdulist[0].data is a matrix (may be 200x200 pixels)
         data.append(hdulist[0].data)
         hdulist.close()
     return data
 
-# Write your mean_fits function here:
+
 def raw_mean_fits(fnames):
   start = time.perf_counter()
   data = load_stack(fnames)
@@ -47,12 +51,16 @@ def median_fits(fnames):
 if __name__ == '__main__':
   
   # Test your function with examples from the question
-  data,t,m  = raw_mean_fits(['image0.fits', 'image1.fits', 'image2.fits'])
+  data,t,m  = raw_mean_fits(['../images/image0.fits', '../images/image1.fits', '../images/image2.fits'])
   print(data[100,100],t,m)
-  data,t,m  = median_fits(['image0.fits', 'image1.fits', 'image2.fits','image3.fits', 'image4.fits'])
+  data,t,m  = median_fits(['../images/image0.fits', '../images/image1.fits', '../images/image2.fits','../images/image3.fits', '../images/image4.fits'])
   print(data[100, 100],t,m)
 
-  # You can also plot the result:
+  # Expected results 
+  # 0.017356586332122486 0.7255405000178143 0.1015625
+  # 0.012338057160377502 0.2552497999276966 1562.5
+
+  # You can also plot the resulting image:
   import matplotlib.pyplot as plt
   plt.imshow(data.T, cmap=plt.cm.viridis)
   plt.colorbar()
