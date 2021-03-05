@@ -2,9 +2,28 @@
 
 This repository regroups a bench of python codes from my own self-training and studies for web development, crawling, python best practice, and [raspberry PI](https://www.raspberrypi.org/) work.
 
+## Language Advantages / disadvantages
+
+**Advantages:**
+
+* Interpreted with shell to start quickly, more concise language
+* 2nd most used programming language
+* A lot of libraries, used a lot by data scientists
+* Combines functional and OOP.
+* Raspberry PI language of choice
+
+**Disadvantages:**
+
+* Slow, not supporting well multi cpu / threading architecture
+* Not great for mobile and 3D game programming
+
+## Techno summary
+
+In [separate note](python-summary.md) and [FAQ](faq.md)
+
 ## Environment setup for development
 
-See [separate note](dev-env.md)
+See [separate note for using docker to start a development environment](dev-env.md)
 
 ## Code in the order of knowledge acquisition
 
@@ -18,6 +37,9 @@ See [separate note](dev-env.md)
 * [Reverse a word and add aye](https://github.com/jbcodeforce/python-code/blob/master/python-bible/pig.py), use loops, break, in voyals...
 * [Object Oriented Python](https://github.com/jbcodeforce/python-code/blob/master/python-bible/coins.py): classes and inheritance: using constructor (__init__()) and method with self argument.
 * [Modules, import, and packages](https://github.com/jbcodeforce/python-code/blob/master/python-bible/TestFiboModule.py). Do not forget to set PYTHONPATH to the root folder to access any new modules
+
+### Flask 
+
 * [Flask web app hello world](https://github.com/jbcodeforce/python-code/blob/master/Flask/helloworld/firstApp.py) then [REST API end point with Flask](https://github.com/jbcodeforce/python-code/blob/master/firstRESTApp.py) and staticApp.py
 * [Flask serving a simple angular App](https://jbcodeforce.github.io/angular-sandbox)
 * [TDD with Flask app and docker from testdriven.io course](https://github.com/jbcodeforce/python-code/tree/master/flask-tdd-docker)

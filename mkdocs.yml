@@ -3,10 +3,8 @@ repo_url: https://github.com/jbcodeforce/python-code
 nav:
   - Introduction: index.md
   - Development environment: dev-env.md
-  - Python:
-    - Summary: python/python-summary.md
-    - FAQ: python/faq.md
-    - Compendium: python/compendium.md
+  - Summary: python/python-summary.md
+  - FAQ: python/faq.md
   - Web App with Flask: 
     - Flask studies and basic samples: flask/readme.md
     - Flask Rest microservice with TDD and Docker: flask/flask-tdd-docker.md
@@ -18,7 +16,8 @@ nav:
     - Astronomy statistics and image processing: astronomy/README.md
     - Flask webapp template with docker: https://github.com/jbcodeforce/python-code/angular-flask
     - Kafka consumer and producer: https://jbcodeforce.github.io/kafka-studies
-
+  - Compendium: python/compendium.md
+  - Back to main: https://jbcodeforce.github.io/
 
 theme: 
   name: material

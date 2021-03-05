@@ -1,26 +1,23 @@
 # Python Summary
  
-See this good [Tutorial from Programiz](https://www.programiz.com/python-programming#tutorial)
+See this good [tutorial from Programiz](https://www.programiz.com/python-programming#tutorial)
 
-Python is an interpreted Object Orientedd & functional language. It organizes the code in modules.
-Use blank to indent code block. The coding style is known as PEP8. 
+Python is an interpreted Object Oriented & functional language. It organizes the code in modules.
+Use blank to indent code block. The coding style is known as PEP8.
 
-[3.8 release Product documentation](https://docs.python.org/3.8/library/index.html)
+[3.9 release Product documentation](https://docs.python.org/3.9/library/index.html)
 
-## Language Advantages / disadvantages
+## Getting started
 
-**Advantages:**
+Start a python interpreter: `python3` and start entering python code, develop a progname.py file and use `python3 progname.py`, or add `#!/usr/bin/env python3` to make it self runnable.
 
-* Interpreted with shell to start quickly, more consise language
-* 2nd most used programming language
-* A lot of libraries, used a lot by data scientists
-* Combines functional and OOP.
-* Raspberry PI language of choice
+The code can be structured with function `def name():`  and then with our without a main part:
 
-**Disadvantages**
+```python
+if __name__ == "__main__":
+```
 
-* Slow, not supporting well multi cpu / threading architecture
-* Not great for mobile and 3D game programming
+Better to use main statement when using objects and classes.
 
 ## Concepts
 
