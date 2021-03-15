@@ -24,7 +24,7 @@ Better to use main statement when using objects and classes.
 ### Datatypes
 
 * concat lists: a = [1,2,3,4]    then a = a + [5,6]  or a + list("789") -> [1,2,3,4,5,6,'7','8','9']. Lists are mutable.
-* dictionary is like json object, with key-value list. The main operations on a dictionary are storing a value with some key and extracting the value given the key. It is also possible to delete a key:value pair with del. If you store using a key that is already in use, the old value associated with that key is forgotten.
+* `dictionary` is like json object, with key-value list. The main operations on a dictionary are storing a value with some key and extracting the value given the key. It is also possible to delete a key:value pair with del. If you store using a key that is already in use, the old value associated with that key is forgotten.
 
 ```python
 cols={}
@@ -48,14 +48,22 @@ twentythree=queue.popleft()
 
 tuples: a = (1,2,3,4,5) are iterable. Tuple does not support item assignment: t[3] = 5 --> error.
 
-```
+```python
 tup1 = ('physics', 'chemistry', 1997, 2000);
 print ("tup1[0]: ", tup1[0]);
 # iteration
 for a in tup1:
   print(a)
 ```
+
 They are immutable. Need to create new tuples from existing one. Removing individual tuple elements is not possible.
+
+Transform a tuple into array:
+```python
+a=(2, 2.6496666666666666, -30.463416666666667)
+b=np.asarray(a)
+# b array([  2.        ,   2.64966667, -30.46341667])
+```
 
 ### String
 
