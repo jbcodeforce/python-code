@@ -1,0 +1,1007 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.0.6">
+    
+    
+      
+        <title>Flask Rest microservice with TDD and Docker - Python code studies</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2c0c5eaf.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.7fa14f5b.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#flask-microservice-with-tdd-and-docker" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Python code studies" class="md-header__button md-logo" aria-label="Python code studies" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Python code studies
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Flask Rest microservice with TDD and Docker
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="md-header__options">
+      
+    </div>
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/jbcodeforce/python-code/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Python code studies" class="md-nav__button md-logo" aria-label="Python code studies" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Python code studies
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/jbcodeforce/python-code/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev-env/" class="md-nav__link">
+        Development environment
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/python-summary/" class="md-nav__link">
+        Summary
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/faq/" class="md-nav__link">
+        FAQ
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
+      
+      <label class="md-nav__link" for="__nav_5">
+        Web App with Flask
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Web App with Flask" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Web App with Flask
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../readme/" class="md-nav__link">
+        Flask studies and basic samples
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Flask Rest microservice with TDD and Docker
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Flask Rest microservice with TDD and Docker
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#set-virtual-env" class="md-nav__link">
+    Set virtual env
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#define-and-run-the-flask-app" class="md-nav__link">
+    Define and run the flask app
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-docker-and-docker-compose" class="md-nav__link">
+    Using docker and docker compose
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-persistence-on-postgresql-and-use-sqlalchemy" class="md-nav__link">
+    Add persistence on Postgresql and use SQLAlchemy
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-tests-with-pytest" class="md-nav__link">
+    Add tests with pytest
+  </a>
+  
+    <nav class="md-nav" aria-label="Add tests with pytest">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test-coverage" class="md-nav__link">
+    Test coverage
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-quality" class="md-nav__link">
+    Code quality
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-blueprints-template" class="md-nav__link">
+    Add Blueprints template
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adding-admin-and-model-view" class="md-nav__link">
+    Adding admin and model view
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#production-deployment-with-gunicorn" class="md-nav__link">
+    Production deployment with gunicorn
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#heroku" class="md-nav__link">
+    Heroku
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../webcrawling/readme/" class="md-nav__link">
+        Web Data
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      <label class="md-nav__link" for="__nav_7">
+        Sub-projects
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Sub-projects" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Sub-projects
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/jbcodeforce/python-code" class="md-nav__link">
+        Python studies
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://jbcodeforce.github.io/spark-studies" class="md-nav__link">
+        Python and Spark
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/jbcodeforce/ml-basics" class="md-nav__link">
+        Python and data sciences
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../astronomy/" class="md-nav__link">
+        Astronomy statistics and image processing
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/jbcodeforce/python-code/angular-flask" class="md-nav__link">
+        Flask webapp template with docker
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://jbcodeforce.github.io/kafka-studies" class="md-nav__link">
+        Kafka consumer and producer
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/compendium/" class="md-nav__link">
+        Compendium
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://jbcodeforce.github.io/" class="md-nav__link">
+        Back to main
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#set-virtual-env" class="md-nav__link">
+    Set virtual env
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#define-and-run-the-flask-app" class="md-nav__link">
+    Define and run the flask app
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-docker-and-docker-compose" class="md-nav__link">
+    Using docker and docker compose
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-persistence-on-postgresql-and-use-sqlalchemy" class="md-nav__link">
+    Add persistence on Postgresql and use SQLAlchemy
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-tests-with-pytest" class="md-nav__link">
+    Add tests with pytest
+  </a>
+  
+    <nav class="md-nav" aria-label="Add tests with pytest">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test-coverage" class="md-nav__link">
+    Test coverage
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-quality" class="md-nav__link">
+    Code quality
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-blueprints-template" class="md-nav__link">
+    Add Blueprints template
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adding-admin-and-model-view" class="md-nav__link">
+    Adding admin and model view
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#production-deployment-with-gunicorn" class="md-nav__link">
+    Production deployment with gunicorn
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#heroku" class="md-nav__link">
+    Heroku
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/jbcodeforce/python-code/edit/master/docs/flask/flask-tdd-docker.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="flask-microservice-with-tdd-and-docker">Flask microservice with TDD and docker</h1>
+<p>This is based on the tutorial from <a href="https://testdriven.io/courses/tdd-flask">tesdriven.io</a>. What it addresses are:</p>
+<ul>
+<li><a href="https://github.com/pypa/pipenv">pipenv for virtual environment and dependencies management</a></li>
+<li><a href="https://flask-restful.readthedocs.io/en/latest/quickstart.html">Flask Restful</a> where resources are build on top of Flask views</li>
+<li><a href="https://flask.palletsprojects.com/en/1.1.x/cli/">Flask CLI</a> tool to run and manage the app from the command line.</li>
+<li><a href="https://werkzeug.palletsprojects.com/en/0.16.x/debug/#using-the-debugger">Debugging in development mode</a></li>
+<li><a href="https://mherman.org/presentations/dockercon-2018/">Docker for python developer</a></li>
+<li><a href="http://flask-sqlalchemy.pocoo.org/">Flask-sqlalchemy to support SQLAlchemy in Flask</a></li>
+<li><a href="http://initd.org/psycopg/">Psycopg is the most popular PostgreSQL adapter for the Python</a>
+Here is a quick summary of things learnt.</li>
+<li><a href="https://hub.docker.com/_/postgres/">Postgresql docker image</a></li>
+<li><a href="https://docs.pytest.org/en/latest/">Pytest for unit and functional testing</a></li>
+<li><a href="https://flask.palletsprojects.com/en/1.1.x/blueprints/">Blueprints for organizing code and components</a></li>
+</ul>
+<p>The folder flask-tdd-docker includes the training code.</p>
+<h2 id="set-virtual-env">Set virtual env</h2>
+<p>The old way to define virtual environment was to use the following approach:</p>
+<div class="highlight"><pre><span></span><code>python3.7 -m venv env
+<span class="nb">source</span> env/bin/activate
+deactivate
+</code></pre></div>
+<p>As of today, the approach is to use <code>pipenv</code>, where you update the project and development dependencies in a <code>Pipfile</code>. </p>
+<div class="highlight"><pre><span></span><code>pipenv --python <span class="m">3</span>.7
+<span class="c1"># start the virtual env</span>
+pipenv shell
+pipenv install --dev
+</code></pre></div>
+<p>Freeze the dependencies:</p>
+<div class="highlight"><pre><span></span><code>pipenv lock -r &gt; requirements.txt
+</code></pre></div>
+<h2 id="define-and-run-the-flask-app">Define and run the flask app</h2>
+<p>Define a manage.py to represent the app, and use the <a href="https://flask.palletsprojects.com/en/1.1.x/cli/">Flask CLI</a> shell to manage the app from command line:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">flask.cli</span> <span class="kn">import</span> <span class="n">FlaskGroup</span>
+<span class="kn">from</span> <span class="nn">project</span> <span class="kn">import</span> <span class="n">app</span>
+
+
+<span class="n">cli</span> <span class="o">=</span> <span class="n">FlaskGroup</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">cli</span><span class="p">()</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">FLASK_APP</span><span class="o">=</span>project/__init__.py
+<span class="c1"># use the Flask CLI from inside the app itself</span>
+python manage.py run
+</code></pre></div>
+<p>Run in development mode for debugging.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">FLASK_ENV</span><span class="o">=</span>development
+python manage.py run
+* Serving Flask app <span class="s2">&quot;project/__init__.py&quot;</span> <span class="o">(</span>lazy loading<span class="o">)</span>
+* Environment: development
+* Debug mode: on
+</code></pre></div>
+<p>With the Flask shell we can explore the data in the application:</p>
+<div class="highlight"><pre><span></span><code>flask shell
+</code></pre></div>
+<h2 id="using-docker-and-docker-compose">Using docker and docker compose</h2>
+<p>The dockerfile use alpine linux and non root user. The docker compose use volume to mount the code into the container. This is a must for a development environment in order to update the container whenever a change to the source code is made. Then build the image using docker compose.</p>
+<div class="highlight"><pre><span></span><code>docker-compose build
+<span class="c1"># then start in detached mode</span>
+docker-compose up -d
+<span class="c1"># Rebuild the docker images </span>
+docker-compose up -d --build
+<span class="c1"># Access app logs</span>
+docker-compose logs
+<span class="c1"># Access to a python shell to control the flask app</span>
+docker-compose <span class="nb">exec</span> users flask shell
+</code></pre></div>
+<h2 id="add-persistence-on-postgresql-and-use-sqlalchemy">Add persistence on Postgresql and use SQLAlchemy</h2>
+<p>To initialize the postgresql copy a sql file under /docker-entrypoint-initdb.d (creating the directory if necessary). </p>
+<p>docker compose section for postgresql:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">users-db</span><span class="p">:</span>  
+    <span class="nt">build</span><span class="p">:</span>
+      <span class="nt">context</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">./project/db</span>
+      <span class="nt">dockerfile</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Dockerfile</span>
+    <span class="nt">expose</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">5432</span>
+    <span class="nt">environment</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">POSTGRES_USER=postgres</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">POSTGRES_PASSWORD=postgres</span>
+</code></pre></div>
+<p>Once spun up, Postgres will be available on port 5432 for services running in other containers. Be sure to include dependencies in the app dockerfile</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># install dependencies</span>
+RUN apk update <span class="o">&amp;&amp;</span> <span class="se">\</span>
+    apk add --virtual build-deps gcc python-dev musl-dev <span class="o">&amp;&amp;</span> <span class="se">\</span>
+    apk add postgresql-dev <span class="o">&amp;&amp;</span> <span class="se">\</span>
+    apk add netcat-openbsd <span class="o">&amp;&amp;</span> <span class="se">\</span>
+    pip install --upgrade pip <span class="o">&amp;&amp;</span> <span class="se">\</span>
+    pip install --upgrade --user pipenv 
+</code></pre></div>
+<p>Also to avoid having the application getting error because it could not contact the database add a entrypoint.sh to loop until the database is accessible before starting the python app.</p>
+<p>To access psql use the following docker compose command</p>
+<div class="highlight"><pre><span></span><code>docker-compose <span class="nb">exec</span> users-db psql -U postgres
+
+psql <span class="o">(</span><span class="m">11</span>.4<span class="o">)</span>
+Type <span class="s2">&quot;help&quot;</span> <span class="k">for</span> help.
+
+<span class="nv">postgres</span><span class="o">=</span><span class="c1"># \c users_dev</span>
+You are now connected to database <span class="s2">&quot;users_dev&quot;</span> as user <span class="s2">&quot;postgres&quot;</span>.
+<span class="nv">users_dev</span><span class="o">=</span><span class="c1"># \dt</span>
+Did not find any relations.
+<span class="nv">users_dev</span><span class="o">=</span><span class="c1"># \q</span>
+</code></pre></div>
+<p>In the <code>manage.py</code> file, register a new flask CLI command, <code>recreate_db</code>, so that we can run it from the command line like:</p>
+<div class="highlight"><pre><span></span><code>docker-compose exec users python manage.py recreate_db
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># @cli.command(&#39;recreate_db&#39;)</span>
+<span class="k">def</span> <span class="nf">recreate_db</span><span class="p">():</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">drop_all</span><span class="p">()</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">create_all</span><span class="p">()</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</code></pre></div>
+<h2 id="add-tests-with-pytest">Add tests with pytest</h2>
+<p>While unittest requires test classes, <a href="https://docs.pytest.org/en/latest/getting-started.html">Pytest</a> just requires functions to get up and running.</p>
+<p>Define fixtures as reusable elements for future tests</p>
+<p>They have a scope associated with them, which indicates how often the fixture is invoked:</p>
+<ul>
+<li>function - once per test function</li>
+<li>class - once per test class</li>
+<li>module - once per test module</li>
+<li>session - once per test session</li>
+</ul>
+<p>Some <a href="https://docs.pytest.org/en/latest/fixture.html#fixture-finalization-executing-teardown-code">fixture execution guidance</a></p>
+<p>Define python script using 'test_' or '_test.py'. Here is an example of functional testing:
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">test_ping</span><span class="p">(</span><span class="n">test_app</span><span class="p">):</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">test_app</span><span class="o">.</span><span class="n">test_client</span><span class="p">()</span>
+    <span class="n">resp</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;ping&#39;</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">decode</span><span class="p">())</span>
+    <span class="k">assert</span> <span class="n">resp</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span>
+    <span class="k">assert</span> <span class="s1">&#39;pong&#39;</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;message&#39;</span><span class="p">]</span>
+    <span class="k">assert</span> <span class="s1">&#39;success&#39;</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;status&#39;</span><span class="p">]</span>
+</code></pre></div></p>
+<p>Execute test with pytest: <code>pytest project/tests/</code> or with docker compose</p>
+<div class="highlight"><pre><span></span><code>docker-compose exec users pytest &quot;project/tests&quot;
+</code></pre></div>
+<h3 id="test-coverage">Test coverage</h3>
+<p>Coverage.py is a popular tool for measuring code coverage in Python-based applications. Now, since we're using Pytest, we'll integrate Coverage.py with Pytest using pytest-cov. In <code>Pipfile</code> add <code>pytest-cov = "&gt;=2.7.1"</code> then do <code>pipenv install</code></p>
+<p>Then once the image is rebuilt, run the following command to assess the test coverage:</p>
+<div class="highlight"><pre><span></span><code>docker-compose <span class="nb">exec</span> users pytest <span class="s2">&quot;project/tests&quot;</span> -p no:warnings --cov<span class="o">=</span><span class="s2">&quot;project&quot;</span>
+<span class="c1"># or using html page</span>
+docker-compose <span class="nb">exec</span> users pytest <span class="s2">&quot;project/tests&quot;</span> -p no:warnings --cov<span class="o">=</span><span class="s2">&quot;project&quot;</span> --cov-report html
+</code></pre></div>
+<p>Remember: just because you have 100% test coverage doesn’t mean you're testing the right things</p>
+<h3 id="code-quality">Code quality</h3>
+<p>Linting is the process of checking your code for stylistic or programming errors. Although there are a number of commonly used linters for Python, we'll use <a href="https://gitlab.com/pycqa/flake8">Flake8</a> since it combines two other popular linters -- pep8 and pyflakes.</p>
+<p>In Pipfile add <code>flake8 = "&gt;=3.7.8"</code>, do a <code>pipenv install</code> then freeze the dependencies with <code>pipenv lock -r &gt; requirements.txt</code>, then rebuild the docker image and run flake8:</p>
+<div class="highlight"><pre><span></span><code> docker-compose exec users flake8 project
+</code></pre></div>
+<p>Black helps to format code and apply code formatting:</p>
+<div class="highlight"><pre><span></span><code># check
+docker-compose exec users black project --check
+# see the propose changes
+docker-compose exec users black project --diff
+# apply the change
+docker-compose exec users black project
+</code></pre></div>
+<h2 id="add-blueprints-template">Add Blueprints template</h2>
+<p><a href="https://flask.palletsprojects.com/en/1.1.x/blueprints/">Blueprints</a> are self-contained components, used for encapsulating code, templates, and static files. They are apps within the app.
+For example REST resource can be defined in Blueprint.</p>
+<p>For example to add an api and a resource, define a new py file, and create a blueprint instance:</p>
+<div class="highlight"><pre><span></span><code><span class="n">users_blueprint</span> <span class="o">=</span> <span class="n">Blueprint</span><span class="p">(</span><span class="s1">&#39;users&#39;</span><span class="p">,</span> <span class="vm">__name__</span><span class="p">)</span>
+<span class="n">api</span> <span class="o">=</span> <span class="n">Api</span><span class="p">(</span><span class="n">users_blueprint</span><span class="p">)</span>
+</code></pre></div>
+<p>Then define a class with functions to support the expected Resource, and add this class to a url to the api.</p>
+<div class="highlight"><pre><span></span><code>class UsersList(Resource):
+    def get(self):
+        ...
+    def post(self):
+        ...
+api.add_resource(UsersList, &#39;/users&#39;)
+</code></pre></div>
+<p>Finally register the resouce to the flask application:</p>
+<div class="highlight"><pre><span></span><code>    from project.api.users import users_blueprint
+    app.register_blueprint(users_blueprint)
+</code></pre></div>
+<p>See the code in <a href="https://github.com/jbcodeforce/python-code/blob/master/flask-tdd-docker/project/api/users.py">users.py</a> and <a href="https://github.com/jbcodeforce/python-code/blob/master/flask-tdd-docker/project/__init__.py"><strong>init</strong>.py</a></p>
+<p>Factory to create an app needs to be named <code>create_app</code>. </p>
+<h2 id="adding-admin-and-model-view">Adding admin and model view</h2>
+<h2 id="production-deployment-with-gunicorn">Production deployment with gunicorn</h2>
+<p>Create a specific <code>Dockerfile.prod</code> and set the environment variable to run Flask in production mode and use gunicorn as container, and run under a user that is not root. </p>
+<div class="highlight"><pre><span></span><code>ENV FLASK_ENV production
+ENV APP_SETTINGS project.config.ProductionConfig
+
+# add and run as non-root user
+RUN adduser -D myuser
+USER myuser
+
+# run gunicorn
+CMD gunicorn --bind 0.0.0.0:$PORT manage:app
+</code></pre></div>
+<h2 id="heroku">Heroku</h2>
+<p>Using heroku CLI.</p>
+<div class="highlight"><pre><span></span><code>$ heroku login
+<span class="c1"># create a app</span>
+$ heroku create 
+Creating app... <span class="k">done</span>, murmuring-shore-37331
+https://murmuring-shore-37331.herokuapp.com/ <span class="p">|</span> https://git.heroku.com/murmuring-shore-37331.git
+
+<span class="c1"># login to docker private registry</span>
+$ heroku container:login
+
+<span class="c1"># create a postgresql with the hobby-dev plan</span>
+$ heroku addons:create heroku-postgresql:hobby-dev --app murmuring-shore-37331
+
+Creating heroku-postgresql:hobby-dev on murmuring-shore-37331... free
+Database has been created and is available
+ ! This database is empty. If upgrading, you can transfer
+ ! data from another database with pg:copy
+Created postgresql-horizontal-04149 as DATABASE_URL
+Use heroku addons:docs heroku-postgresql to view documentation
+
+<span class="c1"># Get database URL</span>
+heroku config:get DATABASE_URL --app murmuring-shore-37331
+</code></pre></div>
+<p>The containers used at Heroku are called “dynos.” <a href="https://www.heroku.com/dynos">Dynos</a> are isolated, virtualized Linux containers that are designed to execute code based on a user-specified command.</p>
+<p>To build an image for the docker private registry, using the web dyno, that is free.</p>
+<div class="highlight"><pre><span></span><code>$ docker build -f Dockerfile.prod -t registry.heroku.com/murmuring-shore-37331/web .
+<span class="c1"># publish</span>
+$ docker push registry.heroku.com/murmuring-shore-37331/web:latest
+<span class="c1"># test locally</span>
+$ docker run --name flask-tdd -e <span class="s2">&quot;PORT=8765&quot;</span> -p <span class="m">5002</span>:8765 registry.heroku.com/murmuring-shore-37331/web:latest
+
+<span class="c1"># Release the image, meaning the app will be based on the container image</span>
+$ heroku container:release web --app murmuring-shore-37331
+Releasing images web to murmuring-shore-37331... <span class="k">done</span>
+</code></pre></div>
+<p>Once the image is "released", the app is accessible via <code>https://murmuring-shore-37331.herokuapp.com/ping</code></p>
+<p>Access to logs: <code>heroku logs --app murmuring-shore-37331</code></p>
+<p>The users are not yet created, so we can run the CLI <code>heroku run</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># create DB</span>
+<span class="n">heroku</span> <span class="n">run</span> <span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">recreate_db</span> <span class="o">--</span><span class="n">app</span> <span class="n">murmuring</span><span class="o">-</span><span class="n">shore</span><span class="o">-</span><span class="mi">37331</span>
+<span class="c1"># populate the data</span>
+<span class="n">heroku</span> <span class="n">run</span> <span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">seed_db</span> <span class="o">--</span><span class="n">app</span> <span class="n">murmuring</span><span class="o">-</span><span class="n">shore</span><span class="o">-</span><span class="mi">37331</span>
+<span class="c1"># Access the database with psql: </span>
+<span class="c1"># 1. start a local docker postgresql with psql</span>
+<span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">ti</span> <span class="n">postgresql</span> <span class="n">bash</span>
+<span class="o">&gt;</span> <span class="n">psql</span> <span class="n">postgres</span><span class="p">:</span><span class="o">//....</span>
+<span class="o">&gt;</span> <span class="n">PSQL</span><span class="p">:</span>
+</code></pre></div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../readme/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Flask studies and basic samples
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../../webcrawling/readme/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Web Data
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../assets/javascripts/workers/search.fb4a9340.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.a1c7c35e.min.js"></script>
+      
+    
+  </body>
+</html>

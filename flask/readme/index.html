@@ -1,0 +1,822 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.0.6">
+    
+    
+      
+        <title>Flask studies and basic samples - Python code studies</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2c0c5eaf.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.7fa14f5b.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#python-flask-studies" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Python code studies" class="md-header__button md-logo" aria-label="Python code studies" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Python code studies
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Flask studies and basic samples
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="md-header__options">
+      
+    </div>
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/jbcodeforce/python-code/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Python code studies" class="md-nav__button md-logo" aria-label="Python code studies" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Python code studies
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/jbcodeforce/python-code/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev-env/" class="md-nav__link">
+        Development environment
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/python-summary/" class="md-nav__link">
+        Summary
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/faq/" class="md-nav__link">
+        FAQ
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
+      
+      <label class="md-nav__link" for="__nav_5">
+        Web App with Flask
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Web App with Flask" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Web App with Flask
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Flask studies and basic samples
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Flask studies and basic samples
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#some-concepts" class="md-nav__link">
+    Some concepts
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#samples" class="md-nav__link">
+    Samples
+  </a>
+  
+    <nav class="md-nav" aria-label="Samples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-simplest-flask-app" class="md-nav__link">
+    The simplest Flask app
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#serving-static-pages" class="md-nav__link">
+    Serving static pages
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-rest-api" class="md-nav__link">
+    A REST api
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#an-angular-app" class="md-nav__link">
+    An Angular app
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flask-tdd-docker" class="md-nav__link">
+    Flask TDD Docker
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flask-blueprint" class="md-nav__link">
+    Flask Blueprint
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../flask-tdd-docker/" class="md-nav__link">
+        Flask Rest microservice with TDD and Docker
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../webcrawling/readme/" class="md-nav__link">
+        Web Data
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      <label class="md-nav__link" for="__nav_7">
+        Sub-projects
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Sub-projects" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Sub-projects
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/jbcodeforce/python-code" class="md-nav__link">
+        Python studies
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://jbcodeforce.github.io/spark-studies" class="md-nav__link">
+        Python and Spark
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/jbcodeforce/ml-basics" class="md-nav__link">
+        Python and data sciences
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../astronomy/" class="md-nav__link">
+        Astronomy statistics and image processing
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/jbcodeforce/python-code/angular-flask" class="md-nav__link">
+        Flask webapp template with docker
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://jbcodeforce.github.io/kafka-studies" class="md-nav__link">
+        Kafka consumer and producer
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/compendium/" class="md-nav__link">
+        Compendium
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://jbcodeforce.github.io/" class="md-nav__link">
+        Back to main
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#some-concepts" class="md-nav__link">
+    Some concepts
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#samples" class="md-nav__link">
+    Samples
+  </a>
+  
+    <nav class="md-nav" aria-label="Samples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-simplest-flask-app" class="md-nav__link">
+    The simplest Flask app
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#serving-static-pages" class="md-nav__link">
+    Serving static pages
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-rest-api" class="md-nav__link">
+    A REST api
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#an-angular-app" class="md-nav__link">
+    An Angular app
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flask-tdd-docker" class="md-nav__link">
+    Flask TDD Docker
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flask-blueprint" class="md-nav__link">
+    Flask Blueprint
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/jbcodeforce/python-code/edit/master/docs/flask/readme.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="python-flask-studies">Python Flask Studies</h1>
+<p>The most complete starter code is from the Flask TDD tutorial and using docker.  But I have incremental apps, to make it simpler to develop an app from scratch.</p>
+<h2 id="some-concepts">Some concepts</h2>
+<p>Flask app takes care of dispatching requests to view and routes.</p>
+<h2 id="samples">Samples</h2>
+<h3 id="the-simplest-flask-app">The simplest Flask app</h3>
+<p>The simplest Flask app is presented <a href="http://flask.pocoo.org/docs/1.0/quickstart/">in the quickstart</a> and the matching code is under <a href="https://github.com/jbcodeforce/python-code/blob/master/Flask/helloworld/firstApp.py">Flask/firstApp/firstApp.py</a>. To execute it in your python environment:</p>
+<p><div class="highlight"><pre><span></span><code><span class="nb">cd</span> Flask/firstApp
+<span class="c1"># start docker image for dev environment</span>
+docker run -ti -v <span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>:/app -p <span class="m">5000</span>:5000 jbcodeforce/python37 bash
+<span class="c1"># Can run it with python - it will start in debug mode</span>
+python app.py
+<span class="c1"># Or run it with flask CLI</span>
+<span class="nb">export</span> <span class="nv">FLASK_APP</span><span class="o">=</span>firstApp.py
+flask run --host<span class="o">=</span><span class="m">0</span>.0.0.0
+ * Serving Flask app <span class="s2">&quot;firstApp&quot;</span>
+ * Running on http://0.0.0.0:5000/ <span class="o">(</span>Press CTRL+C to quit<span class="o">)</span>
+<span class="m">127</span>.0.0.1 - - <span class="o">[</span><span class="m">17</span>/Dec/2018 <span class="m">20</span>:49:42<span class="o">]</span> <span class="s2">&quot;GET / HTTP/1.1&quot;</span> <span class="m">200</span> -
+</code></pre></div>
+The FLASK_APP environment variable is the name of the module to import at flask run.</p>
+<p>To make the server publicly available simply by adding --host=0.0.0.0 to the command: <code>flask run --host=0.0.0.0</code></p>
+<p>If we want to run it in debug mode then any change to the code reload itself. To do so use: </p>
+<div class="highlight"><pre><span></span><code>export FLASK_ENV=development
+flask run --host=0.0.0.0
+</code></pre></div>
+<p>Next, is to use gunicorn to run it on top of a wsgi server so in the docker container:</p>
+<div class="highlight"><pre><span></span><code>gunicorn -w <span class="m">4</span> -b <span class="m">0</span>.0.0.0:5000 firstApp:app
+</code></pre></div>
+<p>Which is the command in the dockerfile under the firstApp folder:</p>
+<div class="highlight"><pre><span></span><code> docker build -t jbcodeforce/firstApp .
+</code></pre></div>
+<p>Start the image with</p>
+<div class="highlight"><pre><span></span><code>docker run --name firstApp --rm -p 5000:5000 jbcodeforce/firstApp
+</code></pre></div>
+<h3 id="serving-static-pages">Serving static pages</h3>
+<p>Add a folder named static at the same level as app to start. The <a href="https://github.com/jbcodeforce/python-code/blob/master/Flask/staticServe/staticApp.py">staticApp.py</a> demonstrates the routing specified and the api to send the file.</p>
+<div class="highlight"><pre><span></span><code>from flask import Flask
+app = Flask(__name__)
+
+
+@app.route(&#39;/&#39;)
+def root():
+    return app.send_static_file(&#39;404.html&#39;)
+
+
+if __name__ == &quot;__main__&quot;:
+    app.run(debug=True,host=&#39;0.0.0.0&#39;)
+</code></pre></div>
+<p>and the execution:</p>
+<div class="highlight"><pre><span></span><code>export FLASK_APP=staticApp.py
+flask run
+ * Serving Flask app &quot;staticApp&quot;
+ * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+127.0.0.1 - - [17/Dec/2018 21:29:00] &quot;GET / HTTP/1.1&quot; 200 -
+</code></pre></div>
+<h3 id="a-rest-api">A REST api</h3>
+<p>The route decorator is used to bind function to a URL. You can add variables and converter. The <code>firstRESTApp.py</code> illustrates the different patterns. The important modules to import are:</p>
+<div class="highlight"><pre><span></span><code>from flask import Flask, url_for, request, json
+</code></pre></div>
+<p>Accessing the HTTP headers is done using the request.headers dictionary ("dictionary-like object") and the request data using the request.data string.</p>
+<p>A second nice module is Flask Restful. We can declare Resource class and use the API to link the resource to an URL.</p>
+<p>The following code illustrates the resource class, with an argument passed at the constructor level to inject it into the resource. In this case this is a Kafka consumer which includes a map of the message read. The class is using the Blueprint module to simplify the management of resource:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># code of the resource.py</span>
+<span class="kn">from</span> <span class="nn">flask_restful</span> <span class="kn">import</span> <span class="n">Resource</span><span class="p">,</span> <span class="n">Api</span>
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Blueprint</span>
+
+<span class="n">data_inventory_blueprint</span> <span class="o">=</span> <span class="n">Blueprint</span><span class="p">(</span><span class="s2">&quot;data_inventory&quot;</span><span class="p">,</span> <span class="vm">__name__</span><span class="p">)</span>
+<span class="n">inventoryApi</span> <span class="o">=</span> <span class="n">Api</span><span class="p">(</span><span class="n">data_inventory_blueprint</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">DataInventory</span><span class="p">(</span><span class="n">Resource</span><span class="p">):</span>  
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">consumer</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">consumer</span> <span class="o">=</span> <span class="n">consumer</span>
+
+    <span class="c1"># Returns the Inventory data in JSON format</span>
+    <span class="nd">@track_requests</span>
+    <span class="nd">@swag_from</span><span class="p">(</span><span class="s1">&#39;data_inventory.yml&#39;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;[DataInventoryResource] - calling /api/v1/data/inventory endpoint&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">consumer</span><span class="o">.</span><span class="n">getAllLotInventory</span><span class="p">(),</span><span class="mi">200</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;Content-Type&#39;</span> <span class="p">:</span> <span class="s1">&#39;application/json&#39;</span><span class="p">}</span>
+</code></pre></div>
+<p>The <code>app.py</code> that uses this resource, accesses the API and add_resource method, to define the resource class, the URL and then ant arguments to pass to the resource constructor.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">server.api.inventoryResource</span> <span class="kn">import</span> <span class="n">data_inventory_blueprint</span><span class="p">,</span> <span class="n">inventoryApi</span><span class="p">,</span> <span class="n">DataInventory</span>
+
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="n">inventory_consumer</span> <span class="o">=</span> <span class="n">InventoryConsumer</span><span class="p">()</span>
+<span class="n">inventoryApi</span><span class="o">.</span><span class="n">add_resource</span><span class="p">(</span><span class="n">DataInventory</span><span class="p">,</span> <span class="s2">&quot;/api/v1/data/inventory&quot;</span><span class="p">,</span><span class="n">resource_class_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;consumer&#39;</span><span class="p">:</span><span class="n">inventory_consumer</span><span class="p">})</span>
+</code></pre></div>
+<p><a href="https://blog.luisrei.com/articles/flaskrest.html">Flask REST API article</a></p>
+<h3 id="an-angular-app">An Angular app</h3>
+<p>See <a href="https://jbcodeforce.github.io/angular-sandbox">this repository</a> to a more complete example of angular development and Flask.</p>
+<h3 id="flask-tdd-docker">Flask TDD Docker</h3>
+<p>See <a href="../flask-tdd-docker/">this note</a></p>
+<h2 id="flask-blueprint">Flask Blueprint</h2>
+<p>Helps to structure the application in reusable components. To use in any <a href="https://realpython.com/flask-blueprint/">Flask Blueprint</a>, you have to import it and then register it in the application using register_blueprint(). A blueprint is an object that works like a flask app too. See the <a href="https://github.com/jbcodeforce/python-code/blob/master/Flask/boilerPlate">boiler plate</a> example.</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../../python/faq/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              FAQ
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../flask-tdd-docker/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Flask Rest microservice with TDD and Docker
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../assets/javascripts/workers/search.fb4a9340.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.a1c7c35e.min.js"></script>
+      
+    
+  </body>
+</html>
