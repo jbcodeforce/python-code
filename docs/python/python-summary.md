@@ -23,7 +23,20 @@ Better to use main statement when using objects and classes.
 
 ### Datatypes
 
-* concat lists: a = [1,2,3,4]    then a = a + [5,6]  or a + list("789") -> [1,2,3,4,5,6,'7','8','9']. Lists are mutable.
+* `list`:
+
+    * concat lists: a = [1,2,3,4]    then a = a + [5,6]  or a + list("789") -> [1,2,3,4,5,6,'7','8','9']. Lists are mutable.
+    * len(a)
+    * slicing: all elements except first and last: `a[1:-1]`, all from index 3: `a[3:]` 
+    * `list.append(a_record)` modifies a list by adding an item to the end
+    * `list.pop()` removes and returns the last element of a list
+    *  Get one object index using the `list.index(object)` 
+    * `in list` to assess if element in the list
+* list comprehensions:
+
+    * `squares = [n**2 for n in range(10)]`
+    * `short_planets = [planet for planet in planets if len(planet) < 6]`
+
 * `dictionary` is like json object, with key-value list. The main operations on a dictionary are storing a value with some key and extracting the value given the key. It is also possible to delete a key:value pair with del. If you store using a key that is already in use, the old value associated with that key is forgotten.
 
 ```python
@@ -73,10 +86,41 @@ dirname[:len(dirname) - 4]
 # split string to get the last folder name of a path
 folders = path.split('/') 
 name= folders[len(folders)-1]
+name.lower()
+name.upper()
+name.index('substr')
+claim.startswith(planet)
+claim.endswith(planet)
 ```
 
 See [string tutorial](https://www.tutorialspoint.com/python/python_strings.htm)
 
+```python
+def word_search(documents, keyword):
+    """
+    Takes a list of documents (each document is a string) and a keyword. 
+    Returns list of the index values into the original list for all documents 
+    containing the keyword.
+
+    Example:
+    doc_list = ["The Learn Python Challenge Casino.", "They bought a car", "Casinoville"]
+    >>> word_search(doc_list, 'casino')
+    >>> [0]
+    """
+    # list to hold the indices of matching documents
+    indices = [] 
+    # Iterate through the indices (i) and elements (doc) of documents
+    for i, doc in enumerate(documents):
+        # Split the string doc into a list of words (according to whitespace)
+        tokens = doc.split()
+        # Make a transformed list where we 'normalize' each word to facilitate matching.
+        # Periods and commas are removed from the end of each word, and it's set to all lowercase.
+        normalized = [token.rstrip('.,').lower() for token in tokens]
+        # Is there a match? If so, update the list of matching indices.
+        if keyword.lower() in normalized:
+            indices.append(i)
+    return indices
+```
 ### Control flow
 
 `if condition: elsif condition: else`
@@ -86,6 +130,15 @@ See [string tutorial](https://www.tutorialspoint.com/python/python_strings.htm)
 * list(range(5)) build a list like: [0, 1, 2, 3, 4]
 * Loop statements may have an else clause; it is executed when the loop terminates through exhaustion of the list (with for) or when the condition becomes false (with while), but not when the loop is terminated by a break statement
 * The pass statement does nothing. It can be used when a statement is required syntactically but the program requires no action.
+
+### Exception
+
+```python
+try:
+  dosomething()
+Except ValueError:
+  pass
+```
 
 ### Regular Expressions
 
@@ -248,8 +301,21 @@ There is no private instance variables inside an object. The naming convention u
 
 ### Module 
 
-A **module** is a file containing python definitions and statements. The filename = module name. Definitions from a module can be imported into other modules or into the main module. Be sure to take the folder hierarchy as package hierarchy.
-A module can contain executable statements as well as function definitions. These statements are intended to initialize the module. They are executed only the first time the module name is encountered in an import statement.
+A **module** is a file containing python definitions and statements. The filename = module name. 
+Definitions from a module can be imported into other modules or into the main module. 
+Be sure to take the folder hierarchy as package hierarchy.
+A module can contain executable statements as well as function definitions. These statements are 
+intended to initialize the module. They are executed only the first time the module name is 
+encountered in an import statement.
+
+```python
+# To see the variables and function of a module
+import math
+print(dir(math))
+# give combined documentation for all the functions and values in the module 
+help(math)
+```
+Always import only the specific things we'll need from each module.
 
 To make a module executable we need a main statement
 

@@ -9,8 +9,8 @@ nav:
     - Flask studies and basic samples: flask/readme.md
     - Flask Rest microservice with TDD and Docker: flask/flask-tdd-docker.md
   - Web Data: webcrawling/readme.md
+  - Pandas: pandas/index.md
   - Sub-projects:
-    - Python studies: https://github.com/jbcodeforce/python-code
     - Python and Spark: https://jbcodeforce.github.io/spark-studies
     - Python and data sciences: https://github.com/jbcodeforce/ml-basics
     - Astronomy statistics and image processing: astronomy/README.md

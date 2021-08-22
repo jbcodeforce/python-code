@@ -41,3 +41,4 @@ f.close()
 g = open( 'critics.txt','r' )
 d = json.load(g )
 print(d[' Toby'])
+

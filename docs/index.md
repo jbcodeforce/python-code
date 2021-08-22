@@ -19,7 +19,7 @@ This repository regroups a bench of python codes from my own self-training and s
 
 ## Techno summary
 
-In [separate note](python-summary.md) and [FAQ](faq.md)
+In [separate note](python/python-summary.md) and [FAQ](python/faq.md)
 
 ## Environment setup for development
 
