@@ -51,7 +51,7 @@ class Graph :
                 if (w < min) :
                     min = w
                     minEdge=v
-            # select the vertex which becomes current and remote it from the queue as we traverse it
+            # select the vertex which becomes current and remote it from the queue as we traversed it
             if (minEdge != None) :
                 result.append(minEdge)
                 currentV=minEdge
@@ -116,8 +116,14 @@ g.addEdge('h','g',1)
 print(g.graph)
 
 # compute minimum spanning tree
+print("Minimum spanning tree from a:")
 r=g.minSpanningTree('a')
 print(r)
+print("DFS on g from a")
+print(g.dfs('a'))
+print("BFS on g from a")
+print(g.breadth_first_search('a'))
+
 
 # build a tree
 t=Graph()

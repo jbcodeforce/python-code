@@ -1,4 +1,4 @@
-# Tree Traversal Algorithm is the process of vissting each node of a binary tree exactly once.
+# Tree Traversal Algorithm is the process of visiting each node of a binary tree exactly once.
 
 class Node:
     def __init__(self,data):
@@ -42,9 +42,9 @@ class Node:
     # Left -> Right  -> Root
     def PostOrderTraversal(self, nodes):
         if (self.getLeft() is not None):
-            self.getLeft().PreOrderTraversal(nodes)
+            self.getLeft().PostOrderTraversal(nodes)
         if (self.getRight() is not None):
-            self.getRight().PreOrderTraversal(nodes)
+            self.getRight().PostOrderTraversal(nodes)
         nodes.append(self.getValue())
         return nodes
 
