@@ -131,6 +131,8 @@ def word_search(documents, keyword):
 * Loop statements may have an else clause; it is executed when the loop terminates through exhaustion of the list (with for) or when the condition becomes false (with while), but not when the loop is terminated by a break statement
 * The pass statement does nothing. It can be used when a statement is required syntactically but the program requires no action.
 
+* See [Control Flow Tutorial](https://www.scaler.com/topics/python/control-flow-statements-in-python/)
+
 ### Exception
 
 ```python
