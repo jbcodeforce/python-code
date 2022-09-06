@@ -40,7 +40,38 @@ The `__init__.py` file makes Python treat directories containing it as modules. 
 pip freeze > requirements.txt
 ```
 
+## List content of folder
+
+```python
+import glob
+
+def listOfYaml():
+    return glob.glob("./*.yaml")
+```
+
+## Change content of yaml
+
+```python
+import glob
+import yaml
+
+def listOfYaml():
+    return glob.glob("./*.yaml")
+
+def processYamlFile(f):
+    with open(f) as aYaml:
+        listDoc = yaml.safe_load(aYaml)
+    print(listDoc)
+    listDoc["metadata"]["namespace"]='std-2'
+    print(listDoc)
+    
+
+f = listOfYaml()
+processYamlFile(f[0])
+
+```
 ## How to sort unit tests?
+
 
 Use TestSuite and TestRunner. See TestPerceptron.py for usage.
 
