@@ -17,7 +17,7 @@ cd Flask/firstApp
 # start docker image for dev environment
 docker run -ti -v $(pwd):/app -p 5000:5000 jbcodeforce/python37 bash
 # Can run it with python - it will start in debug mode
-python app.py
+python firstApp.py
 # Or run it with flask CLI
 export FLASK_APP=firstApp.py
 flask run --host=0.0.0.0

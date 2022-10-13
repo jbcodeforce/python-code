@@ -7,7 +7,7 @@ This app uses [Blueprint](https://realpython.com/flask-blueprint/) to organize t
 ```shell
 docker run --rm  --name pythonapp -v $(pwd):/app -it  -p 5000:5000 jbcodeforce/python37 bash 
 # Define the dependencies
-pipenv lock -r >requirements.txt
+pipenv lock -d >requirements.txt
 # Install those dependencies
 pip install -r requirements.txt
 ```
