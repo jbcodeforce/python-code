@@ -8,6 +8,7 @@ nav:
   - Web App with Flask: 
     - Flask studies and basic samples: flask/readme.md
     - Flask Rest microservice with TDD and Docker: flask/flask-tdd-docker.md
+  - AWS: aws/index.md
   - Web Data: webcrawling/readme.md
   - Pandas: pandas/index.md
   - Sub-projects:
