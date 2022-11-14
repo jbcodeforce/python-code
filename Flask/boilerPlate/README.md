@@ -1,6 +1,6 @@
 # Personal Boilerplate for Flask app
 
-This app uses [Blueprint](https://realpython.com/flask-blueprint/) to organize the code. It uses [Prometheus client](https://github.com/prometheus/client_python) to expose metrics API and instruments routes to expose metrics.
+This app uses [Blueprint](https://realpython.com/flask-blueprint/) to organize the code. It uses [Prometheus client](https://github.com/prometheus/client_python) to expose metrics API and instruments routes to expose metrics, and Swagger to expose API doc .
 
 ## Run in development mode
 
@@ -33,3 +33,7 @@ docker push jbcodeforce/pythonapp
 ## Deploy on OpenShift
 
 Use the k8s files.
+
+## Extends from this template
+
+Add Model class and new resources.

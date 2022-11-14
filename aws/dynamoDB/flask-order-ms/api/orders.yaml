@@ -1,0 +1,14 @@
+parameters:
+  - name: orderID
+    in: path
+    type: string
+    required: true
+definitions:
+  Order:
+    type: object
+    properties:
+      orderID: 
+        type: string
+responses:
+  200:
+    description: Get an order given its id

@@ -40,6 +40,17 @@ The `__init__.py` file makes Python treat directories containing it as modules. 
 pip freeze > requirements.txt
 ```
 
+## Access environment variable
+
+Define environment variables in a `.env` file, use os package:
+
+```python
+import os
+
+AWS_ACCESS_KEY_ID=os.environ.get("AWS_ACCESS_KEY_ID")
+AWS_SECRET_ACCESS_KEY=os.environ.get("AWS_SECRET_ACCESS_KEY")
+```
+
 ## List content of folder
 
 ```python

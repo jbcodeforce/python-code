@@ -4,9 +4,11 @@ The most complete starter code is from the Flask TDD tutorial and using docker. 
 
 ## Some concepts
 
-Flask app takes care of dispatching requests to view and routes.
+Flask app takes care of dispatching requests to views and routes.
 
 ## Samples
+
+To use a boiler plate code with Flask, Blueprint, Swagger, Prometheus see the [boiler plate](https://github.com/jbcodeforce/python-code/tree/master/Flask/boilerPlate) folder.
 
 ### The simplest Flask app
 
@@ -25,18 +27,19 @@ flask run --host=0.0.0.0
  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
 127.0.0.1 - - [17/Dec/2018 20:49:42] "GET / HTTP/1.1" 200 -
 ```
-The FLASK_APP environment variable is the name of the module to import at flask run.
+
+The FLASK_APP environment variable is the name of the module to import at `flask run`.
 
 To make the server publicly available simply by adding --host=0.0.0.0 to the command: `flask run --host=0.0.0.0`
 
 If we want to run it in debug mode then any change to the code reload itself. To do so use: 
 
-```
+```sh
 export FLASK_ENV=development
 flask run --host=0.0.0.0
 ```
 
-Next, is to use gunicorn to run it on top of a wsgi server so in the docker container:
+Next, is to use gunicorn to run it on top of a `wsgi` server so in the docker container add:
 
 ```shell
 gunicorn -w 4 -b 0.0.0.0:5000 firstApp:app
@@ -50,7 +53,7 @@ Which is the command in the dockerfile under the firstApp folder:
 
 Start the image with
 
-```
+```sh
 docker run --name firstApp --rm -p 5000:5000 jbcodeforce/firstApp
 ```
 
@@ -59,7 +62,7 @@ docker run --name firstApp --rm -p 5000:5000 jbcodeforce/firstApp
 
 Add a folder named static at the same level as app to start. The [staticApp.py](https://github.com/jbcodeforce/python-code/blob/master/Flask/staticServe/staticApp.py) demonstrates the routing specified and the api to send the file.
 
-```
+```python
 from flask import Flask
 app = Flask(__name__)
 
@@ -75,7 +78,7 @@ if __name__ == "__main__":
 
 and the execution:
 
-```
+```sh
 export FLASK_APP=staticApp.py
 flask run
  * Serving Flask app "staticApp"
@@ -87,13 +90,13 @@ flask run
 
 The route decorator is used to bind function to a URL. You can add variables and converter. The `firstRESTApp.py` illustrates the different patterns. The important modules to import are:
 
-```
+```python
 from flask import Flask, url_for, request, json
 ```
 
-Accessing the HTTP headers is done using the request.headers dictionary ("dictionary-like object") and the request data using the request.data string.
+Accessing the HTTP headers is done using the `request.headers` dictionary ("dictionary-like object") and the request data using the `request.data` string.
 
-A second nice module is Flask Restful. We can declare Resource class and use the API to link the resource to an URL.
+A second nice module is [Flask Restful](https://flask-restful.readthedocs.io/en/latest/). We can declare Resource class and use the API to link the resource to an URL.
 
 The following code illustrates the resource class, with an argument passed at the constructor level to inject it into the resource. In this case this is a Kafka consumer which includes a map of the message read. The class is using the Blueprint module to simplify the management of resource:
 
@@ -139,8 +142,12 @@ See [this repository](https://jbcodeforce.github.io/angular-sandbox) to a more c
 
 ### Flask TDD Docker
 
-See [this note](./flask-tdd-docker.md)
+See [this dedicated note](./flask-tdd-docker.md)
+
+### Flask with DynamoDB, ECR, Fargate
+
+See [Code and Readme](https://github.com/jbcodeforce/python-code/tree/master/aws/dynamoDB/flask-order-ms)
 
 ## Flask Blueprint
 
-Helps to structure the application in reusable components. To use in any [Flask Blueprint](https://realpython.com/flask-blueprint/), you have to import it and then register it in the application using register_blueprint(). A blueprint is an object that works like a flask app too. See the [boiler plate](https://github.com/jbcodeforce/python-code/blob/master/Flask/boilerPlate) example.
+Helps to structure the application in reusable components. To use in any [Flask Blueprint](https://realpython.com/flask-blueprint/), you have to import it and then register it in the application using `register_blueprint()`. A blueprint is an object that works like a flask app too. See the [boiler plate](https://github.com/jbcodeforce/python-code/blob/master/Flask/boilerPlate) example.

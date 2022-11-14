@@ -1,11 +1,14 @@
-# Python Studies
+# [Python Studies](http://jbcodeforce.github.io/python-code)
 
 Read in [book format](http://jbcodeforce.github.io/python-code)
 
+## Samples in this repo
+
+* See list [here](https://jbcodeforce.github.io/python-code/#code-in-the-order-of-knowledge-acquisition).
 
 ## Python shell tricks
 
-* placing cursor to previous line and enter will copy the line to a new line
+* Placing cursor to previous line and enter will copy the line to a new line.
 
 ## Dockerfiles
 

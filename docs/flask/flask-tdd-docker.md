@@ -1,7 +1,7 @@
 
 # Flask microservice with TDD and docker
 
-This is based on the tutorial from [tesdriven.io](https://testdriven.io/courses/tdd-flask). What it addresses are:
+This content is based on the tutorial from [tesdriven.io](https://testdriven.io/courses/tdd-flask) and covers:
 
 * [pipenv for virtual environment and dependencies management](https://github.com/pypa/pipenv)
 * [Flask Restful](https://flask-restful.readthedocs.io/en/latest/quickstart.html) where resources are build on top of Flask views
@@ -15,7 +15,7 @@ Here is a quick summary of things learnt.
 * [Pytest for unit and functional testing](https://docs.pytest.org/en/latest/)
 * [Blueprints for organizing code and components](https://flask.palletsprojects.com/en/1.1.x/blueprints/)
 
-The folder flask-tdd-docker includes the training code.
+The folder [Flask/flask-tdd-docker](https://github.com/jbcodeforce/python-code/tree/master/Flask/flask-tdd-docker) includes the training code.
 
 ## Set virtual env
 
@@ -24,6 +24,8 @@ The old way to define virtual environment was to use the following approach:
 ```shell
 python3.7 -m venv env
 source env/bin/activate
+# play with python ...
+# Stop with:
 deactivate
 ```
 
@@ -76,13 +78,13 @@ python manage.py run
 
 With the Flask shell we can explore the data in the application:
 
-```
+```sh
 flask shell
 ```
 
 ## Using docker and docker compose
 
-The dockerfile use alpine linux and non root user. The docker compose use volume to mount the code into the container. This is a must for a development environment in order to update the container whenever a change to the source code is made. Then build the image using docker compose.
+The dockerfile uses alpine linux and non root user. The docker compose uses volume to mount the code into the container. This is a must for a development environment in order to update the container whenever a change to the source code is made. Then build the image using docker compose.
 
 ```shell
 docker-compose build
@@ -114,7 +116,7 @@ users-db:
       - POSTGRES_PASSWORD=postgres
 ```
 
-Once spun up, Postgres will be available on port 5432 for services running in other containers. Be sure to include dependencies in the app dockerfile
+Once spun up, PostgreSQL will be available on port 5432. Be sure to include dependencies in the app dockerfile
 
 ```shell
 # install dependencies
@@ -126,9 +128,9 @@ RUN apk update && \
     pip install --upgrade --user pipenv 
 ```
 
-Also to avoid having the application getting error because it could not contact the database add a entrypoint.sh to loop until the database is accessible before starting the python app.
+Also to avoid having the application getting error because it could not contact the database add a `entrypoint.sh` shell to loop until the database is accessible before starting the python app.
 
-To access psql use the following docker compose command
+To access `psql`, use the following docker compose command
 
 ```shell
 docker-compose exec users-db psql -U postgres
