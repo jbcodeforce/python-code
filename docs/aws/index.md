@@ -76,3 +76,7 @@ orderTable.put_item(
 ```
 
 * Run it once the python virtual env is enabled with `python dynamoClient.py`
+
+### [CDK with python](https://jbcodeforce.github.io/aws-studies/coding/cdk/)
+
+Separate note in [AWS_Studies](https://jbcodeforce.github.io/aws-studies/coding/cdk/).

@@ -16,7 +16,7 @@ git clone https://github.com/jbcodeforce/python-code
 cd python-code
 ```
 
-## Use the different docker image
+## Use the different docker images
 
 The [DockerfileForEnv](https://github.com/jbcodeforce/python-code/blob/master/DockerfileForEnv) in the current project defines an image for running python 3.7 with Flask, pytest, panda and other basic libraries.
 
@@ -28,7 +28,7 @@ docker build -t jbcodeforce/python37 .
 
 Then start the image as container with the command below, which also mount your local folder to the `/home` folder inside the docker container:
 
-``` 
+```sh 
 docker run -e DISPLAY=192.168.1.89:0 --name pythonenv -v $(pwd):/home/ -it --rm -p 5000:5000 jbcodeforce/python37 bash
 ```
 
@@ -39,9 +39,9 @@ The docker image includes `pipenv` for improving the dependency management.
 
 The other Dockerfile for astrophysic is [Here](https://github.com/jbcodeforce/python-code/blob/master/astronomy/Dockerfile)
 
-### Use pipenv
+## Use pipenv
 
-[Pipenv](https://github.com/pypa/pipenv) offers the last best practices from other language to manage virtual environment and dependencies for Python. Adding and removing packages is also updating the dependencies descriptor file: Pipfile. It basically combine pip and virtualenv.
+[Pipenv](https://github.com/pypa/pipenv) offers the last best practices from other language to manage virtual environment and dependencies for Python. Adding and removing packages is also updating the dependencies descriptor file: Pipfile. It basically combine pip and virtualenv. It helps addressing build inconsistency that requirements.txt brings.
 
 To install it on the mac:
 
@@ -72,7 +72,7 @@ pipenv clean
 pipenv lock
 ```
 
-### Run the python interpreter
+## Run the python interpreter
 
 Start `python` in the container shell:
 
@@ -85,7 +85,7 @@ Python 3.7.4 (default, Jul  9 2019, 00:06:43)
 
 Use `exit()` to get out of the python interpreter, and Ctrl D for getting out of the Docker container.
 
-### Using graphics inside the python container 
+## Using graphics inside the python container 
 
 The approach is to run graphics program inside python interpreter, but the windows will appear on the host machine (the Mac). To do so we need a bidirectional communication between the docker container and the Mac. This is supported by the `socat` tool. To install it the first time do the following:
 
@@ -115,33 +115,3 @@ A white terminal window will pop up. The first time Xquartz is started,  open up
 
 See [this note from Nils De Moor](https://cntnr.io/running-guis-with-docker-on-mac-os-x-a14df6a76efc) for more information.
 
-## Using ODO
-
-To create a Python Flask app the starter code is under [https://github.com/odo-devfiles/python-ex](https://github.com/odo-devfiles/python-ex)
-
-```shell
-mkdir odo-python
-# create the devfile and download starter code and a .odo/env/env.yaml
-odo create python --starter
-# Deploy to OCP
-odo push
-# Get route to the app
-odo app describe 
-
-# remove the app
-odo app delete
-```
-
-The [devfile.yaml](https://redhat-developer.github.io/devfile/) has the definition of what to do on the app.
-
-`odo push` creates a k8s deployment, service and route definitions directly into OCP.
-
-To make the same things from a basic flask app like the one in Flask/helloworld/firstApp.py:
-
-* define the app
-* define a dockerfile 
-* build the image and push to registry
-* define appdeployment.yaml (see example in Flask/helloworld/k8s)[] with service and route
-* `oc apply -f k8s/appdeploy.yaml `
-* Access to the route URL
-* To keep the app updated, build, push the image and then delete running pod, as the imagePullPolicy was set to Always, the new image will be used.

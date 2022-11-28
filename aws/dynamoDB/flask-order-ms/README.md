@@ -16,6 +16,7 @@ This app uses [Blueprint](https://realpython.com/flask-blueprint/) to organize t
 ```shell
 docker run --rm  --name pythonapp -v $(pwd):/app -it  -p 5000:5000 jbcodeforce/python bash 
 pipenv shell
+pipenv lock
 pipenv install --dev
 ```
 Then use python shell: `python app.py` and point to http://localhost:5000 to get the API
@@ -25,22 +26,29 @@ Then use python shell: `python app.py` and point to http://localhost:5000 to get
 ```shell
 curl localhost:5000/health
 curl localhost:5000/metrics
+curl localhost:5000/api/v1/orders
 ```
 
 ## The Order resource
 
 
 ```sh
-curl localhost:5000/orders
+curl localhost:5000/api/v1/orders
 ```
 
 ## Dockerize
 
+And push it to ECR.
+
 ```shell
-docker build -t jbcodeforce/pythonapp .
-docker run --name firstApp --rm -p 5001:5000 jbcodeforce/pythonapp
-docker push jbcodeforce/pythonapp
+docker build -t 403993201276.dkr.ecr.us-west-2.amazonaws.com/jbcodeforce/flask-orderms .
+
+docker run -p 5000:5000 403993201276.dkr.ecr.us-west-2.amazonaws.com/jbcodeforce/flask-orderms
+docker push 403993201276.dkr.ecr.us-west-2.amazonaws.com/jbcodeforce/flask-orderms
+# If authentication token expire 
 ```
+
+## Deploy with Fargate
 
 ## Read more
 

@@ -17,14 +17,6 @@ This repository regroups a bench of python codes from my own self-training and s
 * Slow, not supporting well multi cpu / threading architecture
 * Not great for mobile and 3D game programming
 
-## Techno summary
-
-In [separate note](python/python-summary.md) and [FAQ](python/faq.md)
-
-## Environment setup for development
-
-See [separate note for using docker to start a development environment](dev-env.md)
-
 ## Code in the order of knowledge acquisition
 
 ### Basics
@@ -67,6 +59,10 @@ Use urllib and beautiful soup to remove html tags from a web page to get text to
 ### Astronomy
 
 See [detailed note here](astronomy/README.md) and code is under `astronomy` folder.
+
+### AWS
+
+To get some sample code to use AWS SDK [see this folder](https://github.com/jbcodeforce/python-code/blob/master/aws).
 
 ## Some tricks
 

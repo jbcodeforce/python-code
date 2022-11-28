@@ -1,6 +1,6 @@
 # A sample of using DynamoDB with SDK for python and CDK to create resources
 
-## CDK
+## CDK to deploy DynamoDB
 
 * Created with the command:
 
@@ -92,7 +92,7 @@ orderTable.put_item(
 
 ## A Flask App to manage Orders
 
-The code is under the folder `flask-order-ms`, and uses the boilerplate template. See the ReadMe to build it and build the docker image. 
+The code is under the folder `flask-order-ms`, and uses the boilerplate template. See the ReadMe file to build it and build the docker image. 
 
 To deploy the image to ECR do the following:
 

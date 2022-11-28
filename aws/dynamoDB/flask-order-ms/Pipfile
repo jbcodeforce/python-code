@@ -12,4 +12,4 @@ flasgger = ">=0.9.4"
 prometheus_client = "*"
 
 [requires]
-python_version = "3.9.14"
+python_version = ">=3.9"
