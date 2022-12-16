@@ -30,6 +30,19 @@ pipenv acts as pip + virtual environment. It uses Pipfile to replace requirement
       FILE = arg
 ```
 
+### Using [arg_parser](https://docs.python.org/3/howto/argparse.html)
+
+```python
+import argparse
+parser = argparse.ArgumentParser()
+parser.add_argument("filename", help="Must specify a file name")
+parser.add_argument("--append", help="Append records to existing file",action="store_true")
+args = parser.parse_args()
+if args.append:
+    print("append to file")
+    
+```
+
 ## what `__init__.py` under folder used for?
 
 The `__init__.py` file makes Python treat directories containing it as modules. Furthermore, this is the first file to be loaded in a module, so you can use it to execute code that you want to run each time a module is loaded, or specify the submodules to be exported.
@@ -81,6 +94,7 @@ f = listOfYaml()
 processYamlFile(f[0])
 
 ```
+
 ## How to sort unit tests?
 
 
@@ -180,6 +194,18 @@ c = [a, b]
 d = []
 for obj in [a, b, c, d]:
   print(obj, sys.getsizeof(obj))
+```
+
+## Using [CloudEvent](https://github.com/cloudevents/sdk-python)
+
+```python
+attributes = {
+      "type": "com.anycompany.bdcp.user",
+      "source": "https://anycompany.com/user-mgr",
+}
+data = { "eventType": "UserLogin", "username": "bob.the.builder@superemail.com"}
+event = CloudEvent(attributes, data)
+print(event)
 ```
 
 ## What is zip?
