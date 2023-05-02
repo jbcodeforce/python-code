@@ -10,7 +10,7 @@ flake8==3.7.9
 flask-admin==1.5.4
 flask-restful==0.3.7
 flask-sqlalchemy==2.4.1
-flask==1.1.1
+flask==2.2.5
 greenlet==1.0.0 ; python_version >= '3'
 gunicorn==20.0.4
 importlib-metadata==4.0.0 ; python_version < '3.8'
