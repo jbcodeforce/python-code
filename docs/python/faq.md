@@ -11,7 +11,7 @@ pipenv acts as pip + virtual environment. It uses Pipfile to replace requirement
 
 ```python
   import sys,getopt
-  USER="boyerje@us.ibm.com"
+  USER="jbcodeforce"
   FILE="./data/export-questions.json"
   try:
     opts, args = getopt.getopt(argv,"hi:u:",["inputfile=","user="])

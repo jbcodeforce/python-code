@@ -1,4 +1,4 @@
-FROM python:3.9
+FROM python:latest
 ENV PATH=/root/.local/bin:$PATH
 
 ENV PYTHONPATH=/app
@@ -6,7 +6,7 @@ ENV PYTHONPATH=/app
 RUN pip install --upgrade pip \
   && pip install pipenv requests  pytest numpy pandas flask gunicorn boto3
 
-RUN apt-get update && apt-get install vim
+RUN apt-get update 
 
 WORKDIR /app
 EXPOSE 5000
