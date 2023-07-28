@@ -5,7 +5,7 @@ Created on Jun 24, 2016
 '''
 import matplotlib.pyplot as plt
 import numpy as np
-import random
+
 
 
 plt.plot([1,2,3,2])

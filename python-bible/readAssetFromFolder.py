@@ -1,5 +1,6 @@
 #
-# Read a root folder like code and search for each directory and sub directories, and assess if this is a git hub repo
+# Read a root folder like code and search for each directory and sub directories, 
+# to assess if this is a git hub repo
 #
 
 import os,sys
