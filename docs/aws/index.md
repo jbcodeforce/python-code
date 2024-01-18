@@ -33,9 +33,9 @@ s3 = goto3.service("s3")
 s3.buckets.all()
 ```
 
-### Access DynamoDB
+### [Access DynamoDB](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/dynamodb.html)
 
-The client have can get the table name using the API client: 
+The client can get the table name using the API client: 
 
 ```python
 import os, boto3
@@ -76,6 +76,8 @@ orderTable.put_item(
 ```
 
 * Run it once the python virtual env is enabled with `python dynamoClient.py`
+* **scan** to run all items from a table. It performs eventually consistent reads
+* [**put_item**](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/dynamodb/client/put_item.html): If an item that has the same primary key as the new item already exists in the specified table, the new item completely replaces the existing item
 
 ### [CDK with python](https://jbcodeforce.github.io/aws-studies/coding/cdk/)
 

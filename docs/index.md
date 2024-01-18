@@ -64,6 +64,11 @@ See [detailed note here](astronomy/README.md) and code is under `astronomy` fold
 
 To get some sample code to use AWS SDK [see this folder](https://github.com/jbcodeforce/python-code/blob/master/aws).
 
+## Unit testing
+
+* [Pytest framework](https://docs.pytest.org/en/7.3.x/#)
+* [moto for backend mockup]http://docs.getmoto.org/en/latest/index.html)
+
 ## Some tricks
 
 * placing cursor to previous line and enter will copy the line to a new line

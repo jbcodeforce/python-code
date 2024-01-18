@@ -9,9 +9,6 @@ then
     name=$1
     port=$2
 fi
-if [[ -z "$IPADDR" ]]
-then
-    export IPADDR=$(ifconfig en0 |grep "inet " | awk '{ print $2}')
-fi
 
-docker run --rm -e DISPLAY=$IPADDR:0 -v /tmp/.X11-unix:/tmp/.X11-unix --name $name -v $(pwd):/app -it  -p $port:$port jbcodeforce/python bash 
+
+docker run --rm -e DISPLAY=host.docker.internal:0 -v /tmp/.X11-unix:/tmp/.X11-unix --name $name -v $(pwd):/app -it  -p $port:$port jbcodeforce/python bash 
