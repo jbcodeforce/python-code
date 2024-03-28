@@ -34,7 +34,7 @@ This repository regroups a bench of python codes from my own self-training and s
 
 * [Flask web app hello world](https://github.com/jbcodeforce/python-code/blob/master/Flask/helloworld/firstApp.py) then [REST API end point with Flask](https://github.com/jbcodeforce/python-code/blob/master/firstRESTApp.py) and staticApp.py
 * [Flask serving a simple angular App](https://jbcodeforce.github.io/angular-sandbox)
-* [TDD with Flask app and docker from testdriven.io course](https://github.com/jbcodeforce/python-code/tree/master/flask-tdd-docker)
+* [TDD with Flask app and docker from testdriven.io course](https://github.com/jbcodeforce/python-code/tree/master/Flask/flask-tdd-docker)
 
 
 ### Algorithms
@@ -66,6 +66,7 @@ To get some sample code to use AWS SDK [see this folder](https://github.com/jbco
 
 ## Unit testing
 
+* [unittest](https://docs.python.org/3/library/unittest.html#)
 * [Pytest framework](https://docs.pytest.org/en/7.3.x/#)
 * [moto for backend mockup]http://docs.getmoto.org/en/latest/index.html)
 

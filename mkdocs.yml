@@ -12,8 +12,9 @@ nav:
   - Web Data: webcrawling/readme.md
   - Pandas: pandas/index.md
   - Sub-projects:
+    - FastAPI: fastapi/index.md
     - Python and Spark: https://jbcodeforce.github.io/spark-studies
-    - Python and data sciences: https://jbcodeforce.github.io/ml-basics
+    - Python and data sciences: https://jbcodeforce.github.io/ML-studies
     - Astronomy statistics and image processing: astronomy/README.md
     - Flask webapp template with docker: https://github.com/jbcodeforce/python-code/tree/master/Flask/firstRESTapp
     - Kafka consumer and producer: https://jbcodeforce.github.io/kafka-studies
