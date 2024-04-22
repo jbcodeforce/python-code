@@ -276,3 +276,7 @@ A scope is a textual region of a Python program, where a namespace is directly a
     # Set the new labels
     graph.set_yticklabels(new_labels)
 ```
+
+
+???- question "How to program web socket server"
+    See [FastAPI doc](https://fastapi.tiangolo.com/advanced/websockets/) with [testing](https://fastapi.tiangolo.com/advanced/testing-websockets/) and matching code in [](https://github.com/jbcodeforce/python-code/tree/master/web-server/websocket_server)
