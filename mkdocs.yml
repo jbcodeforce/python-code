@@ -1,24 +1,29 @@
 site_name: Python code studies
 repo_url: https://github.com/jbcodeforce/python-code
 nav:
-  - Introduction: index.md
-  - Development environment: dev-env.md
-  - Summary: python/python-summary.md
-  - FAQ: python/faq.md
-  - Web App with Flask: 
+  - Introduction: 
+    - Basic: index.md
+    - Summary: python/python-summary.md
+    - Advanced: python/faq.md
+  - Coding:
+    - Development environment: coding/dev-env.md
+    - Design patterns: coding/dp.md
+    - Code studies: coding/references.md
+  - Data & AI:
+    - Pandas: data/pandas/index.md
+    - Web Data: data/webcrawling/readme.md
+    - Python and data sciences: https://jbcodeforce.github.io/ML-studies
+  - Web App:
+    - FastAPI: fastapi/index.md 
     - Flask studies and basic samples: flask/readme.md
     - Flask Rest microservice with TDD and Docker: flask/flask-tdd-docker.md
-  - AWS: aws/index.md
-  - Web Data: webcrawling/readme.md
-  - Pandas: pandas/index.md
-  - Sub-projects:
-    - FastAPI: fastapi/index.md
-    - Python and Spark: https://jbcodeforce.github.io/spark-studies
-    - Python and data sciences: https://jbcodeforce.github.io/ML-studies
-    - Astronomy statistics and image processing: astronomy/README.md
     - Flask webapp template with docker: https://github.com/jbcodeforce/python-code/tree/master/Flask/firstRESTapp
+    - Pydantic: python/pydantic.md
+  - Techno:
+    - AWS: techno/aws/index.md
+    - Python and Spark: https://jbcodeforce.github.io/spark-studies  
+    - Astronomy statistics and image processing: astronomy/README.md
     - Kafka consumer and producer: https://jbcodeforce.github.io/kafka-studies
-  - Compendium: python/compendium.md
   - Back to main: https://jbcodeforce.github.io/
 
 theme: 
