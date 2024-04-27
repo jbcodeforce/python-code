@@ -282,5 +282,12 @@ A scope is a textual region of a Python program, where a namespace is directly a
       See [FastAPI doc](https://fastapi.tiangolo.com/advanced/websockets/) with [testing](https://fastapi.tiangolo.com/advanced/testing-websockets/) and matching code in [websocket_server](https://github.com/jbcodeforce/python-code/tree/master/web_server/websocket_server)
 
 ???- question "Using async IO?"
-      async IO is a single-threaded, single-process design: it uses cooperative multitasking. [See this tutorial](https://realpython.com/async-io-python/): concurrency encompasses both multiprocessing (ideal for CPU-bound tasks) and threading (suited for IO-bound tasks). Async io is supported by `async` and `await` language keywords. Asynchronous routines are able to “pause” while waiting on their ultimate result and let other routines run in the meantime.  `await` passes function control back to the event loop
+      async IO is a single-threaded, single-process design: it uses cooperative multitasking. [See this tutorial](https://realpython.com/async-io-python/): concurrency encompasses both multiprocessing (ideal for CPU-bound tasks) and threading (suited for IO-bound tasks). Async io is supported by `async` and `await` language keywords. Asynchronous routines are able to “pause” while waiting on their ultimate result and let other routines run in the meantime.  `await` passes function control back to the event loop.
       See code in [api_stream](https://github.com/jbcodeforce/python-code/tree/master/web_server/api_stream/)
+      The `async def` create a native **coroutine**, or an asynchronous generator. `async for` and `async with` are generators too. To call a coroutine function, you must await it to get its results.
+      `test_stream()` is suspended until it gots results from `call_llm_astream()`:
+      ```python
+      async def test_stream():
+        await call_llm_astream()
+      ```
+      To tun a corouting, we need asyncio module and: `asyncio.run(test_stream())`
