@@ -1,23 +1,4 @@
 # Python Summary
- 
-See this good [tutorial from Programiz](https://www.programiz.com/python-programming#tutorial)
-
-Python is an interpreted Object Oriented & functional language. It organizes the code in modules.
-Use blank to indent code block. The coding style is known as PEP8.
-
-[3.9 release Product documentation](https://docs.python.org/3.9/library/index.html)
-
-## Getting started
-
-Start a python interpreter: `python3` and start entering python code, develop a progname.py file and use `python3 progname.py`, or add `#!/usr/bin/env python3` to make it self runnable.
-
-The code can be structured with function `def name():`  and then with our without a main part:
-
-```python
-if __name__ == "__main__":
-```
-
-Better to use main statement when using objects and classes.
 
 ## Concepts
 

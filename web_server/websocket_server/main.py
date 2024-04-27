@@ -48,7 +48,7 @@ app = FastAPI()
 
 class ConnectionManager:
     """
-    Used to keep active connection with the multiple clients
+    Used to keep active connection with multiple clients
     """
     def __init__(self):
         self.active_connections: list[WebSocket] = []
