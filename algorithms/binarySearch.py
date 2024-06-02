@@ -22,3 +22,21 @@ def binarySearch(sortedArray,target):
 
 a=[1,2,3,4,5,6,7,8,9,10,11,12]
 print(binarySearch(a,9))
+
+
+def search(sortedArray, v) -> bool:
+    m = len(sortedArray)
+    if m == 0:
+        return False
+    idx = m//2
+    print(f"a={sortedArray[idx]} and {sortedArray} and i:{idx}")
+    if sortedArray[idx] == v:
+        return True
+    elif sortedArray[idx] < v:
+        # search in [idx+1, m]
+        return search(sortedArray[idx+1:m],v)
+    else:
+        # search in [0, idx-1]
+        return search(sortedArray[0:idx],v)
+    
+print(search(a,9))
