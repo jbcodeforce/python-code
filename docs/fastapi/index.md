@@ -2,7 +2,12 @@
 
 [FastAPI](https://fastapi.tiangolo.com/) helps to build backend REST api in python.
 
+
 ## Boilerplate
+
+* Create a main with health and metrics routes
+* Add any specific routes for a business entities in its own router
+* Add dependencies to initialize singletons, reference as part of the dependencies
 
 ```python
 
