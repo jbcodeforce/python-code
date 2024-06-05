@@ -4,14 +4,17 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+
         
         {
             "name": "Python: Current File",
             "type": "python",
             "request": "launch",
             "program": "${file}",
+            //"module": "unittest",
             "console": "integratedTerminal",
-            "justMyCode": true
+            "justMyCode": true,
+            "env": { "PYTHONPATH": "${workspaceRoot}:${PYTHONPATH}:~/Code/Athena/athena-db/owl-agent-backend/src"}
         }
     ]
 }

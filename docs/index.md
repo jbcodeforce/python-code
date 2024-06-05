@@ -6,21 +6,21 @@ This repository regroup Python codes and notes from my own self-training and stu
 
 **Advantages:**
 
-* Interpreted with shell to start quickly, more concise language
-* May be now the 1st most used programming language
-* A lot of libraries, used a lot by data scientists
-* Combines functional and Object Oriented Programming.
+* Since 2022 may be the 1st most used programming language
+* A lot of libraries, used a lot by data scientists, data pipeline and web dev.
+* Combines functional and Object Oriented Programming, with support to dynamic class creation and dynamic function call.
+* Language of choices for Machine Learning development
 * Raspberry PI language of choice
 * Even new libraries are done to implement server side user interface, with project like Streamlit, [gradio.app](https://www.gradio.app/docs/), [Nice gui](https://nicegui.io/); [taipy](taipy.io)
 
 **Disadvantages:**
 
-* Slow, not supporting well multi cpu / threading architecture
+* Challenge in type enforcement and validation. Some tools are needed in IDE and adopting library like Pydantic.
 * Not great for mobile and 3D game programming
 
 ## Getting started
 
-See this good [tutorial from Programiz](https://www.programiz.com/python-programming#tutorial)
+See this good [tutorial from Programiz](https://www.programiz.com/python-programming#tutorial).
 
 Python is an interpreted Object Oriented & functional language. It organizes the code in modules.
 Use blank to indent code block. The coding style is known as PEP8.

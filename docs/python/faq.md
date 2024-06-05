@@ -54,6 +54,39 @@ The `__init__.py` file makes Python treat directories containing it as modules. 
 pip freeze > requirements.txt
 ```
 
+## Develop a module to be installable with pip
+
+See [this article](https://betterscientificsoftware.github.io/python-for-hpc/tutorials/python-pypi-packaging/), and [Python Packaging User Guide](https://packaging.python.org/en/latest/) summarized as:
+
+1. Create a python package (folder) with the setup.py in it. 
+
+  ```python
+  from setuptools import setup, find_packages
+
+  setup(
+      name="jb_module",
+      version="0.1.0",
+      description="The backend to support hybrid AI",
+      author="Jerome Boyer",
+      packages=find_packages(include=["acme"]),
+      install_requires=['uvicorn', 'fastapi', 'langchain-openai','langchain-anthropic','langchain_ibm','langchain_community',
+  'pydantic','python-multipart','python-dotenv','markdown','chromadb','pypdf'], 
+  )
+  ```
+
+1. `pip3 install setuptool`
+1. install in current virtual env: `pip install .` or `pip install --upgrade .`. Install with `pip uninstall jb_module`
+1. Add a `__init__.py` file under the jb_module folder specify version...
+
+  ```python
+  __version__ = "0.1.0"
+  __author__ = 'Jerome Boyer'
+  __credits__ = ''
+  ```
+1. Create a source distribution with: `python setup.py sdist`, it contains a compressed archive of the package
+1. Install twine to be able to upload to PyPi: `pip install twine`
+1. Push the package to test.pypi.org
+
 ## Access environment variable
 
 Define environment variables in a `.env` file, use os package:
