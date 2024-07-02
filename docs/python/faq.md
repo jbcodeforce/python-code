@@ -10,12 +10,14 @@ pipenv acts as pip + virtual environment. It uses Pipfile to replace requirement
 
 ## How to get program arguments?
 
+See [getopt](https://docs.python.org/3/library/getopt.html)
+
 ```python
   import sys,getopt
   USER="jbcodeforce"
   FILE="./data/export-questions.json"
   try:
-    opts, args = getopt.getopt(argv,"hi:u:",["inputfile=","user="])
+    opts, args = getopt.getopt(sys.argv,"hi:u:",["inputfile=","user="])
   except getopt.GetoptError:
     print(usage())
     sys.exit(2)
