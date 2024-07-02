@@ -6,12 +6,12 @@ This repository regroup Python codes and notes from my own self-training and stu
 
 **Advantages:**
 
-* Since 2022 may be the 1st most used programming language
-* A lot of libraries, used a lot by data scientists, data pipeline and web dev.
+* Since 2022 Python is maybe the 1st most used programming language
+* A lot of libraries, used by a lot of data scientists, data pipeline and web dev.
 * Combines functional and Object Oriented Programming, with support to dynamic class creation and dynamic function call.
 * Language of choices for Machine Learning development
 * Raspberry PI language of choice
-* Even new libraries are done to implement server side user interface, with project like Streamlit, [gradio.app](https://www.gradio.app/docs/), [Nice gui](https://nicegui.io/); [taipy](taipy.io)
+* Even new libraries are done to implement server side user interface, with project like Streamlit, [gradio.app](https://www.gradio.app/docs/), [Nice gui](https://nicegui.io/); [taipy](https://taipy.io)
 
 **Disadvantages:**
 
@@ -27,16 +27,11 @@ Use blank to indent code block. The coding style is known as PEP8.
 
 [3.12 Release Product documentation](https://docs.python.org/3.12/library/index.html)
 
-Use virtual environment to avoid impacting operating system python own libraries.
+[For dev environment setting see the coding note](./coding/dev-env.md).
 
-```sh
-# create one virtual env: it can be reused between a lot of project.
-python -m venv .venv
-# on windows
-source .venv/Scripts/activate
-# on Mac
-source .venv/activate
-```
+### VSCode and python extension
+
+[See dedicated getting started summary](./coding/dev-env.md/#vscode)
 
 ## Python readings
 

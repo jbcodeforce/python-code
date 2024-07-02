@@ -13,6 +13,7 @@ Output: true
 """
 
 def duplicate_in(nums)-> bool:
+    # Use an array to keep encountered values
     encounters = []
     for i in nums:
         if i not in encounters:
