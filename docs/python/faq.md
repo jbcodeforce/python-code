@@ -1,6 +1,6 @@
 # Python FAQ
 
-## Why pipenv
+## Why pipenv?
 
 pipenv resolves the problem of dependencies management, that is not perfectly done in the requirements.txt, which leads to under deterministic build process. Given the same input (the requirements.txt file), pip doesn’t always produce the same environment. `pip freeze` helps to freeze the dependencies and update the
  requirements.txt. But any dependency change needs to be done manually, and you need to track the dependent package version, for bug fix, or mandatory security fixes.
@@ -46,11 +46,27 @@ if args.append:
     
 ```
 
+## Pass a variable number of arguments to a function
+
+We can pass a variable number of arguments to a function using special symbols:
+
+* *args (Non-Keyword Arguments): take in more arguments than the number of formal arguments that you previously defined
+* **kwargs (Keyword Arguments):  used to pass a keyworded, variable-length argument list.
+
+```python
+def myFun(**kwargs):
+    for key, value in kwargs.items():
+        print("%s == %s" % (key, value))
+```
+
+
 ## what `__init__.py` under folder used for?
 
 The `__init__.py` file makes Python treat directories containing it as modules. Furthermore, this is the first file to be loaded in a module, so you can use it to execute code that you want to run each time a module is loaded, or specify the submodules to be exported.
 
 ## How to get program dependencies generated?
+
+To be able to run the python program at any time in the future, it is recommended to freeze the dependencies, so the requirements.txt will have the compatible module versions. 
 
 ```shell
 pip freeze > requirements.txt
@@ -139,7 +155,7 @@ processYamlFile(f[0])
 ## How to sort unit tests?
 
 
-Use TestSuite and TestRunner. See TestPerceptron.py for usage.
+Use `TestSuite` and `TestRunner`. See TestPerceptron.py for usage.
 
 ```python
 import unittest
@@ -177,6 +193,8 @@ move=random.choice(possibleMoves)
 
 ```python
 import logging
+LOGGER = logging.getLogger(__name__)
+LOGGER.info("an interesting string")
 ```
 
 Start python with the `--log=INFO` to set the logging level.
