@@ -15,4 +15,4 @@ pyyaml==5.4.1
 six==1.15.0
 typing-extensions==3.7.4.3 ; python_version < '3.8'
 werkzeug==3.0.1
-zipp==3.4.1
+zipp==3.19.1
