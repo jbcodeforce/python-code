@@ -337,16 +337,34 @@ A scope is a textual region of a Python program, where a namespace is directly a
 ```
 
 
-???- question "How to program web socket server"
-      See [FastAPI doc](https://fastapi.tiangolo.com/advanced/websockets/) with [testing](https://fastapi.tiangolo.com/advanced/testing-websockets/) and matching code in [websocket_server](https://github.com/jbcodeforce/python-code/tree/master/web_server/websocket_server)
+## How to program web socket server?
 
-???- question "Using async IO?"
-      async IO is a single-threaded, single-process design: it uses cooperative multitasking. [See this tutorial](https://realpython.com/async-io-python/): concurrency encompasses both multiprocessing (ideal for CPU-bound tasks) and threading (suited for IO-bound tasks). Async io is supported by `async` and `await` language keywords. Asynchronous routines are able to “pause” while waiting on their ultimate result and let other routines run in the meantime.  `await` passes function control back to the event loop.
-      See code in [api_stream](https://github.com/jbcodeforce/python-code/tree/master/web_server/api_stream/)
-      The `async def` create a native **coroutine**, or an asynchronous generator. `async for` and `async with` are generators too. To call a coroutine function, you must await it to get its results.
-      `test_stream()` is suspended until it gots results from `call_llm_astream()`:
-      ```python
-      async def test_stream():
-        await call_llm_astream()
-      ```
-      To tun a corouting, we need asyncio module and: `asyncio.run(test_stream())`
+See [FastAPI doc](https://fastapi.tiangolo.com/advanced/websockets/) with [testing](https://fastapi.tiangolo.com/advanced/testing-websockets/) and matching code in [websocket_server](https://github.com/jbcodeforce/python-code/tree/master/web_server/websocket_server)
+
+## Using async IO
+
+**Multiprocessing** is ideal for CPU-bound tasks (for-loop code) and uses multiple core to run code in parallel. **Concurrency** is the property to run in an overlapping manner. **Threading** is a concurrent execution model whereby multiple threads take turns executing tasks. Threads are used for IO-bound jobs (waiting on input/output to complete).
+The Python aAsync IO is a single-threaded, single-process design: it uses **cooperative multitasking**. [See this tutorial](https://realpython.com/async-io-python/#the-rules-of-async-io): Async io is supported by `async` and `await` language keywords. Asynchronous routines are able to *pause* while waiting on their ultimate result and let other routines run in the meantime. async model is built around concepts such as callbacks, events, transports, protocols, and futures. `await` passes the function control back to the event loop. A **coroutine** is a function that can suspend its execution before reaching return. The `async def` for a function, creates a native **coroutine**, or an asynchronous generator.
+See code in [api_stream](https://github.com/jbcodeforce/python-code/tree/master/web_server/api_stream/).
+  `async for` and `async with` are generators too. To call a coroutine function, you must await it to get its results.
+`test_stream()` is suspended until it got the results from `call_llm_astream()`:
+
+```python
+async def test_stream():
+  await call_llm_astream()
+```
+
+To run a corouting, we need the python asyncio module:
+
+```python
+async def main():
+  await call_to_an_async_function()
+
+if __name__ == "__main__":
+    asyncio.run(main())
+```
+
+**yield** keyword in an `async def` block creates an asynchronous generator, which you iterate over with `async for`. A generator defined await and next methods. So it pushes value to calling stack at the yield level, but it also keeps a hold of its local variables when the program resume it by calling next() on it (`async for` calls the next() implicitly as it is a asynchronous iterator). 
+
+By default, an async IO event loop runs in a single thread and on a single CPU core.
+       
