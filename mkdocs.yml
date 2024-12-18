@@ -7,6 +7,7 @@ nav:
     - Advanced: python/faq.md
   - Coding:
     - Development environment: coding/dev-env.md
+    - Project mgt with uv: techno/uv.md
     - Design patterns: coding/dp.md
     - Code studies: coding/references.md
   - Data & AI:
