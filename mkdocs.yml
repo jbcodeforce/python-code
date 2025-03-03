@@ -10,6 +10,7 @@ nav:
     - Project mgt with uv: techno/uv.md
     - Design patterns: coding/dp.md
     - Code studies: coding/references.md
+    - Building CLI: coding/building-cli.md
   - Data & AI:
     - Pandas: data/pandas/index.md
     - Web Data: data/webcrawling/readme.md
