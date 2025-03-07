@@ -18,6 +18,8 @@ The git repository should have source code for the different components, mkdoc d
         
     tests
 
+[See my CLI for shift-left project](https://github.com/jbcodeforce/shift_left_utils/tree/main/src/shift_left)
+
 ## Click
 
 See [Click product documentation](https://click.palletsprojects.com/en/stable/), here are some valuable arguments for click:
@@ -127,3 +129,11 @@ uv build
 ```
 
 * Share the wheel and install in a python env via pip or uv
+
+## Some tricks
+
+* Get the full documentation in markdown of all the options
+
+```
+typer src/shift_left/cli.py utils docs
+```
