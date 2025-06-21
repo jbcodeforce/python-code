@@ -1,12 +1,35 @@
 # uv
 
-[uv](https://docs.astral.sh/uv/) is an extremely fast Python package and project manager. 
+[uv](https://docs.astral.sh/uv/) is an extremely fast Python package (to replace pip) and project manager (for virtual env). 
 
 ## Value propositions
 
 * uv manages project dependencies and environments.
-* uv installs Python and allows quickly switching between versions.
-* it is a replacement for common pip, pip-tools, and virtualenv commands
+* uv installs different Python version and allows switching between versions.
+* optimize dependencies caching and avoid deduplication
 
 [See features list and basic commands](https://docs.astral.sh/uv/getting-started/features/)
 
+
+## Getting started:
+
+* [installation](https://docs.astral.sh/uv/getting-started/installation/)
+* Common commands:
+    ```sh
+    uv python install: Install Python versions.
+    uv python list: View available Python versions.
+    uv python find: Find an installed Python version.
+    uv run: Run a script.
+    uv add --script: Add a dependency to a script
+    uv remove --script: Remove a dependency from a script
+    ```
+
+* Work with [virtual environment]()
+* Work with [tools](https://docs.astral.sh/uv/guides/tools/) to publish as python package
+    ```sh
+    uv tool run: Run a tool in a temporary environment.
+    uv tool install: Install a tool user-wide.
+    uv tool uninstall: Uninstall a tool.
+    uv tool list: List installed tools.
+    uv tool update-shell: Update the shell to include tool executables.
+    ```
