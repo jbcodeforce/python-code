@@ -33,3 +33,16 @@
     uv tool list: List installed tools.
     uv tool update-shell: Update the shell to include tool executables.
     ```
+    
+## Some interesting things to do
+
+* Check version: `uv version`
+* Use different python version
+* Use / create project (create a `pyproject.toml`) [See project guide.](https://docs.astral.sh/uv/guides/projects/)
+* Run script in the context of a project to get access to modules: `uv run python ...`
+* Manage dependencies: `uv add --script` or `uv remove --script`
+* [Full CLI reference](https://docs.astral.sh/uv/reference/cli/)
+
+## Projects I am using it
+
+* [Move to real-time with Shift left](https://jbcodeforce.github.io/shift_left) to develop a CLI
