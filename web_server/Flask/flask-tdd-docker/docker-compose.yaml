@@ -1,4 +1,4 @@
-version: '3.7'
+version: '3.8'
 
 services:
   users:
@@ -8,6 +8,8 @@ services:
     entrypoint: ['/usr/src/app/entrypoint.sh'] 
     volumes:
       - .:/usr/src/app
+      # Use anonymous volume for any potential .venv directory
+      - /usr/src/app/.venv
     ports:
       - 5001:5000
     environment:
