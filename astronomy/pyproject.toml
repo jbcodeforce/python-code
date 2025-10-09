@@ -1,0 +1,12 @@
+[project]
+name = "astronomy"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "astropy>=7.1.0",
+    "matplotlib>=3.10.7",
+    "numpy>=2.3.3",
+    "scipy>=1.16.2",
+]

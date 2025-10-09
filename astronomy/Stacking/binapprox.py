@@ -6,7 +6,7 @@ binapprox algorithm to caculate mediam of a list of numbers. The idea behind it 
 '''
 def median_bins(data, nb_of_bins):
     '''
-    data is a histogram of values
+    data is a histogram of values: Array of integers
     calculate the mean, standard deviation of all those values
     set the bounds as min and max val: one standard deviation from the mean.
     ignore every  values > max and < min
@@ -140,8 +140,17 @@ def median_approx_fits(images, nb_of_bins):
 
 if __name__ == '__main__':
   print("---------- Play with some array of numbers -----------")
-  print(median_bins([1, 1, 3, 2, 2, 6], 3))
-  print(median_approx([1, 1, 3, 2, 2, 6], 3))
+  print("---------- estimate the median of a list of numbers -----------")
+  mean, std, left_bin, bins = median_bins([1, 1, 3, 2, 2, 6], 3)
+  print(f"series of numbers: [1, 1, 3, 2, 2, 6], bins: 3, median_bins(): mean: {mean}, std: {std}, left_bin: {left_bin}, bins: {bins}")
+  print(f"series of numbers: [1, 1, 3, 2, 2, 6], bins: 3, median_approx: {median_approx([1, 1, 3, 2, 2, 6], 3)}")
+  print(f"series of numbers: [1, 5, 7, 7, 3, 6,1,1], bins: 4, median: {median_approx([1, 5, 7, 7, 3, 6,1,1], 4)}")
+  print(f"series of numbers: [0,1], bins: 5, median: {median_approx([0,1],5)}")
+  print("---------- estimate the median of each pixel from a set of astronomy images in FITS files. -----------")
+  print(f"series of numbers: [1, 1, 3, 2, 2, 6], bins: 3, median: {median_bins([1, 1, 3, 2, 2, 6], 3)}")
+  print(f"series of numbers: [1, 1, 3, 2, 2, 6], bins: 3, median: {median_approx([1, 1, 3, 2, 2, 6], 3)}")
+  print(f"series of numbers: [1, 5, 7, 7, 3, 6,1,1], bins: 4, median: {median_approx([1, 5, 7, 7, 3, 6,1,1], 4)}")
+  print(f"series of numbers: [0,1], bins: 5, median: {median_approx([0,1],5)}")
   print(median_approx([1, 5, 7, 7, 3, 6,1,1], 4))
   print(median_approx([0,1],5))
   print("---------- estimate the median of each pixel from a set of astronomy images in FITS files. -----------")

@@ -1,6 +1,9 @@
 # Astronomy code study
 
-See [the note on deep dive theory]()
+Update 10/08/2025: move to uv and new libraries
+
+See [the notes from Coursera Data Driven Astronomy](https://jbcodeforce.github.io/python-code/astronomy/)
+
 
 ## How to run those code?
 

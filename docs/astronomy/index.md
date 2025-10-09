@@ -1,27 +1,36 @@
 # Python programming for astronomy
 
-The [dockerfile](https://github.com/jbcodeforce/python-code/blob/master/astronomy/Dockerfile) defines a python env with astropy, matplotlib, numpy,scipy...
-
-To build and run it:
-
-```
-docker build -t quay.io/jbcodeforce/mypythonplay .
-docker run -ti quay.io/jbcodeforce/mypythonplay bash
-```
+???- info "Updates"
+    Created 2019
+    Update 10/2025
 
 ## Pulsars
 
-The goal is to answer: *how many pulsars are detected in images taken with the Murchison Widefield Array telescope?* 
-The array telescope, detects radio emission at frequencies between 80 and 300 megahertz. It has a very large field of view, which means it's great for doing large survey projects.
-Images has using a grayscale to measure the flux density of emission from astronomical objects. Black is high flux density and gray is the background noise. Radio frequencies don't have color. These color maps are just used to accentuate different aspects of the intensity scale.
+In 1967, a Cambridge University Ph.D. Student named Jocelyn Bell found something strange in her radio Astronomy Data: a regular pulse.
 
-In radio astronomy, flux density is measured in units of Janskys, which is equivalent to 10 to the power of -26 watts per square meter per hertz.
+When an old large star runs out of nuclear fuel, it rapidly collapses under its own gravity. The star's core suddenly transforms into a super dense ball of neutrons, and the outer layers of the star bounce off in a massive explosion of light and energy, a supernova. 
+
+The law of conservation of angular momentum says, that when a star collapses the rotation speeds up. So, a neutron star could be spinning anything from once a second to tens or even hundreds of times a second. Also stars have magnetic fields, neutron stars would have incredibly intense magnetic fields. Charged particles in the super-hot plasma surrounding a neutron star, would get funneled towards the stars magnetic poles and shot out into space as **two intense beams**. Combining with rapid rotation, it becomes a flashing beams across the universe: **A Pulsar**
+
+The goal is to be able to answer: 
+
+*how many pulsars are detected in images taken with the Murchison Widefield Array telescope?*    
+
+The array telescope, detects radio emission at frequencies between 80 and 300 megahertz. It has a very large field of view, which means it's great for doing large survey projects.
+
+![](./images/MWA-image-1.png){ align=left width=400 } Images has using a grayscale to measure the flux density of emission from astronomical objects. Black is high flux density and gray is the background noise. 
+
+Radio frequencies don't have color. These color maps are just used to accentuate different aspects of the intensity scale.
+
+In radio astronomy, flux density is measured in units of **Janskys**, which is equivalent to 10 to the power of -26 watts per square meter per hertz.
 
   <img src="https://latex.codecogs.com/gif.latex?1&space;Jy&space;=&space;10^{-26}\frac{W}{m^{2}.Hz}" title="1 Jy = 10^{-26}\frac{W}{m^{2}.Hz}" />)
 
+In other words, flux density is a measure of the spectral power received by a telescope detector of unit projected area.
+
 Astronomy images are usually stored in a file format called FITS, and to view them you can download software like DS9 or use an online tool like [Aladin](https://aladin.u-strasbg.fr/).
 
-We typically call something a detection if the flux density is more than five standard deviations higher than the noise in the local region.
+We typically call something a **detection**, if the flux density is more than five standard deviations higher than the noise in the local region.
 
 To search from non-detection, a special approach is used called **Stacking** which  measures the statistical properties of a population we can't detect. Stacking works because the noise in a radio image is roughly random, with a Gaussian distribution centered on zero. When you add regions of an image that just have noise, the random numbers cancel out. But when you add regions of an image in which there are signals, the signals add together, increasing what we call the signal to noise ratio.
 
@@ -50,7 +59,11 @@ def search_brightest_pixel(fname):
   return x,y
 ```
 
-A better approach is to use the median (the middle of the sorted data set), as the mean is easily skewed by outliers. But getting median could get computational intensive and consuming a lot of memory as calculating the median requires all the data to be in memory at once. This is an issue in typical astrophysics calculations, which may use hundreds of thousands of FITS files. To compute the median we can use the statistics library, or the following approach:
+The problem is that we load all the image in memory.
+
+A better approach is to use the median (the middle of the sorted data set), as the mean is easily skewed by outliers. (See program: [astronomy/plot_mean_mediam.py](https://github.com/jbcodeforce/python-code/tree/master/astronomy/plot_mean_mediam.py))
+
+But getting median could get computational intensive and consuming a lot of memory as calculating the median requires all the data to be in memory at once. This is an issue in typical astrophysics calculations, which may use hundreds of thousands of FITS files. To compute the median we can use the statistics library, or the following approach:
 
 ```python
 fluxes = [17.3, 70.1, 22.3, 16.2, 20.7]
@@ -70,6 +83,7 @@ median = np.median(stack, axis=2)
 ```
 
 To avoid loading all the data in memory, we can use the [binapprox algorithm](http://www.stat.cmu.edu/~ryantibs/papers/median.pdf) to approximate the current median. The idea behind it is to find the median from the data's histogram.
+
 Starting from the left, if we sum up the counts in the histogram bins until we get to just over the expected mediam then we know the last bin we added must have contained the median. In fact it is better to search in bins around the standard devision of the mean. See [Stacking/binapprox.py](https://github.com/jbcodeforce/python-code/blob/master/astronomy/Stacking/binapprox.py) code.
 
 ## AGN: Active Galactic Nucleus

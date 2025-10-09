@@ -5,6 +5,7 @@ nav:
     - Basic: index.md
     - Summary: python/python-summary.md
     - Advanced: python/faq.md
+    - Astronomy statistics and image processing: astronomy/index.md
   - Coding:
     - Development environment: coding/dev-env.md
     - Project mgt with uv: techno/uv.md
@@ -24,7 +25,7 @@ nav:
   - Techno:
     - AWS: techno/aws/index.md
     - Python and Spark: https://jbcodeforce.github.io/spark-studies  
-    - Astronomy statistics and image processing: astronomy/README.md
+
     - Kafka consumer and producer: https://jbcodeforce.github.io/kafka-studies
   - Back to main: https://jbcodeforce.github.io/
 
