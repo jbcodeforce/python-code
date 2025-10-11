@@ -88,7 +88,13 @@ Starting from the left, if we sum up the counts in the histogram bins until we g
 
 ## AGN: Active Galactic Nucleus
 
-Our eyes can only detect light and the visible part of the electromagnetic spectrum.  Galaxy has Xray, visible and radio waves. At the center of the galaxy is a black hole, which has a huge impact on the galaxy's growth and formation. In cases where there is a lot of gas in the central region of the galaxy, this material can be accreted on to the black hole via an Accretion Disk, releasing a lot of energy in the process. This is what we call, an Active Galactic Nucleus. The radiation produced by the AGN is so bright that it can outshine the entire galaxy, producing far more energy than all of the galaxy's stars combined. It may form huge jets of strong magnetic fields emanating out from around the black hole. Here is an image of combined wave length from visible, X-ray and radio
+Our eyes can only detect light and the visible part of the electromagnetic spectrum.  Galaxy has Xray, visible and radio waves. At the center of the galaxy is a black hole, which has a huge impact on the galaxy's growth and formation. In cases where there is a lot of gas in the central region of the galaxy, this material can be accreted on to the black hole via an Accretion Disk, releasing a lot of energy in the process. This is what we call, an Active Galactic Nucleus. The radiation produced by the AGN is so bright that it can outshine the entire galaxy, producing far more energy than all of the galaxy's stars combined. It may form huge jets of strong magnetic fields emanating out from around the black hole. 
+
+![](./images/wave_length_black_hole.png){ align=right width=400 }Not all galaxies have AGN and not all AGN produce radio jets. While infrared radiation comes from the dusty regions that surround the black hole. The jets produce a lot of radio emissions and hot gas surrounding the central black hole region can produce x-ray emissions.
+
+
+
+Here is an image of combined wave lengths from visible, X-ray and radio:
 
 ![Galaxy in 3 wave lengths](./images/galaxy-3w.png)
 
@@ -98,11 +104,11 @@ The material that accretes onto a black hole produce X-rays, because particle ar
 
 When investigating astronomical objects, like active galactic nuclei (AGN), astronomers compare data about those objects from different telescopes at different wavelengths. This requires positional **cross-matching** to find the closest counterpart within a given radius on the sky.
 
-To create a catalog of object from survey images, the source-finding software uses the same technics of going through all the pixels and find peaks that are statistically significant.
+To create a catalog of objects from survey images, the source-finding software uses the same technics of going through all the pixels and find peaks that are **statistically significant**.
 
 How to calculate distance in the sky? Two objects in the same image are not in the same plane, we can compute the angular distance but they may be far aways on those line.
 
-The cross matching between 2 catalogs: The BSS catalogue lists the brightest sources from the AT20G radio survey while the SuperCOSMOS catalogue lists galaxies observed by visible light surveys.
+The cross matching between 2 catalogs: The BSS catalogue lists the brightest sources from the AT20G radio survey while the SuperCOSMOS catalog lists galaxies observed by visible light surveys.
 
 The positions of stars, galaxies and other astronomical objects are usually recorded in either equatorial or Galactic coordinates.
   
@@ -111,18 +117,38 @@ The positions of stars, galaxies and other astronomical objects are usually reco
 
 The **vernal equinox** is the intersection of the celestial equator and the ecliptic where the ecliptic rises above the celestial equator going further east.
 
+<figure markdown=span>
 ![](https://groklearning-cdn.com/modules/5JAX7dX9j4wdXKXRHwyECd/Ra_and_dec_demo.gif)
+</figure>
 
-To crossmatch two catalogues we need to compare the angular distance between objects on the celestial sphere, which is the projected angle between objects as seen from Earth.
+To crossmatch two catalogs we need to compare the angular distance between objects on the celestial sphere, which is the projected angle between objects as seen from Earth.
 
-See [cross-matching.py code](https://github.com/jbcodeforce/python-code/blob/master/astronomy/CrossMatching/cross-matching.py) for in place comments and study. But this program is in O(n*m), there is a [Astropy]() library with cross marching, using [k-d-tree](https://en.wikipedia.org/wiki/K-d_tree) as demonstrated in [this code](https://github.com/jbcodeforce/python-code/blob/master/astronomy/CrossMatching/cross-matching-astropy.py)).
+See [cross-matching.py code](https://github.com/jbcodeforce/python-code/blob/master/astronomy/CrossMatching/cross-matching.py) for in place comments and study. But this program is in O(n*m), there is a [Astropy](https://www.astropy.org/) library with cross marching, using [k-d-tree](https://en.wikipedia.org/wiki/K-d_tree) as demonstrated in [this code](https://github.com/jbcodeforce/python-code/blob/master/astronomy/CrossMatching/cross-matching-astropy.py)).
 
+<figure markdown=span>
 ![](./images/k-d-tree.png)
+</figure>
+A  k-d tree, or k-dimensional tree, is a way of representing the points in space in a recursive structure. K is the number of dimensions, which in our case are the two dimensions of our coordinate system, right ascension and declination. To construct a k-d tree, you have to recursively partition the space at the median point each time.
+
+The median point here in the x dimension is A. And so we split the plane at that point, and A becomes the root node of the tree. We then consider points to the left of A and split the plane in the y dimension. And again, at the median point, which is E. We repeat this process, alternating between the x and y dimensions, until the left-hand side of the tree is complete. 
+
+Another important issue is how you can evaluate whether your matches are just chance coincidences. Or whether the galaxies have a real, physical association. 
+When we can measure redshift for our objects, we can establish that they're at the same distance.
+
+Nearly all of our radio sources have an optical counterpart, which means we can classify them into two different categories.
+
+* Most of our radio galaxies are associated with quasars. Where we're looking towards the central black hole and can see the very energetic accretion disk. The radiation from the accretion disk is so bright that it outshines all of the stars in the galaxy. And therefore, looks just like a bright star, hence the name, quasi-stellar object, or quasar.
+    <figure markdown=span>
+    ![](./images/quasar.png)
+    </figure>
+
+* The rest of our radio galaxies sit inside normal galaxies, where we can see a cloud of many stars grouped together. This could mean that the supermassive black hole has stopped accreting material. And the radio jets are remnants of past activity. 
 
 ## Statistic / data science helps Astronomy
 
 Data could not answer directly what you want to find. so we can use probability theory to assess if the data provide answer.
-The approach is to try to assert hypothesis and derive what kind of data we should expect to see. Then you use the fit model approach by selecting the hypothesis that fit the best the data and throw away the ones that dont fit the data.
+The approach is to try to assert hypothesis and derive what kind of data we should expect to see. Then you use the fit model approach by selecting the hypothesis that fit the best the data and throw away the ones that don't fit the data.
+
 2016 set a record for the biggest haul of exoplanets, when the Kepler team applied statistical validation to verify over a thousand new planets.
 
 ## Exoplanets 

@@ -9,61 +9,7 @@ Source A from  the AT20G Survey http://cdsarc.u-strasbg.fr/viz-bin/Cat?J/MNRAS/3
 '''
 import numpy as np
 import time
-
-def angular_dist(ar1,dr1, ar2, dr2):
-    '''
-     calculates the angular distance between any two points on the celestial sphere given 
-     their right ascension (a) and declination (d)
-    '''
-    p1 = np.sin( np.abs( dr1 - dr2 ) /2 )**2
-    p2 = np.cos(dr1) * np.cos(dr2) * np.sin( np.abs( ar1 - ar2 ) /2 ) **2
-    return 2 * np.arcsin( np.sqrt(  p1 + p2 ))
-                
-
-def hms2dec(h, m, s):
-    '''
-    convert hour minutes second to declination
-    '''
-    return 15 * (h +  m / 60 + s / 3600)
-
-def dms2dec(d,m,s):
-    '''
-    convert Degrees minutes second to declination
-    '''
-    if ( d < 0):
-        v = (d -  m / 60 - s / 3600)
-    else:
-        v = (d +  m / 60 + s / 3600)
-    return  v
-
-def import_bss():
-    '''
-    Load AT20G bright source sample survey first
-    1: Object catalogue ID number (sometimes with an asterisk)
-    2-4: Right ascension in HMS notation
-    5-7: Declination in DMS notation
-    8-: Other information, including spectral intensities
-    return a list of tuples containing the object's ID (an integer) and the coordinates in degrees.
-    '''
-    data = np.loadtxt('../data/AT20G/bss.dat', usecols=range(1, 7))
-    tuples = []
-    for i in range(len(data)):
-        tuples.append((i+1,hms2dec(data[i][0],data[i][1],data[i][2]),dms2dec(data[i][3],data[i][4],data[i][5])))
-    return tuples
-
-def import_super():
-    '''
-    superCOSMOS all-sky catalogue is a catalogue of galaxies generated from several visible light surveys.
-    1: Right ascension in decimal degrees
-    2: Declination in decimal degrees
-    3: Other data, including magnitude and apparent shape
-    return a list of tuples containing the object's ID (an integer) and the coordinates in degrees.
-    '''
-    data = np.loadtxt('../data/AT20G/super.csv', delimiter=',', skiprows=1, usecols=[0, 1])
-    tuples = []
-    for i in range(len(data)):
-        tuples.append((i+1,data[i][0],data[i][1]))
-    return tuples
+from common_fcts import angular_dist, load_bss_catalog, load_superCosmos
 
 def find_closest(catalog,RA,D):
     '''
@@ -117,32 +63,28 @@ def crossmatch(bss_cat, super_cat, max_radius):
 
 
 if __name__ == '__main__':
-  ''' 
-  print(hms2dec(23, 12, 6))   # should be 348.025
 
-  print(dms2dec(22, 57, 18))
+    bss_cat = load_bss_catalog()
+    super_cat = load_superCosmos()
 
-  print(dms2dec(-66, 5, 5.1))
+    print(f"find_closest(bss_cat, 175.3, -32.5) = {find_closest(bss_cat, 175.3, -32.5)}")
 
-  print(angular_dist(21.07, 0.1, 21.15, 8.2))
+    print("-"*40)
+    print("Cross matching with a distance of 40 arcseconds")
+    print("-"*40)
+    max_dist = 40/3600
+    matches, no_matches, timer = crossmatch(bss_cat, super_cat, max_dist)
+    print(f"First 3 matches= {matches[:3]}")
+    print(f"First 3 non-matches= {no_matches[:3]}")
+    print(f"Time taken= {timer} seconds")
+    print(f"Number of non-matches= {len(no_matches)}")
 
-  print(angular_dist(10.3, -3, 24.3, -29))
-  '''
-  bss_cat = import_bss()
-  super_cat = import_super()
-  # print(bss_cat)
-  # print(super_cat)
-  print(find_closest(bss_cat, 175.3, -32.5))
-
-  max_dist = 40/3600
-  matches, no_matches, timer = crossmatch(bss_cat, super_cat, max_dist)
-  print(matches[:3])
-  print(no_matches[:3])
-  print(len(no_matches))
-  print(timer)
-  max_dist = 5/3600
-  matches, no_matches, timer = crossmatch(bss_cat, super_cat, max_dist)
-  print(matches[:3])
-  print(no_matches[:3])
-  print(len(no_matches))
-  print(timer)
+    print("-"*40)
+    print("Cross matching with a distance of 5 arcseconds")
+    print("-"*40)
+    max_dist = 5/3600
+    matches, no_matches, timer = crossmatch(bss_cat, super_cat, max_dist)
+    print(f"First 3 matches= {matches[:3]}")
+    print(f"First 3 non-matches= {no_matches[:3]}")
+    print(f"Number of non-matches= {len(no_matches)}")
+    print(f"Time taken= {timer} seconds")
