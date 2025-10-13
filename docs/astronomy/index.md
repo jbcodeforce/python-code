@@ -140,6 +140,7 @@ Nearly all of our radio sources have an optical counterpart, which means we can 
 * Most of our radio galaxies are associated with quasars. Where we're looking towards the central black hole and can see the very energetic accretion disk. The radiation from the accretion disk is so bright that it outshines all of the stars in the galaxy. And therefore, looks just like a bright star, hence the name, quasi-stellar object, or quasar.
     <figure markdown=span>
     ![](./images/quasar.png)
+    <capture>Quasar</capture>
     </figure>
 
 * The rest of our radio galaxies sit inside normal galaxies, where we can see a cloud of many stars grouped together. This could mean that the supermassive black hole has stopped accreting material. And the radio jets are remnants of past activity. 
@@ -155,14 +156,20 @@ The approach is to try to assert hypothesis and derive what kind of data we shou
 
 The science of exoplanets kicked off back in the late 1990s, the success of the space telescopes CoRoT and Kepler has really accelerated the field. Back in the 90s, we were discovering one or two planets a year, on average. 
 
+<figure markdown="span">
 ![](./images/kepler-telescope.png)
+<capture>Kepler telescope</capture>
+</figure>
 
 Kepler helps discover hundreds of new planets are being confirmed every year, with thousands more candidates being found.
 
+<figure markdown="span">
 ![](./images/exoplanets.png)
+<capture>Exoplanets per radion and orbital period.</capture>
+</figure>
 
 The most common planets are the super earth. The [NASA public catalog](https://exoplanetarchive.ipac.caltech.edu/). Here are some of the helpful attributes
-
+ to consider for queries
 
 | Attribute	| Description |
 | --- | --- |
@@ -175,10 +182,19 @@ The most common planets are the super earth. The [NASA public catalog](https://e
 |  Status |	Status of a discovered KOI in the planet table, e.g. "confirmed" or "false positive" |
 |  Teq	 | Equilibrium temperature of a planet in Kelvin |
 
+[Duckdb](https://duckdb.org/docs/stable/sql/introduction.html) can be used to read the exoplanet last update:
+
+```sql
+create table exoplanets as
+select * from read_csv_auto('./cumulative_2025.10.12.csv');
+# see structure
+show table exoplanets;
+```
+
 Some interesting queries:
 
 ```sql
-SELECT koi_name, radius FROM Planet ORDER BY radius DESC LIMIT 5;
+SELECT koi_name, radius FROM exoplanets ORDER BY radius DESC LIMIT 5;
 # analyse the size of the unconfirmed exoplanets (kepler_name is null).
 SELECT MIN(radius), MAX(radius), AVG(radius), STDDEV(radius) FROM Planet where kepler_name is NULL;
 # how many planets in the Planet database are in a multi-planet system
