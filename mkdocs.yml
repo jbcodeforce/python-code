@@ -8,7 +8,7 @@ nav:
     - Astronomy statistics and image processing: astronomy/index.md
   - Coding:
     - Development environment: coding/dev-env.md
-    - Project mgt with uv: techno/uv.md
+    - Project mgt with uv: coding/uv.md
     - Design patterns: coding/dp.md
     - Code studies: coding/references.md
     - Building CLI: coding/building-cli.md
