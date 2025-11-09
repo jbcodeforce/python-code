@@ -37,12 +37,14 @@ Review the [project management with uv](https://docs.astral.sh/uv/concepts/proje
     # -> will create `pyproject.toml` and `.python-version` files
     ```
 
-* The libraries/modules needed
+* The libraries/modules needed (they are defined now in the pyproject.toml)
     ```sh
-    uv add pandas matplotlib 
+    uv sync
+    # or manually 
+    uv add pandas matplotlib earthpy seaborn
     ```
 
-## Jupiter Lab and Notebook
+## Jupiter Lab and Notebooks
 
 
 * Create a Kernel:  Kernels enable the Jupyter server to run in one environment. Any packages installed from within the notebook are installed into the project's virtual environment. This is a different virtual environment managed by uv, but it will be possible in the context of work done in a notebook to update libraries in uv venv.
@@ -64,3 +66,11 @@ Review the [project management with uv](https://docs.astral.sh/uv/concepts/proje
 
 * When creating a notebook, select the `project` kernel from the dropdown.
     ![](./images/new_notebook.png)
+
+
+### Flooding in Colorado
+
+This is the first step to get a high level overview of working with dates using Pandas and time series with Python datetimes
+
+* [Data set to download here,](https://ndownloader.figshare.com/files/16371473) and save under data folder. It is ignored in .gitignore to avoid keeping a 155MB in Git
+* [First notebook is 01-flood-timeserie.ipynb](./earth-analytics/01-flood-timeserie.ipynb)

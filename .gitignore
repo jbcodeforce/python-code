@@ -14,3 +14,6 @@ kafka/zookeeper1/
 web_data/imgur/images/
 .env
 **/.venv/
+**/colorado-flood/
+**/earthpy-downloads/
+**/.ipynb_checkpoints/
