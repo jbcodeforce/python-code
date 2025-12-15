@@ -14,7 +14,7 @@
 ## Getting started:
 
 * [installation](https://docs.astral.sh/uv/getting-started/installation/)
-* Common commands:
+* [Common commands](https://docs.astral.sh/uv/getting-started/features/):
     ```sh
     uv python install: Install Python versions.
     uv python list: View available Python versions.
@@ -22,9 +22,22 @@
     uv run: Run a script.
     uv add --script: Add a dependency to a script
     uv remove --script: Remove a dependency from a script
+    uv self update: upgrade version
     ```
 
-* Work with [virtual environment]()
+* Work with [virtual environment](https://docs.astral.sh/uv/pip/environments/)
+    ```sh
+    uv venv
+    uv venv --python 3.13
+    uv python pin 3.13
+    deactivate
+    ```
+
+* [Working with Python project](https://docs.astral.sh/uv/guides/projects/) using `uv init`.
+    * [See understanding project type](https://pydevtools.com/handbook/explanation/understanding-uv-init-project-types/)
+    * [pyproject.toml guide.](https://packaging.python.org/en/latest/guides/writing-pyproject-toml/)
+    * [Manage dependencies](https://docs.astral.sh/uv/concepts/projects/dependencies/)
+
 * Work with [tools](https://docs.astral.sh/uv/guides/tools/) to publish as python package
     ```sh
     uv tool run: Run a tool in a temporary environment.
@@ -33,7 +46,7 @@
     uv tool list: List installed tools.
     uv tool update-shell: Update the shell to include tool executables.
     ```
-    
+
 ## Some interesting things to do
 
 * Check version: `uv version`
