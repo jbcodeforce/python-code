@@ -2,7 +2,7 @@
 
 This folder includes different studies around environment sciences.
 
-## Python and Jupiter notebook environment
+## Python and JupiterNnotebook Environment
 ### Set Python Environment using [uv](https://docs.astral.sh/uv/getting-started/)
 
 Here are the quick start step to prepare an environement to run Python and Jupyter notebooks.
@@ -37,7 +37,7 @@ Here are the quick start step to prepare an environement to run Python and Jupyt
 ### Jupiter Lab and Notebooks
 
 
-* Create a Kernel:  Kernels enable the Jupyter server to run in one virtual Python environment. Any packages installed from within the notebook are installed into the project's virtual environment. This is a different virtual environment than the one managed by uv, but it will be possible in the context of work done in a notebook to update libraries in uv venv.
+* **Create a Kernel:**  Kernels enable the Jupyter server to run in one virtual Python environment. Any packages installed from within the notebook are installed into the project's virtual environment. This is a different virtual environment than the one managed by uv, but it will be possible in the context of work done in a notebook to update libraries in uv venv.
     ```sh
     # install ipykernel as a development dependency
     uv add --dev ipykernel
@@ -47,7 +47,7 @@ Here are the quick start step to prepare an environement to run Python and Jupyt
 
     ![](./images/venv_jupyter.drawio.png)
 
-* start a Jupyter server with access to the project's virtual environment but runs in its own isolated environment:
+* **Start a Jupyter server** with access to the project's virtual environment but runs in its own isolated environment:
     ```sh
     uv run --with jupyter jupyter lab
     ```
@@ -57,12 +57,14 @@ Here are the quick start step to prepare an environement to run Python and Jupyt
 * When creating a notebook, select the `project` kernel from the dropdown.
     ![](./images/new_notebook.png)
 
+* [See the 00-first-notebook.ipynb](./earth-analytics/00-first-notebook.ipynb)
+
 ### Start new python project with uv
 
 When we need to do a python specific program, uv is the new Python project managment. Review the [project management with uv](https://docs.astral.sh/uv/concepts/projects/) documentation.
 
 * Create a folder for the project
-* Create a project to manage modules needed to do data sciences
+* Create a project to manage modules needed to do the data sciences
     ```sh
     # This command was already executed in this folder
     uv init
@@ -83,7 +85,7 @@ The content of this folder includes Jupyter notebooks and Python code from the [
 
 ### Flooding in Colorado
 
-The [Lesson 1 precipitation and time series](https://earthdatascience.org/courses/use-data-open-source-python/use-time-series-data-in-python/introduction-to-time-series-in-pandas-python/) is implemented in the [01-flood-timeserie Jupyter notebook](./earth-analytics/01-flood-timeserie.ipynb). 
+The [Earth Data Science - Lesson 1 precipitation and time series](https://earthdatascience.org/courses/use-data-open-source-python/use-time-series-data-in-python/introduction-to-time-series-in-pandas-python/) is implemented in the [earth-analysis/01-flood-timeserie Jupyter notebook](./earth-analytics/01-flood-timeserie.ipynb). 
 
 Here are the main concepts to learn:
 
@@ -124,12 +126,54 @@ Here are the main concepts to learn:
     # Then filter records for the year 2005
     df_2005 = df[df['DATE'].dt.year == 2005]
     ```
-* Resampling time series data refers to the act of summarizing data over different time periods.
 
-### Temperature
+* Resampling time series data refers to the act of summarizing data over different time periods. For example process hourly data to compute daily maximum. Pandas has a resample( ) function.
+    ```python
+    # Daily resample
+    precip_2003_2013_daily = precip_2003_2013_hourly.resample('D').sum()
+    # monthly:
+    precip_2003_2013_monthly = precip_2003_2013_daily.resample('M').sum()
+    # Yearly
+    precip_2003_2013_yearly = precip_2003_2013_monthly.resample('Y').sum()
+    ```
+
+* Adapting the date format within the graph, with a week as tick for the x-axis
+    ```python
+    import matplotlib.pyplot as plt
+    import matplotlib.dates as mdates
+    from matplotlib.dates import DateFormatter
+    # Handle date time conversions between pandas and matplotlib
+    from pandas.plotting import register_matplotlib_converters
+    register_matplotlib_converters()
+    # ...
+    fig, ax = plt.subplots(figsize=(12, 12))
+    # Define the date format
+    date_form = DateFormatter("%m-%d")
+    ax.xaxis.set_major_formatter(date_form)
+    # Ensure a major tick for each week using (interval=1) 
+    ax.xaxis.set_major_locator(mdates.WeekdayLocator(interval=1))
+    plt.show()
+    ```
+    
+#### Return Periods and Exceedance Probability
+
+The goal is to calculate the frequency of different magnitude events. For the flood study, a "100 year flood", really refers to the flood magnitude that has a probability of exceedance of 1/100 in any given year.
+
+* **Exceedance probability:** the probability of a given magnitude event (not correlated events) or greater to occur.
+* **Recurrence interval:** the average time of exceedance is the inverse of the exceedance probability.
+
+### Spacial Vector Data
+
+* Vector data are composed of discrete geometric locations (x, y values) known as vertices that define the “shape” of the spatial object.
+*  Geospatial data in vector format are often stored in a shapefile format. Each individual shapefile can only contain one vector type.
+* Objects stored in a shapefile often have a set of associated attributes that describe the data.
+* A shapefile is created by 3 or more files, all of which must retain the same NAME and be stored in the same file directory.
+    * .shp: the file that contains the geometry for all features.
+    * .shx: the file that indexes the geometry.
+    * .dbf: the file that stores feature attributes in a tabular format.
 
 ### Content summary
 
 * The following content is created:
-    * The colorado-flood Data set [from](https://ndownloader.figshare.com/files/16371473) is saved under [`earth-analytics/data/colorado-flood/`](./earth-analytics/data/colorado-flood/) folder. The data folder is ignored in .gitignore to avoid keeping a 155MB in Git
+    * The colorado-flood Data set [from](https://ndownloader.figshare.com/files/16371473) is saved under [`earth-analytics/data/colorado-flood/`](./earth-analytics/data/colorado-flood/) folder. The data folder is ignored in .gitignore to avoid keeping a 155MB in Git. The notebook can reload the data set. 
     * [First notebook is 01-flood-timeserie.ipynb](./earth-analytics/01-flood-timeserie.ipynb) to learn to load data, and work on data type, null values and plotting graphs. 

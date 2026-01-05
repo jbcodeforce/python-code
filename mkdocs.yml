@@ -9,6 +9,7 @@ nav:
   - Coding:
     - Development environment: coding/dev-env.md
     - Project mgt with uv: coding/uv.md
+    - Pytest: coding/pytest.md
     - Design patterns: coding/dp.md
     - Code studies: coding/references.md
     - Building CLI: coding/building-cli.md
