@@ -105,7 +105,7 @@ See [this article](https://betterscientificsoftware.github.io/python-for-hpc/tut
 1. Install twine to be able to upload to PyPi: `pip install twine`
 1. Push the package to test.pypi.org
 
-## Access environment variable
+## Access environment variables
 
 Define environment variables in a `.env` file, use os package:
 
@@ -128,6 +128,59 @@ import glob
 
 def listOfYaml():
     return glob.glob("./*.yaml")
+```
+## File Path
+The best and most modern way to get the current Python file's path is using the `pathlib` module (Python 3.4+). Here's what you need depending on exactly what you want:
+
+### Directory containing the current script
+```python
+from pathlib import Path
+
+script_dir = Path(__file__).resolve().parent
+print(script_dir)  # e.g., /home/user/myproject
+```
+
+### Absolute path to the current script file itself
+```python
+from pathlib import Path
+
+script_path = Path(__file__).resolve()
+print(script_path)  # e.g., /home/user/myproject/myscript.py
+```
+
+### Current Working Directory (if you meant that instead)
+```python
+import os
+cwd = os.getcwd()
+# or
+from pathlib import Path
+cwd = Path.cwd()
+print(cwd)  # Where you ran `python script.py` from, NOT the script's location
+```
+
+### Important Caveats
+- `__file__` contains the path **relative to the current working directory** by default. Always use `.resolve()` to get an absolute, symlink-resolved path.
+- `__file__` **does not work** in:
+  - Interactive Python REPL
+  - Jupyter Notebooks / Colab
+  - Scripts loaded via `exec()` or dynamic imports
+  In those environments, you'll need environment-specific fallbacks (e.g., `IPython.get_ipython().config_dir` in Jupyter).
+
+### Get script dir safely in any context
+```python
+import os
+import sys
+
+def get_script_dir():
+    # Fallback chain for different execution contexts
+    path = getattr(sys.modules[__name__], '__file__', None)
+    if path:
+        return str(Path(path).resolve().parent)
+    
+    # Fallback for interactive/Jupyter
+    return os.getcwd()
+
+print(get_script_dir())
 ```
 
 ## Change content of yaml
