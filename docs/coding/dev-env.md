@@ -131,7 +131,7 @@ To start a new Python project:
 
 1. create folder on the OS file system, then start `code <created_dir_name>`
 1. Verify Python extensions: The microsoft extension includes debugger and pylance. Install also pylint as a linter.
-1. In case of change the Python environment: in footer bar 
+1. When needed, change the Python environment: in footer bar on the right side.
 
 
 
@@ -146,3 +146,33 @@ Settings are at user level, so at the workspaces and windows level, or at worksp
 * [Command short cut sheet Windows](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf)  [mac](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-macos.pdf)
 * [Article on theme customization per workspace](https://medium.com/@juris.savos/setting-a-per-project-colour-scheme-in-vscode-89cc5836b1de) and [theme color](https://code.visualstudio.com/api/references/theme-color)
 
+
+### VScode pylance
+
+One of the common problem encoutered is the got to definition or find all occurences, is not visible or does not go to the function source code.
+
+The uv editable install (uv pip install -e .) uses a custom import finder (.pth + __editable___tools_0_1_0_finder.py) that works at Python runtime, but Pylance's static analyser never executes .pth files — it only reads standard direct_url.json editable metadata.
+
+Set some `pyrightconfig.json` to define venv, paths like:
+
+```json
+{
+  "venvPath": ".",
+  "venv": ".venv",
+  "pythonVersion": "3.12",
+  "pythonPath": ".venv/bin/python",
+  "extraPaths": [
+    "."
+  ],
+  "include": [
+    "flink_dbt_migrate"
+  ],
+  "exclude": [
+    ".venv",
+    "**/__pycache__"
+  ],
+  "typeCheckingMode": "off"
+}
+```
+
+Once done reload the window (`Cmd+Shift+P → Developer: Reload Window`) 
